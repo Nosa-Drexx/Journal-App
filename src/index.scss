@@ -1,0 +1,449 @@
+$transparentBlack: rgba(0, 0, 0, 0.479);
+$darkBlue: rgba(0, 0, 255, 0.427);
+$green: rgb(12, 213, 12);
+$black: black;
+$blue: blue;
+$white: white;
+$red: red;
+$blueViolet: blueviolet;
+$grey: rgb(109, 104, 104);
+
+@mixin border {
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.6); 
+}
+@mixin flex($type) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: $type;
+}
+@mixin button-click-effect {
+    border: none;
+    transition: transform 0.4s;
+    cursor: pointer;
+}
+
+html {
+    box-sizing: border-box;
+}
+*,*::after,*::before {
+    box-sizing: inherit;
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+.pop-out {
+    @include border();
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    width: 80vw;
+    z-index: 100;
+    background: $white;
+    padding: 1rem 0.3rem 0.5rem;
+    border-radius: 5px;
+    font-size: 1.3rem;
+    text-indent: 1rem;
+    .bad, .good{
+        border-radius: 3px;
+        font-size: 0.3rem;
+        margin-top: 1%;
+        width: 100%;
+        height:2%;
+        background: $red;
+        color: $red;
+    }
+    .good{
+        color: $green;
+        background: $green;
+    }
+}
+.loading {
+    @include flex(row nowrap);
+    border: 10px solid #f3f3f3;
+    border-radius: 50%;
+    border-top-color: $red;
+    border-left-color: $green;
+    border-right-color: $blue;
+    border-bottom-color: $blueViolet;
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    top: calc((100vh - 70px)/2); // centralize 
+    left: calc((100vw - 70px)/2); //centralize
+    -moz-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+@-webkit-keyframes spin {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}
+@keyframes spin {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}
+//Font awesome (fa-...) logos style
+.fa-eye {
+    color: $grey;
+    font-size: 1.1rem;
+}
+.fa-eye-slash {
+    @extend .fa-eye
+}
+.fa-circle-check{
+    color: $green;
+    font-size: 1.3rem;
+}
+.fa-circle-xmark{
+    color: $red;
+    font-size: 1.3rem;
+}
+.fa-spinner{
+    // border: 3px solid grey;
+    color: $green;
+    font-size: 2.3rem;
+    -moz-animation: spin2 1s ease-in infinite;
+    animation: spin2 1s ease-in infinite;
+    animation-fill-mode: forwards;
+    animation-direction: alternate;
+}
+@-webkit-keyframes spin2 {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}
+@keyframes spin2 {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(300deg);}
+}
+.login {
+    @include flex(column nowrap);
+    height: 100vh;
+    width: 100vw;
+    font-size: 1.1rem;
+    form {
+       @include flex(column nowrap);
+       @include border;
+       justify-content: space-between;
+        min-width: 300px;
+        height: 70%;
+        width: 40%;
+        border-radius: 10px;
+        // label:first-child {
+        //     margin-top: 10%;
+        // }
+        @media(min-width: 800px){
+            max-width: 300px;
+        }
+        .logo{
+            padding: 1rem;
+        }
+        .inputs {
+            width: 80%;
+            label{
+            width: 80%;
+                input {
+                width: 100%;
+                border: 1px solid black;
+                padding: 0.5rem;
+                font-size: 1.5rem;
+                border-radius: 5px;
+                }
+            }
+            .pass-div {
+                width: 100%;
+                display: flex;
+                flex-flow: row nowrap;
+                justify-content: space-between;
+                align-items: center;
+                #password {
+                    width: 87%;
+                }
+                .view-pass{
+                    @include flex(row nowrap);
+                    background: transparent;
+                    border: none;
+                    height: 20px;
+                    width: 10%;
+                    cursor: pointer;
+                }
+            }
+        }
+        .button-container {
+            height: 15%;
+            width: 100%;
+           .log-sign-btn {
+            @include flex(row wrap);
+            justify-content: space-evenly;
+            height: 70%;
+            width: 100%;
+            .sign-btn, input[type="submit"] {
+                height: 70%;
+                width: 40%;
+                border-radius: 5px;
+                border: none;
+                transition: transform 1s;
+                background: $blue;
+                color: $white;
+                font-size: 1.1rem;
+                text-decoration: none;
+                cursor: pointer;
+                a {
+                    text-decoration: none;
+                    color: $white; 
+                    padding: 5% 20%;
+                }
+            }
+            .sign-btn {
+                background-color: $green;
+            }
+            [type="submit"]:hover,button:hover {
+                transform: scale(1.1);
+            }
+            [type="submit"]:active,button:active {
+                transform: scale(0.5);
+            }
+             }
+             .forgotten-password {
+                cursor: pointer;
+                border: none;
+                background: transparent;
+                color: $blue;
+                font-size: 1rem;
+                border-radius: 1px 1px 1px 5px;
+                transition: transform 1s;
+               &:hover {
+                    transform: scale(1.05);
+                }
+               &:active {
+                    transform: scale(0.5);
+                }
+             }
+         }
+    }
+}
+.signup {
+    @include flex(column nowrap);
+    width: 100vw;
+    height: 100vh;
+    form {
+        @include border();
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem;
+        width: 80%;
+        height: 80%;
+        border-radius: 5px;
+        label {
+            height: 7%;
+            width: 100%;
+            font-size: 1.1rem;
+            input {
+                width: 100%;
+                height: 100%;
+                border: 1px solid red;
+                border-radius: 5px;
+                font-size: 1.4rem;
+            }
+        }
+        .pass-label {
+            div{
+                width: 100%; 
+                height: 100%;
+                display: flex;
+                flex-flow: row nowrap;
+                justify-content: space-between;
+                align-items: center;
+                .sign-pass {
+                    width: 80%;
+                }
+                .pass-visibility {
+                    @include flex(row nowrap);
+                    width: 5%;
+                    height: 50%;
+                    background: transparent;
+                    border: none;
+                    cursor: pointer;
+                }
+                .icon {
+                    @include flex(row nowrap);
+                    border: none;
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                }
+            }
+        }
+        input[type="submit"] {
+            font-size: 1.2rem;
+            border: none;
+            height: 7%;
+            border-radius: 5px;
+            width: 60%;
+            color: $white;
+            transition: transform 1s;
+            background: $green;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            transform: scale(1.1);
+        }
+        input[type="submit"]:active {
+            transform: scale(0.5);
+        }
+
+    }
+}
+.todo-center{
+    max-width: 1200px;
+    padding: 1rem;
+    margin: 1rem auto;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1rem;
+    div{
+        @include border;
+        padding: 1rem;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        border-radius: 5px;
+
+        button {
+            @include button-click-effect;
+            margin-right: 0.3rem;
+            padding: 0.5rem;
+        }
+        button:hover {
+            transform: scale(1.1);
+        }
+        button:active {
+            transform: scale(0.5);
+        }
+    }
+
+}
+.modal {
+    background-color: $transparentBlack;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+.edit-area{
+    @include border;
+    @include flex(column nowrap);
+    border: 1px solid $black;
+    border-radius: 10px;
+    height: 50vh;
+    width: 70vw;
+    position: absolute;
+    top: calc((100vh - 50vh)/2);
+    left: calc((100vw - 70vw)/2);
+    padding: 1rem;
+    z-index: 1000;
+    background: $darkBlue;
+    textarea{
+        resize: none;
+        width: 90%;
+        height: 90%;
+        overflow-y: auto;
+        font-size: 1.2rem;
+    }
+    input {
+        @include button-click-effect;
+        width: 90%;
+        height: 8%;
+        border-radius: 5px;
+        font-size: 1.1rem;
+    }
+    input:hover {
+        transform: scale(1.1);
+    }
+    input:active {
+        transform: scale(0.5);
+    }
+}
+.create-todos{
+    @include flex(column nowrap);
+    width: 100vw;
+    height: 10vh;
+    gap: 5%; 
+ 
+    label{
+        width: 70%;
+        height: 55%;
+        input{
+            width: 100%;
+            height: 100%;
+            font-size: 2rem;
+        }
+    }
+    input[type="submit"]{
+        @include button-click-effect;
+        width: 70%;
+        height: 30%;
+        background: $blue;
+        color: $white;
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+    // input[type="submit"]:hover {
+    //     transform: scale(1.1);
+    // }
+    input[type="submit"]:active {
+        transform: scale(0.5);
+    }
+}
+.search-area {
+    @include flex(row nowrap);
+    padding: 0.5rem 0;
+    input{
+        width: 0%;
+        font-size: 2rem;
+        border-radius: 10px;
+        border: 1px solid rgba(34, 165, 150, 0.6);
+        opacity: 0;
+        transition: opacity 2s, width 2s;
+    }
+    div {
+        padding: 0 0 0  calc((100% - 60px)/2); //center align
+        margin: auto;
+        transition: padding 1.9s; //To center align while transitioning
+    }
+    button{
+        background: $blue url("./images/search.png");
+        background-position: center;
+        background-size: 35px 35px;
+        background-repeat: no-repeat;
+        border: none;
+        padding: 0.5rem;
+        border-radius: 50%;
+        opacity: 1;
+        position: relative;
+        transition: opacity 1s;
+        width: 50px;
+        height: 50px;
+    }
+    button:hover{
+        background-color: rgb(1, 1, 191);
+        cursor: pointer;
+    }
+    button:active{
+        background-color: transparent;
+    }
+}
+//Animate searchBar
+.search-area:hover {
+    div{
+        padding: 0 0 0 calc((50% - 60px)/2);; //center align while input transition to different width
+    }
+    input{
+        opacity: 1;
+        width: 80%;
+    }
+    button{
+        opacity: 0;
+    }
+}
