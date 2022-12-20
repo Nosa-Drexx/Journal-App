@@ -55,7 +55,6 @@ function SignUp() {
         };
         const res = await fetch(`http://localhost:8080/newUser`, dataOBJ);
         const data = await res.json();
-        console.log(data);
         setUserExist(data);
         setSendDataToAPI("ok");
       } catch (e) {
@@ -74,8 +73,8 @@ function SignUp() {
   };
   return (
     <>
-      {userExist.token ? (
-        <Navigate to="/" />
+      {userExist.message ? (
+        <Navigate to="/verifyEmail" state={{ message: userExist.message }} />
       ) : sendDataToAPI === "requestSent" ? (
         <LoadingScreen />
       ) : (

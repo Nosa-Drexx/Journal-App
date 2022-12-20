@@ -1,15 +1,7 @@
-$transparentBlack: rgba(0, 0, 0, 0.479);
-$darkBlue: rgba(0, 0, 255, 0.427);
-$green: rgb(12, 213, 12);
-$black: black;
-$blue: blue;
-$white: white;
-$red: red;
-$blueViolet: blueviolet;
-$grey: rgb(109, 104, 104);
+@import "./colors.scss";
 
 @mixin border {
-    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.6); 
+    box-shadow: 1px 1px 8px var(--boxShadow, $boxShadow); 
 }
 @mixin flex($type) {
     display: flex;
@@ -32,7 +24,75 @@ html {
 body {
     margin: 0;
     padding: 0;
+    background: var(--white, $white);
 }
+//dark/light mode switch styles
+.main-container-relative {
+    width: 70px;
+    height: 40px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    background-color: inherit;
+    .wrapper {
+        width: 100%;
+        height: 80%;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 8%;
+        left: 8%;
+        padding: 0;
+        margin: 0;
+        background-color: inherit;
+        .design {
+            border: 1px solid var(--white, $white);
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            background-color: var(--lightWhite, $lightWhite);
+            z-index: 10; 
+            position: relative;
+            font-size: 1.2rem;
+            font-family: sans-serif;
+            font-weight: bold;
+            text-align: center;
+            color: var(--colorLB);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .togglebtn {
+                width: 25px;
+                height: 25px;
+                position: absolute;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-flow: row wrap;
+                left: 5%;
+                border-radius: 50%;
+                background-color: var(--white, $white);
+                border: 1px solid var(--white, $white);
+                transition: left 1s;
+                cursor: pointer;
+              }
+              .fa-solid {
+                  font-size: 1.2rem;
+              }
+              .day {
+                color: $yellow;
+              }
+              .night {
+                color: $green;
+              }
+          }
+      }
+  }
+
+//animated toast pop out style
 .pop-out {
     @include border();
     position: absolute;
@@ -40,7 +100,8 @@ body {
     right: 5%;
     width: 80vw;
     z-index: 100;
-    background: $white;
+    background: var(--white, $white);
+    color: var(--black, $black);
     padding: 1rem 0.3rem 0.5rem;
     border-radius: 5px;
     font-size: 1.3rem;
@@ -57,6 +118,274 @@ body {
     .good{
         color: $green;
         background: $green;
+    }
+}
+.picture-container {
+    @include flex(row nowrap);
+    position: absolute;   
+    right: 3vw;
+    top: 3vh;
+    width: 40px;
+    height: 40px;
+    border: 2px solid $green;
+    border-radius: 50%; 
+    @media(min-width: 450px){
+        right: 3vw; //for bigger screeens
+    }
+    button{
+        position: relative;
+        width: 90%;
+        height: 90%;
+        color: white;
+        font-size: 0.75rem;
+        text-align: center;
+        font-weight: bold;
+        border: none;
+        border-radius: 50%;
+        background: $blue;
+        cursor: pointer;
+        img{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit:cover;
+            border-radius:50%;
+        }
+    }
+}
+
+.user-details {
+    @include border();
+    position: absolute;
+    z-index: 99;
+    width: 60vw;
+    height: 100vh;
+    min-height: 100vh;
+    overflow: visible;
+    background: var(--white, $white);
+    opacity: 0.9;
+    font-size: 2rem;
+    padding: 0 1rem;
+    button{
+        cursor: pointer;
+        transition: transform 1s;
+    }
+    button:hover{
+        transform: scale(1.1);
+    }
+    button:active {
+        transform: scale(0.5);
+    }
+    .btn-container {
+        height: 10%;
+        width: 100%;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+    }
+    .close{
+        @include flex(row nowrap);
+        width: 50px;
+        height: 50px;
+        background: $button;
+        color: var(--black, $black);
+        font-size: 1.7rem;
+        border: none;
+        border-radius: 50%;
+    }
+
+    .update-details {
+        @include flex(column nowrap);
+        width: 90%;
+        height: 90%;
+        margin-left: calc((100% - 90%)/2);
+        div{
+            width: 100%;
+            div{
+    
+                height: 5px;
+                width: 30%;
+                margin-left: calc((100% - 30%)/2);
+                border-radius: 0 0 100% 100%;
+                background: $green;
+            }
+        }
+        button{
+            font-size: 1.5rem;
+            background: transparent;
+            width: 100%;
+            border: none;
+            color: var(--black, $black);
+            a {
+                @include flex(row nowrap);
+                font-size: 1.5rem;
+                width: 100%;
+                padding: 2rem;
+                color: var(--black, $black);
+                text-decoration: none;
+            }
+        }
+        button:last-child{
+            padding: 2rem;
+        }
+
+    }
+}
+
+.verify{
+    @include flex(row nowrap);
+    background: var(--white, $white);
+    width: 100vw; 
+    height: 100vh;
+    form{
+        @include flex(column nowrap);
+        gap: 1rem;
+        width: 70%;
+        height: 30%;
+        border-radius: 5px;
+        .verify-input{
+            font-size: 1.5rem;
+            padding: 0.8rem;
+            border-radius: 5px;
+            border: 2px solid $red;
+            &:focus, &:active, &:hover{
+                border: 2px solid $green;
+            }
+        }
+        .verify-btn{
+            color: var(--white, $white);
+            padding: 1rem;
+            font-size: 1.5rem;
+            border-radius: 5px;
+            background: $green;
+            border: none;
+            cursor: pointer;
+            transition: transform 1s;
+        }
+        .verify-btn:hover{
+            transform: scale(1.1);
+        }
+        .verify-btn:active {
+            transform: scale(0.5);
+        }
+    }
+
+
+}
+.update-user-info{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: initial;
+    gap: 2rem;
+    align-items: center;
+    label{
+        @include flex(row nowrap);
+        width: 100%;
+    }
+    .update-back{
+        width: 100%;
+        padding: 1rem;
+    }
+    .update-password {
+        height: 90%;
+    }
+    button{
+        border: none;
+        border-radius: 5px;
+        background: transparent;
+    }
+}
+
+.back{
+    button{
+        @include flex(row nowrap);
+        width: 50px;
+        height: 50px;
+        border: none;
+        background: $button;
+        border-radius: 50%;
+        margin-bottom: 1rem;
+        a{
+            @include flex(row nowrap);
+            border: inherit;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: transparent;
+            font-size: 1.7rem;
+            color: var(--black, $black);
+            text-decoration: none;
+            .fa-solid {
+                background: transparent;
+            }
+        }
+
+    }
+    button{
+        transition: transform 1s;
+        cursor: pointer;
+    }
+    button:hover{
+        transform: scale(1.1);
+    }
+    button:active {
+        transform: scale(0.5);
+    }
+}
+
+.settings, .my-account {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    background: var(--white, $white);
+    width: 100vw;
+    height: 100vh;
+    font-size: 1.2rem;
+
+    .light-dark-mode, .updates{
+        @include border();
+        color: var(--black, $black);
+        border-radius: 10px;
+        height: 15%;
+        padding: 0.5rem 1rem;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+        .lists{
+            width: 100%;
+            height: 100%;
+            text-align: left;
+            background: transparent;
+            border: none;
+            color: inherit; 
+            font-size: 1.2rem; 
+            cursor: pointer;
+            a{
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                color: inherit;
+                width: 100%;
+                height: 100%;
+                padding: 1rem;
+            }      
+        }
+    }
+    .updates{
+        transition: transform 1s;
+    }
+    .updates:hover{
+        transform: scale(1.03);
+    }
+    .updates:active{
+        transform: scale(0.8);
+    }
+    .delete {
+        color: $red;
     }
 }
 .loading {
@@ -121,6 +450,8 @@ body {
     height: 100vh;
     width: 100vw;
     font-size: 1.1rem;
+    background: var(--white, $white);
+    color: var(--black, $black);
     form {
        @include flex(column nowrap);
        @include border;
@@ -184,13 +515,13 @@ body {
                 border: none;
                 transition: transform 1s;
                 background: $blue;
-                color: $white;
+                color: var(--white, $white);
                 font-size: 1.1rem;
                 text-decoration: none;
                 cursor: pointer;
                 a {
                     text-decoration: none;
-                    color: $white; 
+                    color: var(--white, $white); 
                     padding: 5% 20%;
                 }
             }
@@ -226,9 +557,12 @@ body {
     @include flex(column nowrap);
     width: 100vw;
     height: 100vh;
+    color: var(--black, $black);
+    background: var(--white, $white);
     form {
         @include border();
         display: flex;
+        background: var(--white, $white);
         flex-flow: column nowrap;
         align-items: center;
         justify-content: space-between;
@@ -281,8 +615,8 @@ body {
             border: none;
             height: 7%;
             border-radius: 5px;
-            width: 60%;
-            color: $white;
+            width: 70%;
+            color: var(--white, $white);
             transition: transform 1s;
             background: $green;
             cursor: pointer;
@@ -303,44 +637,241 @@ body {
     display: flex;
     flex-flow: column nowrap;
     gap: 1rem;
-    div{
+    .text-container{
         @include border;
         padding: 1rem;
         font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         border-radius: 5px;
+        color: var(--black, $black);
+        width: 100%;
+        .date{
+            color: var(--black, $black);
+            width: 100%;
+            height: auto;
+            font-weight: bold;
+        }
+        .text{
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 1.1rem;
+            width: 100%;
+            white-space: pre-wrap;
+            line-height: 150%;
+            padding-bottom: 1rem;
+        }
 
         button {
             @include button-click-effect;
             margin-right: 0.3rem;
             padding: 0.5rem;
+            border-radius: 5px;
         }
         button:hover {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
         button:active {
-            transform: scale(0.5);
+            transform: scale(0.8);
         }
     }
 
 }
-.modal {
-    background-color: $transparentBlack;
+.image-modal-container{
+    @include button-click-effect();
+    background: $black;
+    width: 100vw;
+    height: 40vh; 
+}
+.image-page{
+    display: flex;
+    background: var(--white, $white);
+    flex-flow: column nowrap;
+    gap: 3rem;
+}
+.upload-image{
+    @include flex(row nowrap);
+    gap: 1rem;
+    background: transparent;
+    height: 40vh;
+    width: 100vw;
+    .back{
+        position: absolute;
+        top: 5%;
+        left: 5%;
+    }
+    input, .upload-btn {
+        background: var(--black, $white);
+        padding: 0.2rem;
+        font-size: 1.2rem;
+        border: none;
+        color: var(--white, $white);
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+    }
+    input{
+        border-radius: 5px 0 0 5px;
+    }
+}
+.full-image{
+    @include flex(row nowrap);
     position: absolute;
+    z-index: 200;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
+    background: rgba(0, 0, 0, 0.479);
+    img{
+        width: 50%;
+        height: 70%;
+        object-fit: contain;
+    }
+    button{
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        top: 5%;
+        left: 5%;
+        background: $grey;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        .fa-solid {
+            color: var(--black, $black);
+            background: transparent;
+            font-size: 2rem;
+        }
+    }
+    
+}
+.image-modal-container:hover {
+    transform: scale(1.1);
+}
+.image-modal-container:active {
+    transform: scale(0.5);
+}
+.image-modal {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    border: none;
+    width: 100vw;
+    height: 40vh;
+    background: $transparentBlack;
+
+    .darker-modal{
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 80;
+        height: 100%;
+        width: 100%;
+        background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.879));
+        border: none;
+    }
+    img{
+        position: absolute;
+        left: 0;
+        z-index: -30;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        // object-position: 5% 15%; 
+    }
+}
+.remove-many{
+    display: flex;
+    flex-flow: row nowrap;
+    background: transparent;
+    justify-content: flex-end;
+    padding: 1rem;
+    color: inherit;
+    .remove-many-btn{
+        @include border();
+        background: $red;
+        color: inherit;
+        transition: transform 1s;
+        cursor:pointer;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.2rem;
+        padding: 1rem;
+        font-weight: bold;
+    }
+    .remove-many-btn:hover{
+        transform: scale(1.05);
+    }
+    .remove-many-btn:active {
+        transform: scale(0.5);
+    }
+
+}
+.modal {
+    @include flex(row nowrap);
+    background-color: $transparentBlack;
+    position: absolute;
+    top: 0; //updates in react editTodo and modal component
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    .modal-container{
+        @include border;
+        @include flex(column nowrap);
+        border-radius: 10px;
+        height: 30vh;
+        width: 40vw;
+        min-width: 200px;
+        min-height: 100px;
+        position: absolute;
+        padding: 1rem;
+        z-index: 1000;
+        background: var(--white, $white);
+        .modal-text{
+            width: 100%;
+            height: 70%;
+            font-size: 1.5rem;
+            color: var(--black, $black);
+        }
+        .modal-btn{
+            width: 100%;
+            height: 30%;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            align-items: center;
+            button{
+                border: none;
+                width: 40%;
+                height: 50px;
+                border-radius: 5px;
+                color: var(--black, $black);
+                font-size: 1.5rem;
+                transition: transform 1s;
+                cursor: pointer;
+            }
+            button:hover{
+                transform: scale(1.1);
+            }
+            button:active {
+                transform: scale(0.5);
+            }
+            .yes{
+                background: $red;
+            }
+            .no{
+                background: $green;
+            }
+        }
+    }
 }
 .edit-area{
     @include border;
     @include flex(column nowrap);
-    border: 1px solid $black;
+    border: 1px solid var(--black, $black);
     border-radius: 10px;
     height: 50vh;
     width: 70vw;
     position: absolute;
-    top: calc((100vh - 50vh)/2);
-    left: calc((100vw - 70vw)/2);
     padding: 1rem;
     z-index: 1000;
     background: $darkBlue;
@@ -350,6 +881,31 @@ body {
         height: 90%;
         overflow-y: auto;
         font-size: 1.2rem;
+    }
+    button {
+        @include flex(row nowrap);
+        position: absolute;
+        right: 2%;
+        top: 1%;
+        width: 40px;
+        height: 40px;
+        border: none;
+        background: $button;
+        border-radius: 50%;
+        margin-bottom: 1rem;
+        transition: transform 1s; 
+        cursor: pointer;
+    }
+    .fa-solid {
+        color: var(--black, $black);
+        background: transparent;
+        font-size: 1.1rem;
+    }    
+    button:hover{
+        transform: scale(1.1);
+    }
+    button:active {
+        transform: scale(0.5);
     }
     input {
         @include button-click-effect;
@@ -385,7 +941,7 @@ body {
         width: 70%;
         height: 30%;
         background: $blue;
-        color: $white;
+        color: var(--white, $white);
         font-weight: bold;
         font-size: 1.1rem;
     }
@@ -447,3 +1003,4 @@ body {
         opacity: 0;
     }
 }
+

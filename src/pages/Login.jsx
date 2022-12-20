@@ -3,9 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
 import animation from "../animations/popupbox";
 import LoadingScreen from "../components/loadingScreen";
-// import authSlice from "../store/authSlice";
 import { todolistSlice } from "../store/todolistSlice";
-// import { gsap } from "gsap";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -14,16 +12,24 @@ function Login() {
   const [gottenDataFromAPI, setGottenDataFromAPI] = useState("idle");
   const currentUser = useSelector((state) => state.todos.AllUserInfo);
   const error = useSelector((state) => state.todos.error);
-  const [errorState, setErrorState] = useState(error);
+  const [errorState, setErrorState] = useState(false);
   const [error404, setError404] = useState(false);
   const [makePassVisible, setMakePassVisible] = useState(false);
   const [emailError, setEmailError] = useState(false);
+  const [navigate, setNavigate] = useState(false);
   const animatebox = useRef(null);
   const bad = useRef(null);
   const good = useRef(null);
 
   useEffect(() => {
-    dispatch(todolistSlice.actions.error(false));
+    if (localStorage.getItem("token")) localStorage.removeItem("token");
+
+    const themes = localStorage.getItem("color")
+      ? JSON.parse(localStorage.getItem("color"))
+      : null;
+
+    if (themes && themes.black === "white")
+      dispatch(todolistSlice.actions.lightDarkMode(true));
   }, []);
 
   useEffect(() => {
@@ -43,11 +49,15 @@ function Login() {
   const loginAction = () => {
     const getDataFromApi = async () => {
       try {
-        const res = await fetch(
-          `http://localhost:8080/getData/${JSON.stringify({
-            username,
+        let sendUP = { username, password };
+        if (username.includes("@") && username.includes(".com")) {
+          sendUP = {
+            email: username,
             password,
-          })}`,
+          };
+        }
+        const res = await fetch(
+          `http://localhost:8080/getData/${JSON.stringify(sendUP)}`,
           {
             method: "GET",
           }
@@ -57,6 +67,7 @@ function Login() {
         if (!data.error) {
           const tokenReq = JSON.stringify({ jwt: `Bearer ${token}` });
           localStorage.setItem("token", tokenReq);
+          dispatch(todolistSlice.actions.error(false));
         } else {
           setErrorState(true);
         }
@@ -75,28 +86,7 @@ function Login() {
 
   const requestForNewPassword = async (username) => {
     if (username !== "") {
-      try {
-        const dataOBJ = {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          method: "PUT",
-          body: JSON.stringify({
-            username,
-          }),
-        };
-        setEmailError("requestSent");
-        const res = await fetch("http://localhost:8080/forgottenPass", dataOBJ);
-        const data = await res.json();
-        if (data.error) {
-          setEmailError(data.error);
-        } else {
-          setEmailError("Email Sent");
-        }
-      } catch (e) {
-        console.log(e);
-        setEmailError("500! Server Error");
-      }
+      setNavigate(true);
     } else {
       setEmailError("Please put in a username");
     }
@@ -121,15 +111,9 @@ function Login() {
           {emailError && (
             <div ref={animatebox} className="pop-out">
               {emailError}
-              {emailError !== "Email Sent" ? (
-                <div ref={bad} className="bad">
-                  .
-                </div>
-              ) : (
-                <div ref={good} className="good">
-                  .
-                </div>
-              )}
+              <div ref={bad} className="bad">
+                .
+              </div>
             </div>
           )}
           {error404 && (
@@ -146,13 +130,14 @@ function Login() {
               loginAction();
             }}
           >
-            <div className="logo">Todo List</div>
+            <div className="logo">My Journal</div>
             <div className="inputs">
               <label htmlFor="username">
-                Username: <br />
+                Username or Email Address: <br />
                 <input
                   type="text"
                   id="username"
+                  placeholder="email or username"
                   onChange={(e) => setUsername(e.target.value)}
                   onBlur={(e) => setUsername(e.target.value)}
                   value={username}
@@ -167,6 +152,7 @@ function Login() {
                   <input
                     type={makePassVisible ? "text" : "password"}
                     id="password"
+                    placeholder="password"
                     onChange={(e) => setPassword(e.target.value)}
                     onBlur={(e) => setPassword(e.target.value)}
                     value={password}
@@ -206,7 +192,12 @@ function Login() {
                     requestForNewPassword(username);
                   }}
                 >
-                  Forgotten Password
+                  <Link
+                    to={navigate ? "/forgottenPassword" : ""}
+                    state={{ username }}
+                  >
+                    Forgotten Password
+                  </Link>
                 </button>
               </div>
             </div>

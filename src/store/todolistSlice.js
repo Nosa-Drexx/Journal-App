@@ -14,7 +14,9 @@ export const updateAPIAsyncThunk = createAsyncThunk(
 const updateDataBase = async (data) => {
   let value = false;
   try {
-    const token = JSON.parse(localStorage.getItem("token")).jwt;
+    const token = localStorage.getItem("token")
+      ? JSON.parse(localStorage.getItem("token")).jwt
+      : "Bearer unauthorized";
 
     const dataOBJ = {
       method: "PUT",
@@ -25,10 +27,8 @@ const updateDataBase = async (data) => {
       body: JSON.stringify(data),
     };
     const result = await fetch(`http://localhost:8080/update/todo`, dataOBJ);
-    if (result.error) {
-      const answer = await result.json();
-      value = answer;
-    }
+    const answer = await result.json();
+    value = { ...answer };
   } catch (e) {
     console.log(e);
     value = { error: "500! Server Error" };
@@ -37,32 +37,51 @@ const updateDataBase = async (data) => {
 };
 
 const initialState = {
-  AllUserInfo: { logIn: false },
+  AllUserInfo: { todos: [], logIn: false },
   AllState: arr,
   searchState: arr,
   error: false,
+  profileImage: null,
   updateApiWith: false,
+  lightDarkMode: false,
 };
 
 export const todolistSlice = createSlice({
   name: "todos",
   initialState,
   reducers: {
+    lightDarkMode: (states, action) => {
+      states.lightDarkMode = action.payload || !states.lightDarkMode;
+    },
+    updateUsername: (states, action) => {
+      const state = states.AllUserInfo;
+      state.username = action.payload.username;
+    },
     login: (states, action) => {
       if (!action.payload.error) {
         states.AllUserInfo = { ...action.payload, logIn: true };
         states.AllState = action.payload.todos;
         states.searchState = action.payload.todos;
+        states.prev = action.payload.todos;
       } else {
         states.error = action.payload;
       }
+    },
+    profileImage: (states, action) => {
+      states.profileImage = action.payload;
+    },
+    logout: (states, action) => {
+      states.AllUserInfo = { todos: [], logIn: action.payload };
+      states.AllState = arr;
+      states.searchState = arr;
+      states.profileImage = null;
     },
     error: (state, action) => {
       state.error = action.payload;
     },
     add: (states, action) => {
       const state = states.AllState;
-      state.unshift(action.payload);
+      state.unshift({ date: new Date().toUTCString(), ...action.payload });
       const updateAPI = {
         username: states.AllUserInfo.username,
         todos: state,
@@ -80,6 +99,26 @@ export const todolistSlice = createSlice({
         todos: state,
       };
       states.updateApiWith = updateAPI;
+    },
+    removeAllCompleted: (states) => {
+      const state = states.AllState;
+      var arr = [];
+
+      for (let i = 0; i < state.length; i++) {
+        if (state[i].completed === false) {
+          arr.push(state[i]);
+        }
+      }
+      if (arr.length) {
+        states.AllState = arr;
+        states.searchState = arr;
+
+        const updateAPI = {
+          username: states.AllUserInfo.username,
+          todos: states.AllState,
+        };
+        states.updateApiWith = updateAPI;
+      }
     },
     edit: (states, action) => {
       const state = states.AllState;
@@ -114,10 +153,18 @@ export const todolistSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(updateAPIAsyncThunk.fulfilled, (state, action) => {
-      state.error = action.payload;
+      if (action.payload.error) {
+        state.error = action.payload;
+        state.AllState = state.AllUserInfo.todos;
+      } else {
+        state.AllUserInfo.todos = action.payload.todos;
+        state.AllState = action.payload.todos;
+        state.error = { error: "Updated" };
+      }
     });
     builder.addCase(updateAPIAsyncThunk.rejected, (state, action) => {
       state.error = action.payload;
+      state.AllState = [...state.prev];
     });
   },
 });

@@ -1,0 +1,558 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *::after, *::before {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.pop-out {
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  width: 80vw;
+  z-index: 100;
+  background: white;
+  padding: 1rem 0.3rem 0.5rem;
+  border-radius: 5px;
+  font-size: 1.3rem;
+  text-indent: 1rem;
+}
+.pop-out .bad, .pop-out .good {
+  border-radius: 3px;
+  font-size: 0.3rem;
+  margin-top: 1%;
+  width: 100%;
+  height: 2%;
+  background: red;
+  color: red;
+}
+.pop-out .good {
+  color: rgb(12, 213, 12);
+  background: rgb(12, 213, 12);
+}
+
+.picture-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: row nowrap;
+  position: absolute;
+  right: 1vw;
+  top: 3vh;
+  width: 40px;
+  height: 40px;
+  border: 2px solid rgb(12, 213, 12);
+  border-radius: 50%;
+}
+@media (min-width: 450px) {
+  .picture-container {
+    right: 3vw;
+  }
+}
+.picture-container button {
+  width: 90%;
+  height: 90%;
+  border: none;
+  border-radius: 50%;
+  background: blue;
+  cursor: pointer;
+}
+
+.user-details {
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.6);
+  position: absolute;
+  z-index: 99;
+  width: 60vw;
+  height: 100vh;
+  background: white;
+  opacity: 0.9;
+  font-size: 2rem;
+  padding: 1rem;
+}
+.user-details button {
+  cursor: pointer;
+}
+.user-details .update-details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column nowrap;
+  width: 90%;
+  height: 90%;
+  margin-left: 5%;
+  margin-top: 5%;
+}
+.user-details .update-details div {
+  width: 100%;
+}
+.user-details .update-details div div {
+  height: 5px;
+  width: 30%;
+  margin-left: 35%;
+  border-radius: 0 0 100% 100%;
+  background: rgb(12, 213, 12);
+}
+.user-details .update-details button {
+  font-size: 1.5rem;
+  background: transparent;
+  width: 100%;
+  padding: 2rem;
+  border: none;
+  transition: transform 1s;
+}
+.user-details .update-details button:hover {
+  transform: scale(1.1);
+}
+.user-details .update-details button:active {
+  transform: scale(0.5);
+}
+.user-details .update-details button:last-child {
+  border-bottom: none;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: row nowrap;
+  border: 10px solid #f3f3f3;
+  border-radius: 50%;
+  border-top-color: red;
+  border-left-color: rgb(12, 213, 12);
+  border-right-color: blue;
+  border-bottom-color: blueviolet;
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  top: calc((100vh - 70px) / 2);
+  left: calc((100vw - 70px) / 2);
+  -webkit-animation: spin 2s linear infinite;
+          animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.fa-eye, .fa-eye-slash {
+  color: rgb(109, 104, 104);
+  font-size: 1.1rem;
+}
+
+.fa-circle-check {
+  color: rgb(12, 213, 12);
+  font-size: 1.3rem;
+}
+
+.fa-circle-xmark {
+  color: red;
+  font-size: 1.3rem;
+}
+
+.fa-spinner {
+  color: rgb(12, 213, 12);
+  font-size: 2.3rem;
+  -webkit-animation: spin2 1s ease-in infinite;
+          animation: spin2 1s ease-in infinite;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+@-webkit-keyframes spin2 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spin2 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(300deg);
+  }
+}
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column nowrap;
+  height: 100vh;
+  width: 100vw;
+  font-size: 1.1rem;
+}
+.login form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column nowrap;
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.6);
+  justify-content: space-between;
+  min-width: 300px;
+  height: 70%;
+  width: 40%;
+  border-radius: 10px;
+}
+@media (min-width: 800px) {
+  .login form {
+    max-width: 300px;
+  }
+}
+.login form .logo {
+  padding: 1rem;
+}
+.login form .inputs {
+  width: 80%;
+}
+.login form .inputs label {
+  width: 80%;
+}
+.login form .inputs label input {
+  width: 100%;
+  border: 1px solid black;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  border-radius: 5px;
+}
+.login form .inputs .pass-div {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.login form .inputs .pass-div #password {
+  width: 87%;
+}
+.login form .inputs .pass-div .view-pass {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: row nowrap;
+  background: transparent;
+  border: none;
+  height: 20px;
+  width: 10%;
+  cursor: pointer;
+}
+.login form .button-container {
+  height: 15%;
+  width: 100%;
+}
+.login form .button-container .log-sign-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  height: 70%;
+  width: 100%;
+}
+.login form .button-container .log-sign-btn .sign-btn, .login form .button-container .log-sign-btn input[type=submit] {
+  height: 70%;
+  width: 40%;
+  border-radius: 5px;
+  border: none;
+  transition: transform 1s;
+  background: blue;
+  color: white;
+  font-size: 1.1rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+.login form .button-container .log-sign-btn .sign-btn a, .login form .button-container .log-sign-btn input[type=submit] a {
+  text-decoration: none;
+  color: white;
+  padding: 5% 20%;
+}
+.login form .button-container .log-sign-btn .sign-btn {
+  background-color: rgb(12, 213, 12);
+}
+.login form .button-container .log-sign-btn [type=submit]:hover, .login form .button-container .log-sign-btn button:hover {
+  transform: scale(1.1);
+}
+.login form .button-container .log-sign-btn [type=submit]:active, .login form .button-container .log-sign-btn button:active {
+  transform: scale(0.5);
+}
+.login form .button-container .forgotten-password {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: blue;
+  font-size: 1rem;
+  border-radius: 1px 1px 1px 5px;
+  transition: transform 1s;
+}
+.login form .button-container .forgotten-password:hover {
+  transform: scale(1.05);
+}
+.login form .button-container .forgotten-password:active {
+  transform: scale(0.5);
+}
+
+.signup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column nowrap;
+  width: 100vw;
+  height: 100vh;
+}
+.signup form {
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  width: 80%;
+  height: 80%;
+  border-radius: 5px;
+}
+.signup form label {
+  height: 7%;
+  width: 100%;
+  font-size: 1.1rem;
+}
+.signup form label input {
+  width: 100%;
+  height: 100%;
+  border: 1px solid red;
+  border-radius: 5px;
+  font-size: 1.4rem;
+}
+.signup form .pass-label div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.signup form .pass-label div .sign-pass {
+  width: 80%;
+}
+.signup form .pass-label div .pass-visibility {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: row nowrap;
+  width: 5%;
+  height: 50%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.signup form .pass-label div .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: row nowrap;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+.signup form input[type=submit] {
+  font-size: 1.2rem;
+  border: none;
+  height: 7%;
+  border-radius: 5px;
+  width: 60%;
+  color: white;
+  transition: transform 1s;
+  background: rgb(12, 213, 12);
+  cursor: pointer;
+}
+.signup form input[type=submit]:hover {
+  transform: scale(1.1);
+}
+.signup form input[type=submit]:active {
+  transform: scale(0.5);
+}
+
+.todo-center {
+  max-width: 1200px;
+  padding: 1rem;
+  margin: 1rem auto;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1rem;
+}
+.todo-center div {
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.6);
+  padding: 1rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  border-radius: 5px;
+}
+.todo-center div button {
+  border: none;
+  transition: transform 0.4s;
+  cursor: pointer;
+  margin-right: 0.3rem;
+  padding: 0.5rem;
+}
+.todo-center div button:hover {
+  transform: scale(1.1);
+}
+.todo-center div button:active {
+  transform: scale(0.5);
+}
+
+.modal {
+  background-color: rgba(0, 0, 0, 0.479);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.edit-area {
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column nowrap;
+  border: 1px solid black;
+  border-radius: 10px;
+  height: 50vh;
+  width: 70vw;
+  position: absolute;
+  top: 25vh;
+  left: 15vw;
+  padding: 1rem;
+  z-index: 1000;
+  background: rgba(0, 0, 255, 0.427);
+}
+.edit-area textarea {
+  resize: none;
+  width: 90%;
+  height: 90%;
+  overflow-y: auto;
+  font-size: 1.2rem;
+}
+.edit-area input {
+  border: none;
+  transition: transform 0.4s;
+  cursor: pointer;
+  width: 90%;
+  height: 8%;
+  border-radius: 5px;
+  font-size: 1.1rem;
+}
+.edit-area input:hover {
+  transform: scale(1.1);
+}
+.edit-area input:active {
+  transform: scale(0.5);
+}
+
+.create-todos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column nowrap;
+  width: 100vw;
+  height: 10vh;
+  gap: 5%;
+}
+.create-todos label {
+  width: 70%;
+  height: 55%;
+}
+.create-todos label input {
+  width: 100%;
+  height: 100%;
+  font-size: 2rem;
+}
+.create-todos input[type=submit] {
+  border: none;
+  transition: transform 0.4s;
+  cursor: pointer;
+  width: 70%;
+  height: 30%;
+  background: blue;
+  color: white;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.create-todos input[type=submit]:active {
+  transform: scale(0.5);
+}
+
+.search-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: row nowrap;
+  padding: 0.5rem 0;
+}
+.search-area input {
+  width: 0%;
+  font-size: 2rem;
+  border-radius: 10px;
+  border: 1px solid rgba(34, 165, 150, 0.6);
+  opacity: 0;
+  transition: opacity 2s, width 2s;
+}
+.search-area div {
+  padding: 0 0 0 calc((100% - 60px) / 2);
+  margin: auto;
+  transition: padding 1.9s;
+}
+.search-area button {
+  background: blue url("./images/search.png");
+  background-position: center;
+  background-size: 35px 35px;
+  background-repeat: no-repeat;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 50%;
+  opacity: 1;
+  position: relative;
+  transition: opacity 1s;
+  width: 50px;
+  height: 50px;
+}
+.search-area button:hover {
+  background-color: rgb(1, 1, 191);
+  cursor: pointer;
+}
+.search-area button:active {
+  background-color: transparent;
+}
+
+.search-area:hover div {
+  padding: 0 0 0 calc((50% - 60px) / 2);
+}
+.search-area:hover input {
+  opacity: 1;
+  width: 80%;
+}
+.search-area:hover button {
+  opacity: 0;
+}/*# sourceMappingURL=index.css.map */

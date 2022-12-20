@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { removeTodo, todoDone, todoEdited } from "../store/actions";
 import { todolistSlice, updateAPIAsyncThunk } from "../store/todolistSlice";
 import EditTodo from "./editTodo";
+import Modal from "./modal";
 
 function MakeTodos() {
   const todoList = useSelector((state) => state.todos.searchState);
@@ -10,18 +11,21 @@ function MakeTodos() {
   const [edit, setEdit] = useState(false);
   const [contentToEdit, setContentToEdit] = useState({ uuid: "", val: "" });
   const dataToUpdate = useSelector((state) => state.todos.updateApiWith);
+  const [destroyTodo, setDestroyTodo] = useState(false);
+  const text = `Are you sure you want to delete this?`;
 
   useEffect(() => {
-    console.log(dataToUpdate);
     if (dataToUpdate) {
       dispatch(updateAPIAsyncThunk(dataToUpdate));
       dispatch(todolistSlice.actions.resetupdateAPIWith(false));
     }
-  }, [dataToUpdate]);
+  }, [dataToUpdate]); //eslint-disable-line
 
   function removeCurrentTodo(e) {
-    const elemId = e.target.getAttribute("data-id");
-    dispatch(removeTodo(elemId));
+    return () => {
+      const elemId = e.target.getAttribute("data-id");
+      dispatch(removeTodo(elemId));
+    };
   }
 
   function doneCurrentTodo(e) {
@@ -41,36 +45,49 @@ function MakeTodos() {
   }
 
   return (
-    <section className="todo-center">
-      {todoList.map((lists, index) => {
-        return (
-          <div key={index}>
-            <h3>{lists.completed ? <del>{lists.todo}</del> : lists.todo}</h3>
-            <input
-              data-id={lists.id}
-              type="checkbox"
-              onChange={doneCurrentTodo}
-              checked={lists.completed}
-            />
-            <button
-              onClick={() => editContent({ uuid: lists.id, val: lists.todo })}
-            >
-              Edit
-            </button>
-            <button data-id={lists.id} onClick={removeCurrentTodo}>
-              Remove Me
-            </button>
-          </div>
-        );
-      })}
-      {edit && (
-        <EditTodo
-          submitEdittedContent={submitEdittedContent}
-          contentToEdit={contentToEdit}
-          setContentToEdit={setContentToEdit}
+    <>
+      {destroyTodo && (
+        <Modal
+          text={text}
+          completeAction={removeCurrentTodo(destroyTodo)}
+          terminateAction={setDestroyTodo}
         />
       )}
-    </section>
+      <section className="todo-center">
+        {todoList.map((lists, index) => {
+          return (
+            <div className="text-container" key={index}>
+              <p className="date">{lists.date}</p>
+              <div className="text">
+                {lists.completed ? <del>{lists.todo}</del> : lists.todo}
+              </div>
+              <input
+                data-id={lists.id}
+                type="checkbox"
+                onChange={doneCurrentTodo}
+                checked={lists.completed}
+              />
+              <button
+                onClick={() => editContent({ uuid: lists.id, val: lists.todo })}
+              >
+                Edit
+              </button>
+              <button data-id={lists.id} onClick={(e) => setDestroyTodo(e)}>
+                Remove Me
+              </button>
+            </div>
+          );
+        })}
+        {edit && (
+          <EditTodo
+            submitEdittedContent={submitEdittedContent}
+            contentToEdit={contentToEdit}
+            setContentToEdit={setContentToEdit}
+            setEdit={setEdit}
+          />
+        )}
+      </section>
+    </>
   );
 }
 export default MakeTodos;

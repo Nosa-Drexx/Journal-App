@@ -6,6 +6,7 @@ async function animation(animatebox, bad, good) {
   const dl = gsap.timeline();
   if (animatebox) {
     animatebox.style.zIndex = ++stackbox; // allow box to aways stack on each other.
+    animatebox.style.top = `${20 + window.scrollY}px`; // always make animatebox in view even when user scrolls down.
     await dl.fromTo(
       animatebox,
       0.5,
@@ -55,6 +56,16 @@ async function animation(animatebox, bad, good) {
     await dl.to(animatebox, 0.3, {
       xPercent: 150,
       display: "none",
+    });
+  }
+}
+
+export function sideAnimation(elem) {
+  if (elem) {
+    const tl = gsap.timeline();
+    tl.from(elem, 1, {
+      x: 200,
+      ease: "elastic.out(2.5, 0.3)",
     });
   }
 }

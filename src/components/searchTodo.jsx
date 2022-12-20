@@ -10,17 +10,23 @@ function SearchBar() {
   //Updates searchState in store whenever a searchList changes or state changes
   useEffect(() => {
     const arr = [];
-    for (let i = 0; i < searchList.length; i++) {
-      const lists = searchList[i].todo.toLowerCase();
-      const value = state.toLowerCase();
-      if (lists.includes(value)) {
-        arr.push(searchList[i]);
+    if (searchList.length) {
+      for (let i = 0; i < searchList.length; i++) {
+        const lists = searchList[i].todo.toLowerCase();
+        let date = "";
+        if (searchList[i].date) {
+          date = searchList[i].date.toLowerCase();
+        }
+        const value = state.toLowerCase();
+        if (lists.includes(value) || date.includes(value)) {
+          arr.push(searchList[i]);
+        }
       }
-    }
-    if (state.length) {
-      dispatch(searchFor(arr));
-    } else {
-      dispatch(searchFor(searchList));
+      if (state.length) {
+        dispatch(searchFor(arr));
+      } else {
+        dispatch(searchFor(searchList));
+      }
     }
   }, [state, searchList]); //eslint-disable-line
 

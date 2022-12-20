@@ -6,3 +6,16 @@ export const store = configureStore({
     todos: todolistSlice.reducer,
   },
 });
+
+const theme = document.documentElement;
+
+const themes = localStorage.getItem("color")
+  ? JSON.parse(localStorage.getItem("color"))
+  : null;
+
+if (themes) {
+  theme?.style.setProperty("--black", themes.black);
+  theme?.style.setProperty("--white", themes.white);
+  theme?.style.setProperty("--boxShadow", themes.boxShadow);
+  theme?.style.setProperty("--lightWhite", themes.lightWhite);
+}
