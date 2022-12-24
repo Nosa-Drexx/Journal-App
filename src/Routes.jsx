@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import DashBoard from "./pages/DashBoard";
 import ForgottenPassword from "./pages/ForgottenPassword";
 import Home from "./pages/Home";
@@ -16,7 +16,7 @@ import VerifyNewUsers from "./pages/VerifyNewUsers";
 
 function AllRoutes() {
   return (
-    <BrowserRouter basename="/">
+    <Router>
       <Routes>
         <Route path="/" element={<ProtectRoutes />}>
           <Route path="dashBoard/:username" element={<DashBoard />} />
@@ -41,12 +41,12 @@ function AllRoutes() {
           />
         </Route>
         <Route index element={<Home />} />
-        <Route path="login" element={<Login />} />
-        <Route path="signUp" element={<SignUp />} />
-        <Route path="verifyEmail" element={<VerifyNewUsers />} />
-        <Route path="forgottenPassword" element={<ForgottenPassword />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signUp" element={<SignUp />} />
+        <Route path="/verifyEmail" element={<VerifyNewUsers />} />
+        <Route path="/forgottenPassword" element={<ForgottenPassword />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }
 export default AllRoutes;
