@@ -5,6 +5,7 @@ import { todolistSlice } from "../store/todolistSlice";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ReactSlick from "../components/react-slick";
+import JournalImage from "../images/Journal-text.png";
 
 const theme = document.documentElement;
 
@@ -58,7 +59,7 @@ function Home() {
       <div className="home">
         <header>
           <Link className="logo" to="/">
-            <div></div>
+            <img src={JournalImage} alt="JourNal-logo"></img>
           </Link>
           <div className="socials">
             <button

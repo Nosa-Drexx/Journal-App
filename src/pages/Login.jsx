@@ -5,6 +5,7 @@ import animation from "../animations/popupbox";
 import LoadingScreen from "../components/loadingScreen";
 import { apiURL } from "../store/actions";
 import { todolistSlice } from "../store/todolistSlice";
+import JournalImage from "../images/Journal-logo.png";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -116,7 +117,7 @@ function Login() {
             }}
           >
             <div className="logo">
-              <div></div>
+              <img src={JournalImage} alt="Journal-logo"></img>
             </div>
             <div className="inputs">
               <label htmlFor="username">

@@ -113,13 +113,10 @@ body {
                 display: flex;
                 width: 35%;
                 height: 40px;
-                div{
+                img{
                     width: 100%;
                     height: 100%;
-                    background: var(--white, $white) url("./images/Journal-text.png");
-                    background-size: contain;
-                    background-repeat: no-repeat;
-                    
+                    object-fit: contain;       
                 }
             }
             .socials{
@@ -190,12 +187,12 @@ body {
                     a{
                         @include border();
                         text-decoration: none;
-                        width: 100px;
+                        width: 120px;
                         border: none;
                         border-radius: 30px;
                         cursor: pointer;
                         padding: 1rem;
-                        font-size: 1.2rem;
+                        font-size: 1.5rem;
                         transition: transform 1s;
                         color: $white;
                         font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -349,14 +346,14 @@ body {
         background-image: url("./images/overview.png");
     }
     .image-light{
-        background-image: url("./images/image-light.png");
+        background-image: url("./images/imageL.png");
        
     }
     .setting-light{
-        background-image: url("./images/setting-light.png");
+        background-image: url("./images/settingL.png");
     }
     .setting-dark{
-        background-image: url("./images/setting-dark.png");
+        background-image: url("./images/settingD.png");
     }
     .account{
         background-image: url("./images/account.png");
@@ -368,10 +365,10 @@ body {
         background-image: url("./images/image.png");
     }
     .full-photo{
-        background-image: url("./images/full-photo.png");
+        background-image: url("./images/Fphoto.png");
     }
     .delete{
-        background-image: url("./images/delete.png");
+        background-image: url("./images/remove.png");
     }
   }
 
@@ -755,13 +752,14 @@ body {
             // border: 1px solid white;
             width: 90%;
             height: 30%;
-            div{
+            img{
                 width: 100%;
                 height: 100%;
-                background: var(--white, $white) url("./images/Journal-logo.png");
-                background-size: contain;
-                background-repeat: no-repeat;
-                background-position: center;
+                // background: var(--white, $white) url("./images/Journal-logo.png");
+                // background-size: contain;
+                // background-repeat: no-repeat;
+                // background-position: center;
+                object-fit: contain;
             }
         }
         .inputs {
@@ -1100,6 +1098,48 @@ body {
         transform: scale(0.5);
     }
 
+}
+.NoPageLogo{
+        width: 100vw;
+        height: 15vh;
+        a{  
+            box-shadow: 0 0 8px var(--boxShadow, $boxShadow);
+            padding: 0 1rem 1rem;
+            display: flex;
+            height: 100%;
+            width: 100%;
+            transition: transform 1s;
+            img{
+                object-fit: contain;
+                height:100%;
+                width: 100%;
+            }
+        }
+        a:hover{
+            transform: scale(1.1);
+        }
+        a:active {
+            transform: scale(0.5);
+        }
+}
+.Nopage{
+    height: 80vh;
+    width: 100vw;
+    @include flex(row nowrap);
+    div{
+        width: 80%;
+        max-width: 1200px;
+        font-size: 2rem;
+        @include flex(row nowrap);
+        h1 {
+            border-right: 2px solid var(--black, $black);
+            width: 40%;
+        }
+        p{
+            width: 60%;
+            padding-left: 1rem;
+        }
+    }
 }
 .modal {
     @include flex(row nowrap);
