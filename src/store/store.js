@@ -5,6 +5,7 @@ export const store = configureStore({
   reducer: {
     todos: todolistSlice.reducer,
   },
+  devTools: process.env.NODE_ENV !== "production",
 });
 
 const theme = document.documentElement;
