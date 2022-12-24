@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import DashBoard from "./pages/DashBoard";
 import ForgottenPassword from "./pages/ForgottenPassword";
 import Home from "./pages/Home";
@@ -15,12 +15,12 @@ import UploadImage from "./pages/UploadImage";
 import VerifyNewUsers from "./pages/VerifyNewUsers";
 
 function AllRoutes() {
+  const base = window.location.origin.toString();
   return (
-    <Router>
-      <Routes>
+    <BrowserRouter>
+      <Routes basename={base}>
         <Route path="/" element={<ProtectRoutes />}>
           <Route path="dashBoard/:username" element={<DashBoard />} />
-          <Route path="*" element={<NoPage />} />
           <Route path="dashBoard/:username/settings" element={<Settings />} />
           <Route path="dashBoard/:username/myAccount" element={<MyAccount />} />
           <Route
@@ -40,13 +40,14 @@ function AllRoutes() {
             element={<UpdateEmail />}
           />
         </Route>
-        <Route index element={<Home />} />
+        <Route path="/" index element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/verifyEmail" element={<VerifyNewUsers />} />
         <Route path="/forgottenPassword" element={<ForgottenPassword />} />
+        <Route path="*" element={<NoPage />} />
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 }
 export default AllRoutes;
