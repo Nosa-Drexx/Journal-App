@@ -41,10 +41,10 @@ function AllRoutes() {
           />
         </Route>
         <Route index element={<Home />} />
-        <Route path="login" element={<Login />} />
-        <Route path="signUp" element={<SignUp />} />
-        <Route path="verifyEmail" element={<VerifyNewUsers />} />
-        <Route path="forgottenPassword" element={<ForgottenPassword />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signUp" element={<SignUp />} />
+        <Route path="/verifyEmail" element={<VerifyNewUsers />} />
+        <Route path="/forgottenPassword" element={<ForgottenPassword />} />
       </Routes>
     </BrowserRouter>
   );
