@@ -61,7 +61,7 @@ function ForgottenPassword() {
       } catch (e) {
         console.log(e);
         setLoading(false);
-        setEmailError("500! Server Error");
+        setEmailError("Error Connecting to Server");
       }
     } else {
       setEmailError("Please put in an email Address");

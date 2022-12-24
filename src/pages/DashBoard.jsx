@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
 import MakeTodos from "../components/makeTodos";
 import SearchBar from "../components/searchTodo";
 import NewTodo from "../components/todoToMake";
@@ -10,7 +9,6 @@ import { todolistSlice } from "../store/todolistSlice";
 import RemoveAllCompleted from "../components/removeAllCompleted";
 
 function DashBoard() {
-  const currentUser = useSelector((state) => state.todos.AllUserInfo.logIn);
   const error = useSelector((state) => state.todos.error);
   const [errorMin, setErrorMin] = useState(false);
   const dispatch = useDispatch();
@@ -39,31 +37,25 @@ function DashBoard() {
 
   return (
     <>
-      {!currentUser ? (
-        <Navigate to="/" />
-      ) : (
-        <>
-          {errorMin && (
-            <div ref={animatebox} className="pop-out">
-              {errorMin}
-              {errorMin === "Updated" ? (
-                <div ref={good} className="good">
-                  .
-                </div>
-              ) : (
-                <div ref={bad} className="bad">
-                  .
-                </div>
-              )}
+      {errorMin && (
+        <div ref={animatebox} className="pop-out">
+          {errorMin}
+          {errorMin === "Updated" ? (
+            <div ref={good} className="good">
+              .
+            </div>
+          ) : (
+            <div ref={bad} className="bad">
+              .
             </div>
           )}
-          <UserAccount />
-          <NewTodo />
-          <SearchBar />
-          <RemoveAllCompleted />
-          <MakeTodos />
-        </>
+        </div>
       )}
+      <UserAccount />
+      <NewTodo />
+      <SearchBar />
+      <RemoveAllCompleted />
+      <MakeTodos />
     </>
   );
 }

@@ -36,7 +36,7 @@ const updateDataBase = async (data) => {
     value = { ...answer };
   } catch (e) {
     console.log(e);
-    value = { error: "500! Server Error" };
+    value = { error: "Error Connection to Server" };
   }
   return value;
 };

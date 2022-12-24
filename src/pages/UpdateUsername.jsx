@@ -69,65 +69,59 @@ function UpdateUsername() {
     } catch (e) {
       console.log(e);
       setLoading(false);
-      setReqResult({ error: "500! Server Error" });
+      setReqResult({ error: "Error Connecting to Server" });
     }
   }
 
   return (
     <>
-      {!currentUser.logIn ? (
-        <Navigate to="/" />
+      {loading ? (
+        <LoadingScreen />
       ) : (
         <>
-          {loading ? (
-            <LoadingScreen />
-          ) : (
-            <>
-              {navigate && (
-                <Navigate to={`/dashBoard/${currentUser.username}/myAccount`} />
-              )}
-              {reqResult.error && (
-                <div ref={animatebox} className="pop-out">
-                  {reqResult.error}{" "}
-                  <div ref={bad} className="bad">
-                    .
-                  </div>
-                </div>
-              )}
-              {reqResult.message && (
-                <div ref={animatebox} className="pop-out">
-                  {reqResult.message}{" "}
-                  <div ref={good} className="good">
-                    .
-                  </div>
-                </div>
-              )}
-              <div className="verify update-user-info">
-                <div className="update-back">
-                  <div className="back">
-                    <button>
-                      <Link to={`/dashBoard/${currentUser.username}/myAccount`}>
-                        <i className="fa-solid fa-arrow-left"></i>
-                      </Link>
-                    </button>
-                  </div>
-                </div>
-                <form
-                  className="verify-form"
-                  onSubmit={() => handleSubmit(username)}
-                >
-                  <input
-                    className="verify-input"
-                    type="text"
-                    placeholder="New Username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                  ></input>
-                  <input className="verify-btn" type="submit" value="Update" />
-                </form>
-              </div>
-            </>
+          {navigate && (
+            <Navigate to={`/dashBoard/${currentUser.username}/myAccount`} />
           )}
+          {reqResult.error && (
+            <div ref={animatebox} className="pop-out">
+              {reqResult.error}{" "}
+              <div ref={bad} className="bad">
+                .
+              </div>
+            </div>
+          )}
+          {reqResult.message && (
+            <div ref={animatebox} className="pop-out">
+              {reqResult.message}{" "}
+              <div ref={good} className="good">
+                .
+              </div>
+            </div>
+          )}
+          <div className="verify update-user-info">
+            <div className="update-back">
+              <div className="back">
+                <button>
+                  <Link to={`/dashBoard/${currentUser.username}/myAccount`}>
+                    <i className="fa-solid fa-arrow-left"></i>
+                  </Link>
+                </button>
+              </div>
+            </div>
+            <form
+              className="verify-form"
+              onSubmit={() => handleSubmit(username)}
+            >
+              <input
+                className="verify-input"
+                type="text"
+                placeholder="New Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              ></input>
+              <input className="verify-btn" type="submit" value="Update" />
+            </form>
+          </div>
         </>
       )}
     </>

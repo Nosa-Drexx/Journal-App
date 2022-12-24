@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import animation from "../animations/popupbox";
 import LoadingScreen from "../components/loadingScreen";
 import Modal from "../components/modal";
@@ -53,7 +53,7 @@ function MyAccount() {
     } catch (e) {
       console.log(e);
       setLoading(false);
-      setReqResult({ error: "500! Server Error" });
+      setReqResult({ error: "Error Connecting to Server" });
     }
   }
   return (
@@ -69,73 +69,67 @@ function MyAccount() {
               terminateAction={setDeleteAccount}
             />
           )}
-          {!currentUser.logIn ? (
-            <Navigate to="/" />
-          ) : (
-            <>
-              {reqResult.error && (
-                <div ref={animatebox} className="pop-out">
-                  {reqResult.error}{" "}
-                  <div ref={bad} className="bad">
-                    .
-                  </div>
-                </div>
-              )}
-              <div className="my-account">
-                <div className="back">
-                  <button>
-                    <Link to={`/dashBoard/${currentUser.username}`}>
-                      <i className="fa-solid fa-arrow-left"></i>
-                    </Link>
-                  </button>
-                </div>
-                <div className="updates">
-                  <button className="lists">
-                    <Link
-                      to={`/dashBoard/${currentUser.username}/updates/uploadImage`}
-                    >
-                      Add Profile Photo or Update Profile Photo
-                    </Link>
-                  </button>
-                </div>
-                <div className="updates">
-                  <button className="lists">
-                    <Link
-                      to={`/dashBoard/${currentUser.username}/updates/username`}
-                    >
-                      Change Username
-                    </Link>
-                  </button>
-                </div>
-                <div className="updates">
-                  <button className="lists">
-                    <Link
-                      to={`/dashBoard/${currentUser.username}/updates/password`}
-                    >
-                      Change Password
-                    </Link>
-                  </button>
-                </div>
-                <div className="updates">
-                  <button className="lists">
-                    <Link
-                      to={`/dashBoard/${currentUser.username}/updates/email`}
-                    >
-                      Change Email
-                    </Link>
-                  </button>
-                </div>
-                <div className="updates delete">
-                  <button
-                    onClick={() => setDeleteAccount(true)}
-                    className="lists"
-                  >
-                    Delete Account
-                  </button>
+          <>
+            {reqResult.error && (
+              <div ref={animatebox} className="pop-out">
+                {reqResult.error}{" "}
+                <div ref={bad} className="bad">
+                  .
                 </div>
               </div>
-            </>
-          )}
+            )}
+            <div className="my-account">
+              <div className="back">
+                <button>
+                  <Link to={`/dashBoard/${currentUser.username}`}>
+                    <i className="fa-solid fa-arrow-left"></i>
+                  </Link>
+                </button>
+              </div>
+              <div className="updates">
+                <button className="lists">
+                  <Link
+                    to={`/dashBoard/${currentUser.username}/updates/uploadImage`}
+                  >
+                    Add Profile Photo or Update Profile Photo
+                  </Link>
+                </button>
+              </div>
+              <div className="updates">
+                <button className="lists">
+                  <Link
+                    to={`/dashBoard/${currentUser.username}/updates/username`}
+                  >
+                    Change Username
+                  </Link>
+                </button>
+              </div>
+              <div className="updates">
+                <button className="lists">
+                  <Link
+                    to={`/dashBoard/${currentUser.username}/updates/password`}
+                  >
+                    Change Password
+                  </Link>
+                </button>
+              </div>
+              <div className="updates">
+                <button className="lists">
+                  <Link to={`/dashBoard/${currentUser.username}/updates/email`}>
+                    Change Email
+                  </Link>
+                </button>
+              </div>
+              <div className="updates delete">
+                <button
+                  onClick={() => setDeleteAccount(true)}
+                  className="lists"
+                >
+                  Delete Account
+                </button>
+              </div>
+            </div>
+          </>
         </>
       )}
     </>

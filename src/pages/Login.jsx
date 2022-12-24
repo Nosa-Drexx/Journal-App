@@ -104,7 +104,7 @@ function Login() {
           )}
           {error404 && (
             <div ref={animatebox} className="pop-out">
-              500! Server Error
+              Error Connection to server
               <div ref={bad} className="bad">
                 .
               </div>

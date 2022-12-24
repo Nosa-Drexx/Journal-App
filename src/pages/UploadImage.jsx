@@ -119,72 +119,66 @@ function UploadImage() {
   }
   return (
     <div className="image-page">
-      {!currentUser.logIn ? (
-        <Navigate to="/" />
+      {loading ? (
+        <LoadingScreen />
       ) : (
         <>
-          {loading ? (
-            <LoadingScreen />
-          ) : (
-            <>
-              {navigate && (
-                <Navigate to={`/dashBoard/${currentUser.username}/myAccount`} />
-              )}
-              {reqResult.error && (
-                <div ref={animatebox} className="pop-out">
-                  {reqResult.error}
-                  <div ref={bad} className="bad">
-                    .
-                  </div>
-                </div>
-              )}
-              {reqResult.message && (
-                <div ref={animatebox} className="pop-out">
-                  {reqResult.message}
-                  <div ref={good} className="good">
-                    .
-                  </div>
-                </div>
-              )}
-              {
-                <>
-                  <>
-                    {showModal && (
-                      <div className="full-image">
-                        <button onClick={() => setShowModal(false)}>
-                          <i className="fa-solid fa-xmark"></i>
-                        </button>
-                        <img ref={bigSrc} src="" alt="Profile" />
-                      </div>
-                    )}
-                  </>
-                  <button
-                    onClick={() => setShowModal(true)}
-                    className="image-modal-container"
-                  >
-                    <div className="image-modal">
-                      <img ref={src} src="" alt="Profile" />
-                      <div className="darker-modal"></div>
-                    </div>
-                  </button>
-                </>
-              }
-              <div className="upload-image">
-                <div className="back">
-                  <button>
-                    <Link to={`/dashBoard/${currentUser.username}/myAccount`}>
-                      <i className="fa-solid fa-arrow-left"></i>
-                    </Link>
-                  </button>
-                </div>
-                <input type="file" onChange={getFileData} />
-                <button className="upload-btn" onClick={uploadFileToServer}>
-                  Upload
-                </button>
-                <br />
-              </div>
-            </>
+          {navigate && (
+            <Navigate to={`/dashBoard/${currentUser.username}/myAccount`} />
           )}
+          {reqResult.error && (
+            <div ref={animatebox} className="pop-out">
+              {reqResult.error}
+              <div ref={bad} className="bad">
+                .
+              </div>
+            </div>
+          )}
+          {reqResult.message && (
+            <div ref={animatebox} className="pop-out">
+              {reqResult.message}
+              <div ref={good} className="good">
+                .
+              </div>
+            </div>
+          )}
+          {
+            <>
+              <>
+                {showModal && (
+                  <div className="full-image">
+                    <button onClick={() => setShowModal(false)}>
+                      <i className="fa-solid fa-xmark"></i>
+                    </button>
+                    <img ref={bigSrc} src="" alt="Profile" />
+                  </div>
+                )}
+              </>
+              <button
+                onClick={() => setShowModal(true)}
+                className="image-modal-container"
+              >
+                <div className="image-modal">
+                  <img ref={src} src="" alt="Profile" />
+                  <div className="darker-modal"></div>
+                </div>
+              </button>
+            </>
+          }
+          <div className="upload-image">
+            <div className="back">
+              <button>
+                <Link to={`/dashBoard/${currentUser.username}/myAccount`}>
+                  <i className="fa-solid fa-arrow-left"></i>
+                </Link>
+              </button>
+            </div>
+            <input type="file" onChange={getFileData} />
+            <button className="upload-btn" onClick={uploadFileToServer}>
+              Upload
+            </button>
+            <br />
+          </div>
         </>
       )}
     </div>

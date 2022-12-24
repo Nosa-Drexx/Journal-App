@@ -1,11 +1,11 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Body from "./pages/Body";
 import DashBoard from "./pages/DashBoard";
 import ForgottenPassword from "./pages/ForgottenPassword";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import MyAccount from "./pages/MyAccount";
 import NoPage from "./pages/NoPage";
+import ProtectRoutes from "./ProtectRoutes";
 import Settings from "./pages/Settings";
 import SignUp from "./pages/SignUp";
 import UpdateEmail from "./pages/UpdateEmail";
@@ -18,10 +18,7 @@ function AllRoutes() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Body />}>
-          <Route index element={<Home />} />
-          <Route path="login" element={<Login />} />
-          <Route path="signUp" element={<SignUp />} />
+        <Route path="/" element={<ProtectRoutes />}>
           <Route path="dashBoard/:username" element={<DashBoard />} />
           <Route path="*" element={<NoPage />} />
           <Route path="dashBoard/:username/settings" element={<Settings />} />
@@ -42,9 +39,12 @@ function AllRoutes() {
             path="dashBoard/:username/updates/email"
             element={<UpdateEmail />}
           />
-          <Route path="verifyEmail" element={<VerifyNewUsers />} />
-          <Route path="forgottenPassword" element={<ForgottenPassword />} />
         </Route>
+        <Route index element={<Home />} />
+        <Route path="login" element={<Login />} />
+        <Route path="signUp" element={<SignUp />} />
+        <Route path="verifyEmail" element={<VerifyNewUsers />} />
+        <Route path="forgottenPassword" element={<ForgottenPassword />} />
       </Routes>
     </BrowserRouter>
   );

@@ -98,7 +98,7 @@ function SignUp() {
           )}
           {error404 && (
             <div ref={animatebox} className="pop-out">
-              500! Server Error
+              Error Connecting to Server
               <div ref={bad} className="bad">
                 .
               </div>
