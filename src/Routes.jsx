@@ -15,10 +15,9 @@ import UploadImage from "./pages/UploadImage";
 import VerifyNewUsers from "./pages/VerifyNewUsers";
 
 function AllRoutes() {
-  const base = window.location.origin.toString();
   return (
     <BrowserRouter>
-      <Routes basename={base}>
+      <Routes>
         <Route path="/" element={<ProtectRoutes />}>
           <Route path="dashBoard/:username" element={<DashBoard />} />
           <Route path="dashBoard/:username/settings" element={<Settings />} />
