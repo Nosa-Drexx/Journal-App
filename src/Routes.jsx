@@ -16,7 +16,7 @@ import VerifyNewUsers from "./pages/VerifyNewUsers";
 
 function AllRoutes() {
   return (
-    <BrowserRouter basename="https://journal-app-mocha.vercel.app/">
+    <BrowserRouter basename="/">
       <Routes>
         <Route path="/" element={<ProtectRoutes />}>
           <Route path="dashBoard/:username" element={<DashBoard />} />
