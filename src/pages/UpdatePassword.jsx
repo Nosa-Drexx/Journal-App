@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
 import animation from "../animations/popupbox";
 import LoadingScreen from "../components/loadingScreen";
+import { apiURL } from "../store/actions";
 
 function UpdatePassword() {
   const currentUser = useSelector((state) => state.todos.AllUserInfo);
@@ -66,10 +67,7 @@ function UpdatePassword() {
           body: JSON.stringify({ oldpassword, password }),
         };
         setLoading(true);
-        const result = await fetch(
-          `http://localhost:8080/update/password`,
-          dataOBJ
-        );
+        const result = await fetch(`${apiURL}/update/password`, dataOBJ);
         const answer = await result.json();
         setLoading(false);
         if (answer.error) setShowForgottenPass(true);

@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { apiURL } from "./actions";
 export const _STORAGE = "_STORAGE-todoLists";
 
 const arr = [];
@@ -10,6 +11,10 @@ export const updateAPIAsyncThunk = createAsyncThunk(
     return res;
   }
 );
+
+const themes = localStorage.getItem("color")
+  ? JSON.parse(localStorage.getItem("color"))
+  : null;
 
 const updateDataBase = async (data) => {
   let value = false;
@@ -26,7 +31,7 @@ const updateDataBase = async (data) => {
       },
       body: JSON.stringify(data),
     };
-    const result = await fetch(`http://localhost:8080/update/todo`, dataOBJ);
+    const result = await fetch(`${apiURL}/update/todo`, dataOBJ);
     const answer = await result.json();
     value = { ...answer };
   } catch (e) {
@@ -43,7 +48,7 @@ const initialState = {
   error: false,
   profileImage: null,
   updateApiWith: false,
-  lightDarkMode: false,
+  lightDarkMode: themes && themes.black === "white" ? true : false,
 };
 
 export const todolistSlice = createSlice({
@@ -118,6 +123,8 @@ export const todolistSlice = createSlice({
           todos: states.AllState,
         };
         states.updateApiWith = updateAPI;
+      } else {
+        states.updateApiWith = null;
       }
     },
     edit: (states, action) => {

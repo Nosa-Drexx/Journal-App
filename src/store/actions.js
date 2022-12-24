@@ -30,3 +30,6 @@ export const todoDone = createAction("todos/done", (uuid) => ({
 export const searchFor = createAction("todos/search", (arr) => ({
   payload: arr,
 }));
+
+//Api main url, don't change.
+export const apiURL = "https://journal-api.onrender.com";

@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
 import animation from "../animations/popupbox";
 import LoadingScreen from "../components/loadingScreen";
+import { apiURL } from "../store/actions";
 
 function UpdateEmail() {
   const currentUser = useSelector((state) => state.todos.AllUserInfo);
@@ -50,7 +51,7 @@ function UpdateEmail() {
         body: JSON.stringify({ email }),
       };
       setLoading(true);
-      const result = await fetch(`http://localhost:8080/update/email`, dataOBJ);
+      const result = await fetch(`${apiURL}/update/email`, dataOBJ);
       const answer = await result.json();
       setLoading(false);
       setReqResult({ ...answer });

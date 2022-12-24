@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
 import { sideAnimation } from "../animations/popupbox";
+import { apiURL } from "../store/actions";
 import { todolistSlice } from "../store/todolistSlice";
 
 function UserAccount() {
@@ -56,13 +57,12 @@ function UserAccount() {
           Authorization: token,
         },
       };
-      const result = await fetch(
-        `http://localhost:8080/update/userProfileImage`,
-        dataOBJ
-      );
+      const result = await fetch(`${apiURL}/update/userProfileImage`, dataOBJ);
       const answer = await result.blob();
       dispatch(todolistSlice.actions.profileImage(URL.createObjectURL(answer)));
-      src.current.src = URL.createObjectURL(answer);
+      if (src.current) {
+        src.current.src = URL.createObjectURL(answer);
+      }
     } catch (e) {
       console.log(e);
     }
@@ -88,7 +88,7 @@ function UserAccount() {
   return (
     <>
       {logoutState ? (
-        <Navigate to="/" />
+        <Navigate to="/login" />
       ) : (
         <>
           <div ref={pictureBorder} className="picture-container">

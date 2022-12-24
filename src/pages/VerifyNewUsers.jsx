@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import animation from "../animations/popupbox";
 import LoadingScreen from "../components/loadingScreen";
+import { apiURL } from "../store/actions";
 
 function VerifyNewUsers() {
   const [emailId, setEmailId] = useState("");
@@ -43,7 +44,7 @@ function VerifyNewUsers() {
         body: JSON.stringify({ emailId }),
       };
       setLoad(true);
-      const res = await fetch("http://localhost:8080/verifyNewUser", options);
+      const res = await fetch(`${apiURL}/verifyNewUser`, options);
       const data = await res.json();
       setLoad(false);
       setRequestStat(data);
@@ -59,7 +60,7 @@ function VerifyNewUsers() {
         <LoadingScreen />
       ) : (
         <>
-          {navigate && <Navigate to="/" />}
+          {navigate && <Navigate to="/login" />}
           {requestStats.error && (
             <div ref={animatebox} className="pop-out">
               {requestStats.error}

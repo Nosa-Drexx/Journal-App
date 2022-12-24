@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Navigate } from "react-router-dom";
 import animation from "../animations/popupbox";
 import LoadingScreen from "../components/loadingScreen";
+import { apiURL } from "../store/actions";
 
 function SignUp() {
   const [username, setUsername] = useState("");
@@ -53,7 +54,7 @@ function SignUp() {
           method: "post",
           body: JSON.stringify(userData),
         };
-        const res = await fetch(`http://localhost:8080/newUser`, dataOBJ);
+        const res = await fetch(`${apiURL}/newUser`, dataOBJ);
         const data = await res.json();
         setUserExist(data);
         setSendDataToAPI("ok");

@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Body from "./pages/Body";
 import DashBoard from "./pages/DashBoard";
 import ForgottenPassword from "./pages/ForgottenPassword";
+import Home from "./pages/Home";
 import Login from "./pages/Login";
 import MyAccount from "./pages/MyAccount";
 import NoPage from "./pages/NoPage";
@@ -18,7 +19,8 @@ function AllRoutes() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Body />}>
-          <Route index element={<Login />} />
+          <Route index element={<Home />} />
+          <Route path="login" element={<Login />} />
           <Route path="signUp" element={<SignUp />} />
           <Route path="dashBoard/:username" element={<DashBoard />} />
           <Route path="*" element={<NoPage />} />

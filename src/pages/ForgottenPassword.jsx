@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import animation from "../animations/popupbox";
 import LoadingScreen from "../components/loadingScreen";
+import { apiURL } from "../store/actions";
 
 function ForgottenPassword() {
   const [email, setEmail] = useState("");
@@ -49,7 +50,7 @@ function ForgottenPassword() {
           }),
         };
         setLoading(true);
-        const res = await fetch("http://localhost:8080/forgottenPass", dataOBJ);
+        const res = await fetch(`${apiURL}/forgottenPass`, dataOBJ);
         const data = await res.json();
         setLoading(false);
         if (data.error) {
@@ -69,8 +70,8 @@ function ForgottenPassword() {
 
   return (
     <>
-      {navigate && <Navigate to="/" />}
-      {!location.state && <Navigate to="/" />}
+      {navigate && <Navigate to="/login" />}
+      {!location.state && <Navigate to="/login" />}
       {loading ? (
         <LoadingScreen />
       ) : (

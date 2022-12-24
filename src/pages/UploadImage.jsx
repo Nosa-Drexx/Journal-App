@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
 import animation from "../animations/popupbox";
 import LoadingScreen from "../components/loadingScreen";
+import { apiURL } from "../store/actions";
 import { todolistSlice } from "../store/todolistSlice";
 
 function UploadImage() {
@@ -39,7 +40,7 @@ function UploadImage() {
     if (profileImage) {
       src.current.src = profileImage;
     }
-    if (src && !profileImage) {
+    if (src && !profileImage && !loading) {
       getImage(src);
     }
   }, [currentUser]);
@@ -55,13 +56,12 @@ function UploadImage() {
           Authorization: token,
         },
       };
-      const result = await fetch(
-        `http://localhost:8080/update/userProfileImage`,
-        dataOBJ
-      );
+      const result = await fetch(`${apiURL}/update/userProfileImage`, dataOBJ);
       const answer = await result.blob();
-      src.current.src = URL.createObjectURL(answer);
       dispatch(todolistSlice.actions.profileImage(URL.createObjectURL(answer)));
+      if (src.current) {
+        src.current.src = URL.createObjectURL(answer);
+      }
     } catch (e) {
       console.log(e);
     }
@@ -104,10 +104,7 @@ function UploadImage() {
           body: imageState,
         };
         setLoading(true);
-        const result = await fetch(
-          `http://localhost:8080/update/uploadImage`,
-          dataOBJ
-        );
+        const result = await fetch(`${apiURL}/update/uploadImage`, dataOBJ);
         const answer = await result.json();
         setLoading(false);
         setReqResult(answer);

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
 import animation from "../animations/popupbox";
 import LoadingScreen from "../components/loadingScreen";
+import { apiURL } from "../store/actions";
 import { todolistSlice } from "../store/todolistSlice";
 
 function Login() {
@@ -23,13 +24,6 @@ function Login() {
 
   useEffect(() => {
     if (localStorage.getItem("token")) localStorage.removeItem("token");
-
-    const themes = localStorage.getItem("color")
-      ? JSON.parse(localStorage.getItem("color"))
-      : null;
-
-    if (themes && themes.black === "white")
-      dispatch(todolistSlice.actions.lightDarkMode(true));
   }, []);
 
   useEffect(() => {
@@ -50,18 +44,9 @@ function Login() {
     const getDataFromApi = async () => {
       try {
         let sendUP = { username, password };
-        if (username.includes("@") && username.includes(".com")) {
-          sendUP = {
-            email: username,
-            password,
-          };
-        }
-        const res = await fetch(
-          `http://localhost:8080/getData/${JSON.stringify(sendUP)}`,
-          {
-            method: "GET",
-          }
-        );
+        const res = await fetch(`${apiURL}/getData/${JSON.stringify(sendUP)}`, {
+          method: "GET",
+        });
         const data = await res.json();
         const { token, ...rest } = data;
         if (!data.error) {
@@ -130,7 +115,9 @@ function Login() {
               loginAction();
             }}
           >
-            <div className="logo">My Journal</div>
+            <div className="logo">
+              <div></div>
+            </div>
             <div className="inputs">
               <label htmlFor="username">
                 Username or Email Address: <br />

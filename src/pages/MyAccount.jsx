@@ -4,6 +4,7 @@ import { Link, Navigate } from "react-router-dom";
 import animation from "../animations/popupbox";
 import LoadingScreen from "../components/loadingScreen";
 import Modal from "../components/modal";
+import { apiURL } from "../store/actions";
 import { todolistSlice } from "../store/todolistSlice";
 
 function MyAccount() {
@@ -45,10 +46,7 @@ function MyAccount() {
         },
       };
       setLoading(true);
-      const result = await fetch(
-        `http://localhost:8080/update/delete`,
-        dataOBJ
-      );
+      const result = await fetch(`${apiURL}/update/delete`, dataOBJ);
       const answer = await result.json();
       setLoading(false);
       setReqResult({ ...answer });
