@@ -16,7 +16,7 @@ import VerifyNewUsers from "./pages/VerifyNewUsers";
 
 function AllRoutes() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="https://journal-app-mocha.vercel.app/">
       <Routes>
         <Route path="/" element={<ProtectRoutes />}>
           <Route path="dashBoard/:username" element={<DashBoard />} />
@@ -41,10 +41,10 @@ function AllRoutes() {
           />
         </Route>
         <Route index element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signUp" element={<SignUp />} />
-        <Route path="/verifyEmail" element={<VerifyNewUsers />} />
-        <Route path="/forgottenPassword" element={<ForgottenPassword />} />
+        <Route path="login" element={<Login />} />
+        <Route path="signUp" element={<SignUp />} />
+        <Route path="verifyEmail" element={<VerifyNewUsers />} />
+        <Route path="forgottenPassword" element={<ForgottenPassword />} />
       </Routes>
     </BrowserRouter>
   );
