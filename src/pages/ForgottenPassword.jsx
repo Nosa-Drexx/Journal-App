@@ -20,7 +20,7 @@ function ForgottenPassword() {
     if (good.current) {
       setTimeout(() => {
         setNavigate(true);
-      }, 2000);
+      }, 3000);
     }
   });
 
@@ -30,7 +30,7 @@ function ForgottenPassword() {
 
       const timer = setTimeout(() => {
         setEmailError(false);
-      }, 2000);
+      }, 3000);
 
       return () => clearTimeout(timer);
     }

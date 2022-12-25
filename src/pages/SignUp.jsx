@@ -28,7 +28,7 @@ function SignUp() {
         setUserExist(false);
         setValidPass(true);
         setError404(false);
-      }, 2000);
+      }, 3000);
 
       return () => clearTimeout(timer);
     }

@@ -513,10 +513,17 @@ body {
 }
 
 .verify{
-    @include flex(row nowrap);
+    @include flex(column nowrap);
     background: var(--white, $white);
     width: 100vw; 
     height: 100vh;
+    .verify-text{
+        padding: 0 1rem;
+        text-align: center;
+        color: var(--black, $black);
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
     form{
         @include flex(column nowrap);
         gap: 1rem;

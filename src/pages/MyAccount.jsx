@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import animation from "../animations/popupbox";
 import LoadingScreen from "../components/loadingScreen";
 import Modal from "../components/modal";
@@ -58,6 +58,7 @@ function MyAccount() {
   }
   return (
     <>
+      {!currentUser.logIn && <Navigate to="/login" />}
       {loading ? (
         <LoadingScreen />
       ) : (

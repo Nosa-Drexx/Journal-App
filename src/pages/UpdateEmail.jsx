@@ -20,7 +20,7 @@ function UpdateEmail() {
     if (good.current) {
       setTimeout(() => {
         setNavigate(true);
-      }, 2000);
+      }, 3000);
     }
   });
 

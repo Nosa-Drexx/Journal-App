@@ -18,7 +18,7 @@ function VerifyNewUsers() {
     if (good.current && requestStats.message) {
       setTimeout(() => {
         setNavigate(true);
-      }, 2000);
+      }, 3000);
     }
   });
 
@@ -28,7 +28,7 @@ function VerifyNewUsers() {
 
       const timer = setTimeout(() => {
         setRequestStat(false);
-      }, 2000);
+      }, 3000);
 
       return () => clearTimeout(timer);
     }
@@ -77,9 +77,9 @@ function VerifyNewUsers() {
               </div>
             </div>
           )}
-          {location.state.message && (
+          {location?.state?.message && (
             <div ref={animatebox} className="pop-out">
-              {location.state.message}
+              {location?.state?.message}
               <div ref={good} className="good">
                 .
               </div>
@@ -94,6 +94,9 @@ function VerifyNewUsers() {
             </div>
           )}
           <div className="verify">
+            <div className="verify-text">
+              Put in Verification code sent to your Email
+            </div>
             <form
               className="verify-form"
               onSubmit={() => handleSubmit(emailId)}

@@ -25,12 +25,12 @@ async function animation(animatebox, bad, good) {
       bad,
       0.5,
       {
-        delay: 1,
+        delay: 1.5,
         scaleX: 1,
         ease: "circ.out",
       },
       {
-        delay: 1,
+        delay: 1.5,
         scaleX: 0.01,
         ease: "circ.out",
         transformOrigin: "100% 50%",
@@ -42,10 +42,12 @@ async function animation(animatebox, bad, good) {
       good,
       0.5,
       {
+        delay: 1.5,
         scaleX: 1,
         ease: "circ.out",
       },
       {
+        delay: 1.5,
         scaleX: 0.01,
         ease: "circ.out",
         transformOrigin: "100% 50%",
