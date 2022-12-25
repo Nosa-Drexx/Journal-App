@@ -1,12 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import MakeTodos from "../components/makeTodos";
 import SearchBar from "../components/searchTodo";
-import NewTodo from "../components/todoToMake";
+// import NewTodo from "./todoToMake";
 import { useState, useRef, useEffect } from "react";
 import animation from "../animations/popupbox";
 import UserAccount from "../components/userAccount";
 import { todolistSlice } from "../store/todolistSlice";
 import RemoveAllCompleted from "../components/removeAllCompleted";
+import UserWelcome from "../components/userWelcome";
+import AddNew from "../components/addNew";
 
 function DashBoard() {
   const error = useSelector((state) => state.todos.error);
@@ -52,10 +54,11 @@ function DashBoard() {
         </div>
       )}
       <UserAccount />
-      <NewTodo />
+      <UserWelcome />
       <SearchBar />
       <RemoveAllCompleted />
       <MakeTodos />
+      <AddNew />
     </>
   );
 }

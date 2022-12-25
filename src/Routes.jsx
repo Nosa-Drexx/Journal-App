@@ -13,11 +13,14 @@ import UpdatePassword from "./pages/UpdatePassword";
 import UpdateUsername from "./pages/UpdateUsername";
 import UploadImage from "./pages/UploadImage";
 import VerifyNewUsers from "./pages/VerifyNewUsers";
+import NewTodo from "./pages/todoToMake";
+import EditTodo from "./pages/editTodo";
 
 function AllRoutes() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Protected Routes */}
         <Route path="/" element={<ProtectRoutes />}>
           <Route path="dashBoard/:username" element={<DashBoard />} />
           <Route path="dashBoard/:username/settings" element={<Settings />} />
@@ -26,6 +29,8 @@ function AllRoutes() {
             path="dashBoard/:username/updates/username"
             element={<UpdateUsername />}
           />
+          <Route path="/dashBoard/:username/add" element={<NewTodo />} />
+          <Route path="/dashBoard/:username/edit" element={<EditTodo />} />
           <Route
             path="dashBoard/:username/updates/uploadImage"
             element={<UploadImage />}
@@ -39,6 +44,7 @@ function AllRoutes() {
             element={<UpdateEmail />}
           />
         </Route>
+        {/* Exposed Routes */}
         <Route path="/" index element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signUp" element={<SignUp />} />

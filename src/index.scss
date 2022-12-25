@@ -400,11 +400,11 @@ body {
 }
 .picture-container {
     @include flex(row nowrap);
-    position: absolute;   
+    position: fixed;   
     right: 3vw;
     top: 3vh;
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     border: 2px solid $green;
     border-radius: 50%; 
     @media(min-width: 450px){
@@ -436,7 +436,7 @@ body {
 
 .user-details {
     @include border();
-    position: absolute;
+    position: fixed;
     z-index: 99;
     width: 60vw;
     height: 100vh;
@@ -868,6 +868,7 @@ body {
         padding: 1rem;
         width: 80%;
         height: 80%;
+        max-height: 600px;
         border-radius: 5px;
         label {
             height: 7%;
@@ -956,6 +957,14 @@ body {
             white-space: pre-wrap;
             line-height: 150%;
             padding-bottom: 1rem;
+        }
+        a{
+            display: block;
+            color: inherit;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            text-decoration: none;
         }
 
         button {
@@ -1206,93 +1215,198 @@ body {
         }
     }
 }
+
+
 .edit-area{
     @include border;
     @include flex(column nowrap);
-    border: 1px solid var(--black, $black);
     border-radius: 10px;
-    height: 50vh;
-    width: 70vw;
-    position: absolute;
-    padding: 1rem;
-    z-index: 1000;
-    background: $darkBlue;
-    textarea{
-        resize: none;
-        width: 90%;
+    height: 100vh;
+    width: 100vw;
+    background: var(--white, $white);
+    label{
+        width: 100%;
         height: 90%;
-        overflow-y: auto;
-        font-size: 1.2rem;
+        max-width: 1200px;
+        textarea{
+            resize: none;
+            padding: 0.5rem;
+            width: 100%;
+            height: 100%;
+            background: $notePadColor;
+            color: var(--black, $black);  
+            overflow-y: auto;
+            font-size: 1.2rem;
+        }
     }
-    button {
-        @include flex(row nowrap);
-        position: absolute;
-        right: 2%;
-        top: 1%;
-        width: 40px;
-        height: 40px;
-        border: none;
-        background: $button;
-        border-radius: 50%;
-        margin-bottom: 1rem;
-        transition: transform 1s; 
-        cursor: pointer;
-    }
-    .fa-solid {
-        color: var(--black, $black);
-        background: transparent;
-        font-size: 1.1rem;
-    }    
-    button:hover{
-        transform: scale(1.1);
-    }
-    button:active {
-        transform: scale(0.5);
-    }
-    input {
-        @include button-click-effect;
-        width: 90%;
-        height: 8%;
-        border-radius: 5px;
-        font-size: 1.1rem;
-    }
-    input:hover {
-        transform: scale(1.1);
-    }
-    input:active {
-        transform: scale(0.5);
+    div{
+        width: 100%;
+        height: 10%;
+        background: $blue;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        div{
+            width: 100%;
+            max-width: 1200px;
+            height: 100%;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+            img{
+                width: 60%;
+                height: 70%;
+                object-fit: contain;
+            }
+            button{
+                @include button-click-effect;
+                border: none;
+                background: transparent;
+                transition: transform 1s;
+                .fa-solid{
+                    color: $white;
+                    font-weight: bold;
+                    font-size: 2rem;
+                }
+            }   
+            button:hover{
+                transform: scale(1.1);
+            }
+            button:active {
+                transform: scale(0.5);
+            }
+        }
     }
 }
+
+.welcome{
+    display: flex;
+    flex-flow: column nowrap;
+    padding-left: 1rem;
+    width: 100%;
+    height: 30%;
+    background: var(--white, $white);
+    h2{
+        font-weight: bold;
+        color: var(--black, $black);
+        background: transparent;
+        font-size: 1.3rem;
+        font-style: italic;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+}
+.add-new-container{
+    position: fixed;
+    z-index: 100;
+    bottom: 7%;
+    right: 5%;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid $blue;
+    background: var(--white, $white);
+    padding: 0.3rem;
+    animation-name: rotate;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    a{
+        @include flex(row nowrap);   
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: $green;
+        text-decoration: none;
+        border: none;
+        transition: transform 1s;
+        .fa-plus{
+            font-size: 2rem;
+            color: $white;
+        }
+    }
+    a:hover{
+        transform: scale(1.05);
+    }
+    a:active{
+        transform: scale(0.7);
+    }
+}
+@keyframes rotate {
+    0% {transform: rotate(0deg)}
+    10% {transform: rotate(720deg)}
+    20% {transform: rotate(720deg)}
+    30% {transform: rotate(720deg)}
+    40% {transform: rotate(720deg)}
+    50% {transform: rotate(720deg)}
+    60% {transform: rotate(720deg)}
+    70% {transform: rotate(720deg)}
+    80% {transform: rotate(720deg)}
+    90% {transform: rotate(720deg)}
+    100% {transform: rotate(720deg)}
+  }
 .create-todos{
     @include flex(column nowrap);
     width: 100vw;
-    height: 10vh;
-    gap: 5%; 
- 
+    height: 100vh; 
     label{
-        width: 70%;
-        height: 55%;
-        input{
+        width: 100%;
+        height: 90%;
+        max-width: 1200px;
+        textarea{
+            resize: none;
+            padding: 0.5rem;
             width: 100%;
             height: 100%;
-            font-size: 2rem;
+            background: $notePadColor;
+            color: var(--black, $black);  
+            overflow-y: auto;
+            font-size: 1.2rem;
         }
     }
-    input[type="submit"]{
-        @include button-click-effect;
-        width: 70%;
-        height: 30%;
+    div{
+        width: 100%;
+        height: 10%;
         background: $blue;
-        color: var(--white, $white);
-        font-weight: bold;
-        font-size: 1.1rem;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        div{
+            width: 100%;
+            max-width: 1200px;
+            height: 100%;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+            img{
+                width: 60%;
+                height: 70%;
+                object-fit: contain;
+            }
+            button{
+                @include button-click-effect;
+                border: none;
+                background: transparent;
+                transition: transform 1s;
+                .fa-solid{
+                    color: $white;
+                    font-weight: bold;
+                    font-size: 2rem;
+                }
+            }
+            button:hover {
+                transform: scale(1.1);
+            }
+            button:active {
+                transform: scale(0.5);
+            }
+        }
     }
-    // input[type="submit"]:hover {
-    //     transform: scale(1.1);
-    // }
-    input[type="submit"]:active {
-        transform: scale(0.5);
-    }
+
 }
 .search-area {
     @include flex(row nowrap);

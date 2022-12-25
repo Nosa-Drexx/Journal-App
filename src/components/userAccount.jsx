@@ -27,25 +27,6 @@ function UserAccount() {
     }
   }, [currentUser]);
 
-  //Manipulate modal length and modal content length, don't touch
-  useEffect(() => {
-    if (sidemodal.current) {
-      window.onscroll = function scroll() {
-        if (sidemodal.current) {
-          const newModalHeight = document.documentElement.scrollHeight;
-          sidemodal.current.style.height = `${newModalHeight}px`;
-          actionCenter.current.style.height = `${
-            ((window.innerHeight + window.scrollY) * 80) / 100
-          }px`;
-          closeActionCenter.current.style.height = `${
-            ((window.innerHeight + window.scrollY) * 17) / 100
-          }px`;
-        }
-      };
-    }
-  });
-  //////
-
   const getImage = async (src) => {
     try {
       const token = localStorage.getItem("token")

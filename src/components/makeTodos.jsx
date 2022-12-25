@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { removeTodo, todoDone, todoEdited } from "../store/actions";
+import { Link } from "react-router-dom";
+import { removeTodo, todoDone } from "../store/actions";
 import { todolistSlice, updateAPIAsyncThunk } from "../store/todolistSlice";
-import EditTodo from "./editTodo";
+// import EditTodo from "../pages/editTodo";
 import Modal from "./modal";
 
 function MakeTodos() {
   const todoList = useSelector((state) => state.todos.searchState);
   const dispatch = useDispatch();
-  const [edit, setEdit] = useState(false);
-  const [contentToEdit, setContentToEdit] = useState({ uuid: "", val: "" });
   const dataToUpdate = useSelector((state) => state.todos.updateApiWith);
   const [destroyTodo, setDestroyTodo] = useState(false);
+  const currentUser = useSelector((state) => state.todos.AllUserInfo);
   const text = `Are you sure you want to delete this?`;
 
   useEffect(() => {
@@ -31,17 +31,6 @@ function MakeTodos() {
   function doneCurrentTodo(e) {
     const elemId = e.target.getAttribute("data-id");
     dispatch(todoDone(elemId));
-  }
-
-  function editContent(content) {
-    setEdit(true);
-    setContentToEdit(content);
-  }
-
-  function submitEdittedContent(e) {
-    e.preventDefault();
-    dispatch(todoEdited(contentToEdit.uuid, contentToEdit.val));
-    setEdit(false);
   }
 
   return (
@@ -67,10 +56,15 @@ function MakeTodos() {
                 onChange={doneCurrentTodo}
                 checked={lists.completed}
               />
-              <button
-                onClick={() => editContent({ uuid: lists.id, val: lists.todo })}
-              >
-                Edit
+              <button>
+                <Link
+                  to={`/dashBoard/${currentUser.username}/edit`}
+                  state={{
+                    itemToEdit: { uuid: lists.id, val: lists.todo },
+                  }}
+                >
+                  Edit
+                </Link>
               </button>
               <button data-id={lists.id} onClick={(e) => setDestroyTodo(e)}>
                 Remove Me
@@ -78,14 +72,6 @@ function MakeTodos() {
             </div>
           );
         })}
-        {edit && (
-          <EditTodo
-            submitEdittedContent={submitEdittedContent}
-            contentToEdit={contentToEdit}
-            setContentToEdit={setContentToEdit}
-            setEdit={setEdit}
-          />
-        )}
       </section>
     </>
   );
