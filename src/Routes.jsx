@@ -3,7 +3,7 @@ import DashBoard from "./pages/DashBoard";
 import ForgottenPassword from "./pages/FogottenPasswordPage/ForgottenPassword";
 import Home from "./pages/HomePage/Home";
 import Login from "./pages/Login";
-import MyAccount from "./pages/MyAccount";
+import MyAccount from "./pages/MyAccountPage/MyAccount";
 import NoPage from "./pages/NoPage";
 import ProtectRoutes from "./ProtectRoutes";
 import Settings from "./pages/SettingsPage/Settings";
