@@ -2,9 +2,10 @@ import { useEffect } from "react";
 import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
-import { sideAnimation } from "../animations/popupbox";
-import { apiURL } from "../store/actions";
-import { todolistSlice } from "../store/todolistSlice";
+import { sideAnimation } from "../../animations/popupbox";
+import { apiURL } from "../../store/actions";
+import { todolistSlice } from "../../store/todolistSlice";
+import "./user-account.scss";
 
 function UserAccount() {
   const [sideBar, setSideBar] = useState(false);

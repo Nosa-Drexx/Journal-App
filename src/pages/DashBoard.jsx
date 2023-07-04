@@ -4,7 +4,7 @@ import SearchBar from "../components/searchTodo";
 // import NewTodo from "./todoToMake";
 import { useState, useRef, useEffect } from "react";
 import animation from "../animations/popupbox";
-import UserAccount from "../components/userAccount";
+import UserAccount from "../components/User-Account/userAccount";
 import { todolistSlice } from "../store/todolistSlice";
 import RemoveAllCompleted from "../components/removeAllCompleted";
 import UserWelcome from "../components/userWelcome";

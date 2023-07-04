@@ -1,17 +1,19 @@
 import { useEffect, useRef } from "react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
-import animation from "../animations/popupbox";
-import LoadingScreen from "../components/loadingScreen";
-import { apiURL } from "../store/actions";
+import animation from "../../animations/popupbox";
+import LoadingScreen from "../../components/loadingScreen";
+import { apiURL } from "../../store/actions";
+import { todolistSlice } from "../../store/todolistSlice";
 
-function UpdateEmail() {
+function UpdateUsername() {
   const currentUser = useSelector((state) => state.todos.AllUserInfo);
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [reqResult, setReqResult] = useState({});
   const [loading, setLoading] = useState(false);
   const [navigate, setNavigate] = useState(false);
+  const dispatch = useDispatch();
   const animatebox = useRef(null);
   const bad = useRef(null);
   const good = useRef(null);
@@ -25,6 +27,15 @@ function UpdateEmail() {
   });
 
   useEffect(() => {
+    if (reqResult.message) {
+      localStorage.setItem(
+        "token",
+        JSON.stringify({ jwt: `Bearer ${reqResult.token}` })
+      );
+      dispatch(
+        todolistSlice.actions.updateUsername({ username: reqResult.username })
+      );
+    }
     if (animatebox.current) {
       animation(animatebox.current, bad.current, good.current);
 
@@ -36,7 +47,7 @@ function UpdateEmail() {
     }
   }, [reqResult]);
 
-  async function handleSubmit(email) {
+  async function handleSubmit(username) {
     try {
       const token = localStorage.getItem("token")
         ? JSON.parse(localStorage.getItem("token")).jwt
@@ -48,10 +59,10 @@ function UpdateEmail() {
           "Content-Type": "application/json",
           Authorization: token,
         },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ username }),
       };
       setLoading(true);
-      const result = await fetch(`${apiURL}/update/email`, dataOBJ);
+      const result = await fetch(`${apiURL}/update/username`, dataOBJ);
       const answer = await result.json();
       setLoading(false);
       setReqResult({ ...answer });
@@ -97,13 +108,16 @@ function UpdateEmail() {
                 </button>
               </div>
             </div>
-            <form className="verify-form" onSubmit={() => handleSubmit(email)}>
+            <form
+              className="verify-form"
+              onSubmit={() => handleSubmit(username)}
+            >
               <input
                 className="verify-input"
-                type="email"
-                placeholder="New Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                type="text"
+                placeholder="New Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
               ></input>
               <input className="verify-btn" type="submit" value="Update" />
             </form>
@@ -113,4 +127,4 @@ function UpdateEmail() {
     </>
   );
 }
-export default UpdateEmail;
+export default UpdateUsername;
