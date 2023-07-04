@@ -1,19 +1,17 @@
 import { useEffect, useRef } from "react";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
-import animation from "../animations/popupbox";
-import LoadingScreen from "../components/loadingScreen";
-import { apiURL } from "../store/actions";
-import { todolistSlice } from "../store/todolistSlice";
+import animation from "../../animations/popupbox";
+import LoadingScreen from "../../components/loadingScreen";
+import { apiURL } from "../../store/actions";
 
-function UpdateUsername() {
+function UpdateEmail() {
   const currentUser = useSelector((state) => state.todos.AllUserInfo);
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [reqResult, setReqResult] = useState({});
   const [loading, setLoading] = useState(false);
   const [navigate, setNavigate] = useState(false);
-  const dispatch = useDispatch();
   const animatebox = useRef(null);
   const bad = useRef(null);
   const good = useRef(null);
@@ -27,15 +25,6 @@ function UpdateUsername() {
   });
 
   useEffect(() => {
-    if (reqResult.message) {
-      localStorage.setItem(
-        "token",
-        JSON.stringify({ jwt: `Bearer ${reqResult.token}` })
-      );
-      dispatch(
-        todolistSlice.actions.updateUsername({ username: reqResult.username })
-      );
-    }
     if (animatebox.current) {
       animation(animatebox.current, bad.current, good.current);
 
@@ -47,7 +36,7 @@ function UpdateUsername() {
     }
   }, [reqResult]);
 
-  async function handleSubmit(username) {
+  async function handleSubmit(email) {
     try {
       const token = localStorage.getItem("token")
         ? JSON.parse(localStorage.getItem("token")).jwt
@@ -59,10 +48,10 @@ function UpdateUsername() {
           "Content-Type": "application/json",
           Authorization: token,
         },
-        body: JSON.stringify({ username }),
+        body: JSON.stringify({ email }),
       };
       setLoading(true);
-      const result = await fetch(`${apiURL}/update/username`, dataOBJ);
+      const result = await fetch(`${apiURL}/update/email`, dataOBJ);
       const answer = await result.json();
       setLoading(false);
       setReqResult({ ...answer });
@@ -108,16 +97,13 @@ function UpdateUsername() {
                 </button>
               </div>
             </div>
-            <form
-              className="verify-form"
-              onSubmit={() => handleSubmit(username)}
-            >
+            <form className="verify-form" onSubmit={() => handleSubmit(email)}>
               <input
                 className="verify-input"
-                type="text"
-                placeholder="New Username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                type="email"
+                placeholder="New Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               ></input>
               <input className="verify-btn" type="submit" value="Update" />
             </form>
@@ -127,4 +113,4 @@ function UpdateUsername() {
     </>
   );
 }
-export default UpdateUsername;
+export default UpdateEmail;

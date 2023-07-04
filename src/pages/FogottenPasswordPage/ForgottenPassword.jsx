@@ -2,9 +2,9 @@ import { useRef } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Navigate, useLocation } from "react-router-dom";
-import animation from "../animations/popupbox";
-import LoadingScreen from "../components/loadingScreen";
-import { apiURL } from "../store/actions";
+import animation from "../../animations/popupbox";
+import LoadingScreen from "../../components/loadingScreen";
+import { apiURL } from "../../store/actions";
 
 function ForgottenPassword() {
   const [email, setEmail] = useState("");

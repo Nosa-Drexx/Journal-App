@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { Navigate, useLocation } from "react-router-dom";
-import animation from "../animations/popupbox";
-import LoadingScreen from "../components/loadingScreen";
-import { apiURL } from "../store/actions";
+import animation from "../../animations/popupbox";
+import LoadingScreen from "../../components/loadingScreen";
+import { apiURL } from "../../store/actions";
 
 function VerifyNewUsers() {
   const [emailId, setEmailId] = useState("");

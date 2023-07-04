@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import DashBoard from "./pages/DashBoard";
-import ForgottenPassword from "./pages/ForgottenPassword";
+import ForgottenPassword from "./pages/FogottenPasswordPage/ForgottenPassword";
 import Home from "./pages/HomePage/Home";
 import Login from "./pages/Login";
 import MyAccount from "./pages/MyAccount";
@@ -12,7 +12,7 @@ import UpdateEmail from "./pages/UpdateEmail";
 import UpdatePassword from "./pages/UpdatePassword";
 import UpdateUsername from "./pages/UpdateUsername";
 import UploadImage from "./pages/UploadImage";
-import VerifyNewUsers from "./pages/VerifyNewUsers";
+import VerifyNewUsers from "./pages/VerifyNewUsersPage/VerifyNewUsers";
 import NewTodo from "./pages/todoToMake";
 import EditTodo from "./pages/editTodo";
 
