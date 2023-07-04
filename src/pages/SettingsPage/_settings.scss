@@ -1,0 +1,54 @@
+.settings {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  background: var(--white, $white);
+  width: 100vw;
+  height: 100vh;
+  font-size: 1.2rem;
+
+  .light-dark-mode,
+  .updates {
+    @include border();
+    color: var(--black, $black);
+    border-radius: 10px;
+    height: 15%;
+    padding: 0.5rem 1rem;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    .lists {
+      width: 100%;
+      height: 100%;
+      text-align: left;
+      background: transparent;
+      border: none;
+      color: inherit;
+      font-size: 1.2rem;
+      cursor: pointer;
+      a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: inherit;
+        width: 100%;
+        height: 100%;
+        padding: 1rem;
+      }
+    }
+  }
+  .updates {
+    transition: transform 1s;
+  }
+  .updates:hover {
+    transform: scale(1.03);
+  }
+  .updates:active {
+    transform: scale(0.8);
+  }
+  .delete {
+    color: $red;
+  }
+}
