@@ -1,1462 +1,1482 @@
 @import "./colors.scss";
-
-@mixin border {
-    box-shadow: 1px 1px 8px var(--boxShadow, $boxShadow); 
-}
-@mixin flex($type) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-flow: $type;
-}
-@mixin button-click-effect {
-    border: none;
-    transition: transform 0.4s;
-    cursor: pointer;
-}
+@import "./mixins.scss";
+@import "./pages/HomePage/home";
 
 html {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
-*,*::after,*::before {
-    box-sizing: inherit;
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
 }
 body {
-    margin: 0;
-    padding: 0;
-    background: var(--white, $white);
+  margin: 0;
+  padding: 0;
+  background: var(--white, $white);
 }
 //dark/light mode switch styles
 .main-container-relative {
-    width: 70px;
-    height: 40px;
-    position: relative;
+  width: 70px;
+  height: 40px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  background-color: inherit;
+  .wrapper {
+    width: 100%;
+    height: 80%;
+    position: absolute;
     display: flex;
     justify-content: center;
+    align-items: center;
+    top: 8%;
+    left: 8%;
     padding: 0;
     margin: 0;
     background-color: inherit;
-    .wrapper {
-        width: 100%;
-        height: 80%;
+    .design {
+      border: 1px solid var(--white, $white);
+      width: 100%;
+      height: 100%;
+      border-radius: 20px;
+      background-color: var(--lightWhite, $lightWhite);
+      z-index: 10;
+      position: relative;
+      font-size: 1.2rem;
+      font-family: sans-serif;
+      font-weight: bold;
+      text-align: center;
+      color: var(--colorLB);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .togglebtn {
+        width: 25px;
+        height: 25px;
         position: absolute;
         display: flex;
-        justify-content: center;
         align-items: center;
-        top: 8%;
-        left: 8%;
-        padding: 0;
-        margin: 0;
-        background-color: inherit;
-        .design {
-            border: 1px solid var(--white, $white);
-            width: 100%;
-            height: 100%;
-            border-radius: 20px;
-            background-color: var(--lightWhite, $lightWhite);
-            z-index: 10; 
-            position: relative;
-            font-size: 1.2rem;
-            font-family: sans-serif;
-            font-weight: bold;
-            text-align: center;
-            color: var(--colorLB);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            .togglebtn {
-                width: 25px;
-                height: 25px;
-                position: absolute;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-flow: row wrap;
-                left: 5%;
-                border-radius: 50%;
-                background-color: var(--white, $white);
-                border: 1px solid var(--white, $white);
-                transition: left 1s;
-                cursor: pointer;
-              }
-              .fa-solid {
-                  font-size: 1.2rem;
-              }
-              .day {
-                color: $yellow;
-              }
-              .night {
-                color: $green;
-              }
-          }
-      }
-  }
-
-  .home-container {
-    background: var(--white, $white);
-    color: var(--black, $black);
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    .home{
-        max-width: 1200px;
-        width: 90%;
-        background: var(--white, $white);
-        header{
-            display: flex;
-            flex-flow: row nowrap;
-            justify-content: space-between;
-            align-items: flex-end;
-            padding-top: 1rem;
-            .logo{
-                text-decoration: none;
-                display: flex;
-                width: 35%;
-                height: 40px;
-                img{
-                    width: 100%;
-                    height: 100%;
-                    object-fit: contain;       
-                }
-            }
-            .socials{
-                display: flex;
-                flex-flow: row nowrap;
-                justify-content: space-between;
-                width: 60%;
-
-            }
-            .togglebtn{
-                background: transparent;
-                border: none;
-                cursor: pointer;
-                .fa-sun{
-                    font-size: 2rem;
-                    color: $yellow;
-                }
-                .fa-moon {
-                    font-size: 2rem;
-                    color: $green;
-                }
-            }
-            a{
-                display: flex;
-                text-decoration: none;
-                transition: transform 1s;
-                i{
-                    font-size: 2rem;
-                    color: $blue;
-                }
-            }
-            a:hover{
-                transform: scale(1.1);
-            }
-            a:active {
-                transform: scale(0.7);
-            }
-        }
-        .login-section{
-            padding: 2rem 0;
-            height: 70vh;
-            .home-info{
-                display: flex;
-                flex-flow: column nowrap;
-                height: 100%;
-                .home-login{
-                    height: 60%;
-                    order: 2;
-                    display: flex;
-                    flex-flow: column nowrap;
-                    justify-content: space-between;
-                    .journal-sketch{
-                        height: 80%;
-                        background: var(--white, $white) url("./images/journal-sketch.png");
-                        background-position: center;
-                        background-size: 200px 200px;
-                        background-repeat: no-repeat;
-                        order: 2;
-                    }
-                    .getin-journal{
-                        display: flex;
-                        flex-flow: row nowrap;
-                        width: 100%;
-                        padding: 1rem 1rem 1rem 0;
-                        gap: 2rem;
-                        order: 1;
-                    }
-                    a{
-                        text-decoration: none;
-                        width: 150px;
-                        border: none;
-                        border-radius: 30px;
-                        cursor: pointer;
-                        padding: 1rem;
-                        font-size: 1.2rem;
-                        transition: transform 1s;
-                        color: $white;
-                        font-family: Verdana, Geneva, Tahoma, sans-serif;
-                    }
-                    a:hover{
-                        transform: scale(1.1);
-                    }
-                    a:active {
-                        transform: scale(0.5);
-                    }
-                    .login-btn{
-                        border: 2px solid $green;
-                        color: $hotPink;
-                    }
-                    .signup-btn {
-                        border: 2px solid $red;
-                        color: $hotPink
-                    }
-                }
-                .about-journal{
-                    order: 1;
-                    .text-container{
-                        color: var(--black, $black);
-                        overflow: auto;
-                        width: 100%;
-                        height: 100%;
-                        font-size: 1.3rem;
-                        .starting-text{
-                            font-family: Verdana, Geneva, Tahoma, sans-serif;
-                        }
-                        .final-text{
-                            font-style: italic;
-                            font-weight: bold;
-                        }
-                }
-            }
-        }
-
-        }
-    }
-  }
-  @media (min-width: 700px) {
-    .home-container{
-        .home{
-    .login-section{
-        padding: 2rem 0;
-        height: 50vh;
-            .home-info{
-                display: flex;
-                flex-flow: row nowrap;
-                justify-content: space-between;
-                width: 100%;
-                height: 80%;
-                              
-                .home-login, .about-journal {
-                    display: flex;
-                    width: 48%;
-                    height: 100%;
-                    color: var(--black, $black);
-                }
-                .home-login{
-                    order: 1;
-                    .journal-sketch{
-                        order: 1;
-                        width: 100%;
-                        height: 80%;
-                    }
-                    .getin-journal{
-                        order: 2;
-                        display: flex;
-                        flex-flow: row nowrap;
-                        width: 100%;
-                    }
-                    
-                }
-                .about-journal {
-                    order: 2;
-                    @include flex(row nowrap);
-                    }
-                }
-            }
-        }
-    }
-  }
-
-.home-modal{
-    width: 100vw; 
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.879);
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: space-evenly;
-    align-items: center;
-    z-index: 1000;
-    button{
-        border: none;
-        width: 50px;
-        height: 50px;
+        justify-content: center;
+        flex-flow: row wrap;
+        left: 5%;
         border-radius: 50%;
-        font-size: 2rem;
-        background: $grey;
+        background-color: var(--white, $white);
+        border: 1px solid var(--white, $white);
+        transition: left 1s;
         cursor: pointer;
-        transition: transform 1s;
+      }
+      .fa-solid {
+        font-size: 1.2rem;
+      }
+      .day {
+        color: $yellow;
+      }
+      .night {
+        color: $green;
+      }
     }
-    button:hover {
-        transform: scale(1.1);
-    }
-    button:active{
-        transform: scale(0.5);
-    }
-    .show-image{
-        width: 80%;
-        height: 50%;
-        object-fit: contain;
-    }
+  }
 }
 
-  .site-images{
-    background: var(--white, $white);
-    width: 100%;
-    height: 200px;
-    @media (min-width: 700px){
-        height: 300px;
-    }
-    button{
-        @include border();
-        width:70%;
-        height: 50%;
-        margin-left: calc((100% - 70%)/2);
-        margin-top: calc((100% - 70%)/2);
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        transition: transform 1s;
-        background: transparent;
-        background-position: center;
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
-    }
-    button:hover{
-        transform: scale(1.1);
-    }
-    button:active {
-        transform: scale(0.5);
-    }
-    .overview{
-        background-image: url("./images/overview.png");
-    }
-    .image-light{
-        background-image: url("./images/imageL.png");
-       
-    }
-    .setting-light{
-        background-image: url("./images/settingL.png");
-    }
-    .setting-dark{
-        background-image: url("./images/settingD.png");
-    }
-    .account{
-        background-image: url("./images/account.png");
-    }
-    .edit{
-        background-image: url("./images/edit.png");
-    }
-    .image{
-        background-image: url("./images/image.png");
-    }
-    .full-photo{
-        background-image: url("./images/Fphoto.png");
-    }
-    .delete{
-        background-image: url("./images/remove.png");
-    }
+// .home-container {
+//   background: var(--white, $white);
+//   color: var(--black, $black);
+//   width: 100vw;
+//   display: flex;
+//   justify-content: center;
+//   .home {
+//     max-width: 1200px;
+//     width: 90%;
+//     background: var(--white, $white);
+//     header {
+//       display: flex;
+//       flex-flow: row nowrap;
+//       justify-content: space-between;
+//       align-items: flex-end;
+//       padding-top: 1rem;
+//       .logo {
+//         text-decoration: none;
+//         display: flex;
+//         width: 35%;
+//         height: 40px;
+//         img {
+//           width: 100%;
+//           height: 100%;
+//           object-fit: contain;
+//         }
+//       }
+//       .socials {
+//         display: flex;
+//         flex-flow: row nowrap;
+//         justify-content: space-between;
+//         width: 60%;
+//       }
+//       .togglebtn {
+//         background: transparent;
+//         border: none;
+//         cursor: pointer;
+//         .fa-sun {
+//           font-size: 2rem;
+//           color: $yellow;
+//         }
+//         .fa-moon {
+//           font-size: 2rem;
+//           color: $green;
+//         }
+//       }
+//       a {
+//         display: flex;
+//         text-decoration: none;
+//         transition: transform 1s;
+//         i {
+//           font-size: 2rem;
+//           color: $blue;
+//         }
+//       }
+//       a:hover {
+//         transform: scale(1.1);
+//       }
+//       a:active {
+//         transform: scale(0.7);
+//       }
+//     }
+//     .login-section {
+//       padding: 2rem 0;
+//       height: 70vh;
+//       .home-info {
+//         display: flex;
+//         flex-flow: column nowrap;
+//         height: 100%;
+//         .home-login {
+//           height: 60%;
+//           order: 2;
+//           display: flex;
+//           flex-flow: column nowrap;
+//           justify-content: space-between;
+//           .journal-sketch {
+//             height: 80%;
+//             background: var(--white, $white) url("./images/journal-sketch.png");
+//             background-position: center;
+//             background-size: 200px 200px;
+//             background-repeat: no-repeat;
+//             order: 2;
+//           }
+//           .getin-journal {
+//             display: flex;
+//             flex-flow: row nowrap;
+//             width: 100%;
+//             padding: 1rem 1rem 1rem 0;
+//             gap: 2rem;
+//             order: 1;
+//           }
+//           a {
+//             text-decoration: none;
+//             width: 150px;
+//             border: none;
+//             border-radius: 30px;
+//             cursor: pointer;
+//             padding: 1rem;
+//             font-size: 1.2rem;
+//             transition: transform 1s;
+//             color: $white;
+//             font-family: Verdana, Geneva, Tahoma, sans-serif;
+//           }
+//           a:hover {
+//             transform: scale(1.1);
+//           }
+//           a:active {
+//             transform: scale(0.5);
+//           }
+//           .login-btn {
+//             border: 2px solid $green;
+//             color: $hotPink;
+//           }
+//           .signup-btn {
+//             border: 2px solid $red;
+//             color: $hotPink;
+//           }
+//         }
+//         .about-journal {
+//           order: 1;
+//           .text-container {
+//             color: var(--black, $black);
+//             overflow: auto;
+//             width: 100%;
+//             height: 100%;
+//             font-size: 1.3rem;
+//             .starting-text {
+//               font-family: Verdana, Geneva, Tahoma, sans-serif;
+//             }
+//             .final-text {
+//               font-style: italic;
+//               font-weight: bold;
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+// @media (min-width: 700px) {
+//   .home-container {
+//     .home {
+//       .login-section {
+//         padding: 2rem 0;
+//         height: 50vh;
+//         .home-info {
+//           display: flex;
+//           flex-flow: row nowrap;
+//           justify-content: space-between;
+//           width: 100%;
+//           height: 80%;
+
+//           .home-login,
+//           .about-journal {
+//             display: flex;
+//             width: 48%;
+//             height: 100%;
+//             color: var(--black, $black);
+//           }
+//           .home-login {
+//             order: 1;
+//             .journal-sketch {
+//               order: 1;
+//               width: 100%;
+//               height: 80%;
+//             }
+//             .getin-journal {
+//               order: 2;
+//               display: flex;
+//               flex-flow: row nowrap;
+//               width: 100%;
+//             }
+//           }
+//           .about-journal {
+//             order: 2;
+//             @include flex(row nowrap);
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+// .home-modal {
+//   width: 100vw;
+//   height: 100vh;
+//   background: rgba(0, 0, 0, 0.879);
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   display: flex;
+//   flex-flow: column nowrap;
+//   justify-content: space-evenly;
+//   align-items: center;
+//   z-index: 1000;
+//   button {
+//     border: none;
+//     width: 50px;
+//     height: 50px;
+//     border-radius: 50%;
+//     font-size: 2rem;
+//     background: $grey;
+//     cursor: pointer;
+//     transition: transform 1s;
+//   }
+//   button:hover {
+//     transform: scale(1.1);
+//   }
+//   button:active {
+//     transform: scale(0.5);
+//   }
+//   .show-image {
+//     width: 80%;
+//     height: 50%;
+//     object-fit: contain;
+//   }
+// }
+
+.site-images {
+  background: var(--white, $white);
+  width: 100%;
+  height: 200px;
+  @media (min-width: 700px) {
+    height: 300px;
   }
+  button {
+    @include border();
+    width: 70%;
+    height: 50%;
+    margin-left: calc((100% - 70%) / 2);
+    margin-top: calc((100% - 70%) / 2);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 1s;
+    background: transparent;
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+  button:hover {
+    transform: scale(1.1);
+  }
+  button:active {
+    transform: scale(0.5);
+  }
+  .overview {
+    background-image: url("./images/overview.png");
+  }
+  .image-light {
+    background-image: url("./images/imageL.png");
+  }
+  .setting-light {
+    background-image: url("./images/settingL.png");
+  }
+  .setting-dark {
+    background-image: url("./images/settingD.png");
+  }
+  .account {
+    background-image: url("./images/account.png");
+  }
+  .edit {
+    background-image: url("./images/edit.png");
+  }
+  .image {
+    background-image: url("./images/image.png");
+  }
+  .full-photo {
+    background-image: url("./images/Fphoto.png");
+  }
+  .delete {
+    background-image: url("./images/remove.png");
+  }
+}
 
 //animated toast pop out style
 .pop-out {
-    @include border();
-    position: absolute;
-    top: 5%;
-    right: 5%;
-    width: 80vw;
-    z-index: 100;
-    background: var(--white, $white);
-    color: var(--black, $black);
-    padding: 1rem 0.3rem 0.5rem;
-    border-radius: 5px;
-    font-size: 1.3rem;
-    text-indent: 1rem;
-    .bad, .good{
-        border-radius: 3px;
-        font-size: 0.3rem;
-        margin-top: 1%;
-        width: 100%;
-        height:2%;
-        background: $red;
-        color: $red;
-    }
-    .good{
-        color: $green;
-        background: $green;
-    }
+  @include border();
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  width: 80vw;
+  z-index: 100;
+  background: var(--white, $white);
+  color: var(--black, $black);
+  padding: 1rem 0.3rem 0.5rem;
+  border-radius: 5px;
+  font-size: 1.3rem;
+  text-indent: 1rem;
+  .bad,
+  .good {
+    border-radius: 3px;
+    font-size: 0.3rem;
+    margin-top: 1%;
+    width: 100%;
+    height: 2%;
+    background: $red;
+    color: $red;
+  }
+  .good {
+    color: $green;
+    background: $green;
+  }
 }
 .picture-container {
-    @include flex(row nowrap);
-    position: fixed;   
-    right: 3vw;
-    top: 3vh;
-    width: 45px;
-    height: 45px;
-    border: 2px solid $green;
-    border-radius: 50%; 
-    @media(min-width: 450px){
-        right: 3vw; //for bigger screeens
+  @include flex(row nowrap);
+  position: fixed;
+  right: 3vw;
+  top: 3vh;
+  width: 45px;
+  height: 45px;
+  border: 2px solid $green;
+  border-radius: 50%;
+  @media (min-width: 450px) {
+    right: 3vw; //for bigger screeens
+  }
+  button {
+    position: relative;
+    width: 90%;
+    height: 90%;
+    color: white;
+    font-size: 0.75rem;
+    text-align: center;
+    font-weight: bold;
+    border: none;
+    border-radius: 50%;
+    background: $blue;
+    cursor: pointer;
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
     }
-    button{
-        position: relative;
-        width: 90%;
-        height: 90%;
-        color: white;
-        font-size: 0.75rem;
-        text-align: center;
-        font-weight: bold;
-        border: none;
-        border-radius: 50%;
-        background: $blue;
-        cursor: pointer;
-        img{
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit:cover;
-            border-radius:50%;
-        }
-    }
+  }
 }
 
 .user-details {
-    @include border();
-    position: fixed;
-    z-index: 99;
-    width: 60vw;
-    height: 100vh;
-    min-height: 100vh;
-    overflow: visible;
-    background: var(--white, $white);
-    opacity: 0.9;
-    font-size: 2rem;
-    padding: 0 1rem;
-    button{
-        cursor: pointer;
-        transition: transform 1s;
-    }
-    button:hover{
-        transform: scale(1.1);
-    }
-    button:active {
-        transform: scale(0.5);
-    }
-    .btn-container {
-        height: 10%;
-        width: 100%;
-        display: flex;
-        flex-flow: row nowrap;
-        align-items: center;
-    }
-    .close{
-        @include flex(row nowrap);
-        width: 50px;
-        height: 50px;
-        background: $button;
-        color: var(--black, $black);
-        font-size: 1.7rem;
-        border: none;
-        border-radius: 50%;
-    }
-
-    .update-details {
-        @include flex(column nowrap);
-        width: 90%;
-        height: 90%;
-        margin-left: calc((100% - 90%)/2);
-        div{
-            width: 100%;
-            div{
-    
-                height: 5px;
-                width: 30%;
-                margin-left: calc((100% - 30%)/2);
-                border-radius: 0 0 100% 100%;
-                background: $green;
-            }
-        }
-        button{
-            font-size: 1.5rem;
-            background: transparent;
-            width: 100%;
-            border: none;
-            color: var(--black, $black);
-            a {
-                @include flex(row nowrap);
-                font-size: 1.5rem;
-                width: 100%;
-                padding: 2rem;
-                color: var(--black, $black);
-                text-decoration: none;
-            }
-        }
-        button:last-child{
-            padding: 2rem;
-        }
-
-    }
-}
-
-.verify{
-    @include flex(column nowrap);
-    background: var(--white, $white);
-    width: 100vw; 
-    height: 100vh;
-    .verify-text{
-        padding: 0 1rem;
-        text-align: center;
-        color: var(--black, $black);
-        font-size: 1.2rem;
-        font-weight: bold;
-    }
-    form{
-        @include flex(column nowrap);
-        gap: 1rem;
-        width: 70%;
-        height: 30%;
-        border-radius: 5px;
-        padding: 0 0.7rem;
-        .verify-input{
-            font-size: 1.3rem;
-            padding: 0.8rem;
-            border-radius: 5px;
-            border: 2px solid $red;
-            &:focus, &:active, &:hover{
-                border: 2px solid $green;
-            }
-        }
-        .verify-btn{
-            color: var(--white, $white);
-            padding: 1rem;
-            font-size: 1.5rem;
-            border-radius: 5px;
-            background: $green;
-            border: none;
-            cursor: pointer;
-            transition: transform 1s;
-        }
-        .verify-btn:hover{
-            transform: scale(1.1);
-        }
-        .verify-btn:active {
-            transform: scale(0.5);
-        }
-    }
-
-
-}
-.update-user-info{
+  @include border();
+  position: fixed;
+  z-index: 99;
+  width: 60vw;
+  height: 100vh;
+  min-height: 100vh;
+  overflow: visible;
+  background: var(--white, $white);
+  opacity: 0.9;
+  font-size: 2rem;
+  padding: 0 1rem;
+  button {
+    cursor: pointer;
+    transition: transform 1s;
+  }
+  button:hover {
+    transform: scale(1.1);
+  }
+  button:active {
+    transform: scale(0.5);
+  }
+  .btn-container {
+    height: 10%;
+    width: 100%;
     display: flex;
-    flex-flow: column nowrap;
-    justify-content: initial;
-    gap: 2rem;
+    flex-flow: row nowrap;
     align-items: center;
-    label{
+  }
+  .close {
+    @include flex(row nowrap);
+    width: 50px;
+    height: 50px;
+    background: $button;
+    color: var(--black, $black);
+    font-size: 1.7rem;
+    border: none;
+    border-radius: 50%;
+  }
+
+  .update-details {
+    @include flex(column nowrap);
+    width: 90%;
+    height: 90%;
+    margin-left: calc((100% - 90%) / 2);
+    div {
+      width: 100%;
+      div {
+        height: 5px;
+        width: 30%;
+        margin-left: calc((100% - 30%) / 2);
+        border-radius: 0 0 100% 100%;
+        background: $green;
+      }
+    }
+    button {
+      font-size: 1.5rem;
+      background: transparent;
+      width: 100%;
+      border: none;
+      color: var(--black, $black);
+      a {
         @include flex(row nowrap);
+        font-size: 1.5rem;
         width: 100%;
-    }
-    .update-back{
-        width: 100%;
-        padding: 1rem;
-    }
-    .update-password {
-        height: 90%;
-    }
-    button{
-        border: none;
-        border-radius: 5px;
-        background: transparent;
-    }
-}
-
-.back{
-    button{
-        @include flex(row nowrap);
-        width: 50px;
-        height: 50px;
-        border: none;
-        background: $button;
-        border-radius: 50%;
-        margin-bottom: 1rem;
-        a{
-            @include flex(row nowrap);
-            border: inherit;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: transparent;
-            font-size: 1.7rem;
-            color: var(--black, $black);
-            text-decoration: none;
-            .fa-solid {
-                background: transparent;
-            }
-        }
-
-    }
-    button{
-        transition: transform 1s;
-        cursor: pointer;
-    }
-    button:hover{
-        transform: scale(1.1);
-    }
-    button:active {
-        transform: scale(0.5);
-    }
-}
-
-.settings, .my-account {
-    display: flex;
-    flex-flow: column nowrap;
-    gap: 1rem;
-    padding: 1rem 2rem;
-    background: var(--white, $white);
-    width: 100vw;
-    height: 100vh;
-    font-size: 1.2rem;
-
-    .light-dark-mode, .updates{
-        @include border();
+        padding: 2rem;
         color: var(--black, $black);
-        border-radius: 10px;
-        height: 15%;
-        padding: 0.5rem 1rem;
+        text-decoration: none;
+      }
+    }
+    button:last-child {
+      padding: 2rem;
+    }
+  }
+}
+
+.verify {
+  @include flex(column nowrap);
+  background: var(--white, $white);
+  width: 100vw;
+  height: 100vh;
+  .verify-text {
+    padding: 0 1rem;
+    text-align: center;
+    color: var(--black, $black);
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  form {
+    @include flex(column nowrap);
+    gap: 1rem;
+    width: 70%;
+    height: 30%;
+    border-radius: 5px;
+    padding: 0 0.7rem;
+    .verify-input {
+      font-size: 1.3rem;
+      padding: 0.8rem;
+      border-radius: 5px;
+      border: 2px solid $red;
+      &:focus,
+      &:active,
+      &:hover {
+        border: 2px solid $green;
+      }
+    }
+    .verify-btn {
+      color: var(--white, $white);
+      padding: 1rem;
+      font-size: 1.5rem;
+      border-radius: 5px;
+      background: $green;
+      border: none;
+      cursor: pointer;
+      transition: transform 1s;
+    }
+    .verify-btn:hover {
+      transform: scale(1.1);
+    }
+    .verify-btn:active {
+      transform: scale(0.5);
+    }
+  }
+}
+.update-user-info {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: initial;
+  gap: 2rem;
+  align-items: center;
+  label {
+    @include flex(row nowrap);
+    width: 100%;
+  }
+  .update-back {
+    width: 100%;
+    padding: 1rem;
+  }
+  .update-password {
+    height: 90%;
+  }
+  button {
+    border: none;
+    border-radius: 5px;
+    background: transparent;
+  }
+}
+
+.back {
+  button {
+    @include flex(row nowrap);
+    width: 50px;
+    height: 50px;
+    border: none;
+    background: $button;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    a {
+      @include flex(row nowrap);
+      border: inherit;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: transparent;
+      font-size: 1.7rem;
+      color: var(--black, $black);
+      text-decoration: none;
+      .fa-solid {
+        background: transparent;
+      }
+    }
+  }
+  button {
+    transition: transform 1s;
+    cursor: pointer;
+  }
+  button:hover {
+    transform: scale(1.1);
+  }
+  button:active {
+    transform: scale(0.5);
+  }
+}
+
+.settings,
+.my-account {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  background: var(--white, $white);
+  width: 100vw;
+  height: 100vh;
+  font-size: 1.2rem;
+
+  .light-dark-mode,
+  .updates {
+    @include border();
+    color: var(--black, $black);
+    border-radius: 10px;
+    height: 15%;
+    padding: 0.5rem 1rem;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    .lists {
+      width: 100%;
+      height: 100%;
+      text-align: left;
+      background: transparent;
+      border: none;
+      color: inherit;
+      font-size: 1.2rem;
+      cursor: pointer;
+      a {
         display: flex;
-        flex-flow: row nowrap;
-        justify-content: space-between;
         align-items: center;
-        .lists{
-            width: 100%;
-            height: 100%;
-            text-align: left;
-            background: transparent;
-            border: none;
-            color: inherit; 
-            font-size: 1.2rem; 
-            cursor: pointer;
-            a{
-                display: flex;
-                align-items: center;
-                text-decoration: none;
-                color: inherit;
-                width: 100%;
-                height: 100%;
-                padding: 1rem;
-            }      
-        }
+        text-decoration: none;
+        color: inherit;
+        width: 100%;
+        height: 100%;
+        padding: 1rem;
+      }
     }
-    .updates{
-        transition: transform 1s;
-    }
-    .updates:hover{
-        transform: scale(1.03);
-    }
-    .updates:active{
-        transform: scale(0.8);
-    }
-    .delete {
-        color: $red;
-    }
+  }
+  .updates {
+    transition: transform 1s;
+  }
+  .updates:hover {
+    transform: scale(1.03);
+  }
+  .updates:active {
+    transform: scale(0.8);
+  }
+  .delete {
+    color: $red;
+  }
 }
 .loading {
-    @include flex(row nowrap);
-    border: 10px solid #f3f3f3;
-    border-radius: 50%;
-    border-top-color: $red;
-    border-left-color: $green;
-    border-right-color: $blue;
-    border-bottom-color: $blueViolet;
-    width: 70px;
-    height: 70px;
-    position: absolute;
-    top: calc((100vh - 70px)/2); // centralize 
-    left: calc((100vw - 70px)/2); //centralize
-    -moz-animation: spin 2s linear infinite;
-    animation: spin 2s linear infinite;
+  @include flex(row nowrap);
+  border: 10px solid #f3f3f3;
+  border-radius: 50%;
+  border-top-color: $red;
+  border-left-color: $green;
+  border-right-color: $blue;
+  border-bottom-color: $blueViolet;
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  top: calc((100vh - 70px) / 2); // centralize
+  left: calc((100vw - 70px) / 2); //centralize
+  -moz-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
 }
 @-webkit-keyframes spin {
-    0% {transform: rotate(0deg);}
-    100% {transform: rotate(360deg);}
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 @keyframes spin {
-    0% {transform: rotate(0deg);}
-    100% {transform: rotate(360deg);}
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 //Font awesome (fa-...) logos style
 .fa-eye {
-    color: $grey;
-    font-size: 1.1rem;
+  color: $grey;
+  font-size: 1.1rem;
 }
 .fa-eye-slash {
-    @extend .fa-eye
+  @extend .fa-eye;
 }
-.fa-circle-check{
-    color: $green;
-    font-size: 1.3rem;
+.fa-circle-check {
+  color: $green;
+  font-size: 1.3rem;
 }
-.fa-circle-xmark{
-    color: $red;
-    font-size: 1.3rem;
+.fa-circle-xmark {
+  color: $red;
+  font-size: 1.3rem;
 }
-.fa-spinner{
-    // border: 3px solid grey;
-    color: $green;
-    font-size: 2.3rem;
-    -moz-animation: spin2 1s ease-in infinite;
-    animation: spin2 1s ease-in infinite;
-    animation-fill-mode: forwards;
-    animation-direction: alternate;
+.fa-spinner {
+  // border: 3px solid grey;
+  color: $green;
+  font-size: 2.3rem;
+  -moz-animation: spin2 1s ease-in infinite;
+  animation: spin2 1s ease-in infinite;
+  animation-fill-mode: forwards;
+  animation-direction: alternate;
 }
 @-webkit-keyframes spin2 {
-    0% {transform: rotate(0deg);}
-    100% {transform: rotate(360deg);}
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 @keyframes spin2 {
-    0% {transform: rotate(0deg);}
-    100% {transform: rotate(300deg);}
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(300deg);
+  }
 }
 .login {
+  @include flex(column nowrap);
+  height: 100vh;
+  width: 100vw;
+  font-size: 1.1rem;
+  background: var(--white, $white);
+  color: var(--black, $black);
+  form {
     @include flex(column nowrap);
-    height: 100vh;
-    width: 100vw;
-    font-size: 1.1rem;
-    background: var(--white, $white);
-    color: var(--black, $black);
-    form {
-       @include flex(column nowrap);
-       @include border;
-       justify-content: space-between;
-        min-width: 300px;
-        height: 70%;
-        max-height: 600px;
-        width: 40%;
-        border-radius: 10px;
-        // label:first-child {
-        //     margin-top: 10%;
-        // }
-        @media(min-width: 800px){
-            max-width: 300px;
-        }
-        .logo{
-            padding: 1rem;
-            // border: 1px solid white;
-            width: 90%;
-            height: 30%;
-            img{
-                width: 100%;
-                height: 100%;
-                // background: var(--white, $white) url("./images/Journal-logo.png");
-                // background-size: contain;
-                // background-repeat: no-repeat;
-                // background-position: center;
-                object-fit: contain;
-            }
-        }
-        .inputs {
-            width: 80%;
-            label{
-            width: 80%;
-                input {
-                width: 100%;
-                border: 1px solid black;
-                padding: 0.5rem;
-                font-size: 1.5rem;
-                border-radius: 5px;
-                }
-            }
-            .pass-div {
-                width: 100%;
-                display: flex;
-                flex-flow: row nowrap;
-                justify-content: space-between;
-                align-items: center;
-                #password {
-                    width: 87%;
-                }
-                .view-pass{
-                    @include flex(row nowrap);
-                    background: transparent;
-                    border: none;
-                    height: 20px;
-                    width: 10%;
-                    cursor: pointer;
-                }
-            }
-        }
-        .button-container {
-            height: 15%;
-            width: 100%;
-           .log-sign-btn {
-            @include flex(row wrap);
-            justify-content: space-evenly;
-            height: 70%;
-            width: 100%;
-            .sign-btn, input[type="submit"] {
-                height: 70%;
-                width: 40%;
-                border-radius: 5px;
-                border: none;
-                transition: transform 1s;
-                background: $blue;
-                color: var(--white, $white);
-                font-size: 1.1rem;
-                text-decoration: none;
-                cursor: pointer;
-                a {
-                    text-decoration: none;
-                    color: var(--white, $white); 
-                    padding: 5% 20%;
-                }
-            }
-            .sign-btn {
-                background-color: $green;
-            }
-            [type="submit"]:hover,button:hover {
-                transform: scale(1.1);
-            }
-            [type="submit"]:active,button:active {
-                transform: scale(0.5);
-            }
-             }
-             .forgotten-password {
-                cursor: pointer;
-                border: none;
-                background: transparent;
-                color: $blue;
-                font-size: 1rem;
-                border-radius: 1px 1px 1px 5px;
-                transition: transform 1s;
-               &:hover {
-                    transform: scale(1.05);
-                }
-               &:active {
-                    transform: scale(0.5);
-                }
-             }
-         }
+    @include border;
+    justify-content: space-between;
+    min-width: 300px;
+    height: 70%;
+    max-height: 600px;
+    width: 40%;
+    border-radius: 10px;
+    // label:first-child {
+    //     margin-top: 10%;
+    // }
+    @media (min-width: 800px) {
+      max-width: 300px;
     }
+    .logo {
+      padding: 1rem;
+      // border: 1px solid white;
+      width: 90%;
+      height: 30%;
+      img {
+        width: 100%;
+        height: 100%;
+        // background: var(--white, $white) url("./images/Journal-logo.png");
+        // background-size: contain;
+        // background-repeat: no-repeat;
+        // background-position: center;
+        object-fit: contain;
+      }
+    }
+    .inputs {
+      width: 80%;
+      label {
+        width: 80%;
+        input {
+          width: 100%;
+          border: 1px solid black;
+          padding: 0.5rem;
+          font-size: 1.5rem;
+          border-radius: 5px;
+        }
+      }
+      .pass-div {
+        width: 100%;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+        #password {
+          width: 87%;
+        }
+        .view-pass {
+          @include flex(row nowrap);
+          background: transparent;
+          border: none;
+          height: 20px;
+          width: 10%;
+          cursor: pointer;
+        }
+      }
+    }
+    .button-container {
+      height: 15%;
+      width: 100%;
+      .log-sign-btn {
+        @include flex(row wrap);
+        justify-content: space-evenly;
+        height: 70%;
+        width: 100%;
+        .sign-btn,
+        input[type="submit"] {
+          height: 70%;
+          width: 40%;
+          border-radius: 5px;
+          border: none;
+          transition: transform 1s;
+          background: $blue;
+          color: var(--white, $white);
+          font-size: 1.1rem;
+          text-decoration: none;
+          cursor: pointer;
+          a {
+            text-decoration: none;
+            color: var(--white, $white);
+            padding: 5% 20%;
+          }
+        }
+        .sign-btn {
+          background-color: $green;
+        }
+        [type="submit"]:hover,
+        button:hover {
+          transform: scale(1.1);
+        }
+        [type="submit"]:active,
+        button:active {
+          transform: scale(0.5);
+        }
+      }
+      .forgotten-password {
+        cursor: pointer;
+        border: none;
+        background: transparent;
+        color: $blue;
+        font-size: 1rem;
+        border-radius: 1px 1px 1px 5px;
+        transition: transform 1s;
+        &:hover {
+          transform: scale(1.05);
+        }
+        &:active {
+          transform: scale(0.5);
+        }
+      }
+    }
+  }
 }
 .signup {
-    @include flex(column nowrap);
-    width: 100vw;
-    height: 100vh;
-    color: var(--black, $black);
+  @include flex(column nowrap);
+  width: 100vw;
+  height: 100vh;
+  color: var(--black, $black);
+  background: var(--white, $white);
+  form {
+    @include border();
+    display: flex;
     background: var(--white, $white);
-    form {
-        @include border();
-        display: flex;
-        background: var(--white, $white);
-        flex-flow: column nowrap;
-        align-items: center;
-        justify-content: space-between;
-        padding: 1rem;
-        width: 80%;
-        height: 80%;
-        max-height: 600px;
-        border-radius: 5px;
-        label {
-            height: 7%;
-            width: 100%;
-            font-size: 1.1rem;
-            input {
-                width: 100%;
-                height: 100%;
-                border: 1px solid red;
-                border-radius: 5px;
-                font-size: 1.4rem;
-            }
-        }
-        .pass-label {
-            div{
-                width: 100%; 
-                height: 100%;
-                display: flex;
-                flex-flow: row nowrap;
-                justify-content: space-between;
-                align-items: center;
-                .sign-pass {
-                    width: 80%;
-                }
-                .pass-visibility {
-                    @include flex(row nowrap);
-                    width: 5%;
-                    height: 50%;
-                    background: transparent;
-                    border: none;
-                    cursor: pointer;
-                }
-                .icon {
-                    @include flex(row nowrap);
-                    border: none;
-                    width: 30px;
-                    height: 30px;
-                    border-radius: 50%;
-                }
-            }
-        }
-        input[type="submit"] {
-            font-size: 1.2rem;
-            border: none;
-            height: 7%;
-            border-radius: 5px;
-            width: 70%;
-            color: var(--white, $white);
-            transition: transform 1s;
-            background: $green;
-            cursor: pointer;
-        }
-        input[type="submit"]:hover {
-            transform: scale(1.1);
-        }
-        input[type="submit"]:active {
-            transform: scale(0.5);
-        }
-
-    }
-}
-.todo-center{
-    max-width: 1200px;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-between;
     padding: 1rem;
-    margin: 1rem auto;
-    display: flex;
-    flex-flow: column nowrap;
-    gap: 1rem;
-    .text-container{
-        @include border;
-        padding: 1rem;
-        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        border-radius: 5px;
-        color: var(--black, $black);
+    width: 80%;
+    height: 80%;
+    max-height: 600px;
+    border-radius: 5px;
+    label {
+      height: 7%;
+      width: 100%;
+      font-size: 1.1rem;
+      input {
         width: 100%;
-        .date{
-            color: var(--black, $black);
-            width: 100%;
-            height: auto;
-            font-weight: bold;
+        height: 100%;
+        border: 1px solid red;
+        border-radius: 5px;
+        font-size: 1.4rem;
+      }
+    }
+    .pass-label {
+      div {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+        .sign-pass {
+          width: 80%;
         }
-        .text{
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            font-size: 1.1rem;
-            width: 100%;
-            white-space: pre-wrap;
-            line-height: 150%;
-            padding-bottom: 1rem;
+        .pass-visibility {
+          @include flex(row nowrap);
+          width: 5%;
+          height: 50%;
+          background: transparent;
+          border: none;
+          cursor: pointer;
         }
-        a{
-            display: block;
-            color: inherit;
-            width: 100%;
-            height: 100%;
-            background: transparent;
-            text-decoration: none;
+        .icon {
+          @include flex(row nowrap);
+          border: none;
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
         }
-
-        button {
-            @include button-click-effect;
-            margin-right: 0.3rem;
-            padding: 0.5rem;
-            border-radius: 5px;
-        }
-        button:hover {
-            transform: scale(1.05);
-        }
-        button:active {
-            transform: scale(0.8);
-        }
+      }
+    }
+    input[type="submit"] {
+      font-size: 1.2rem;
+      border: none;
+      height: 7%;
+      border-radius: 5px;
+      width: 70%;
+      color: var(--white, $white);
+      transition: transform 1s;
+      background: $green;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      transform: scale(1.1);
+    }
+    input[type="submit"]:active {
+      transform: scale(0.5);
+    }
+  }
+}
+.todo-center {
+  max-width: 1200px;
+  padding: 1rem;
+  margin: 1rem auto;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1rem;
+  .text-container {
+    @include border;
+    padding: 1rem;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 5px;
+    color: var(--black, $black);
+    width: 100%;
+    .date {
+      color: var(--black, $black);
+      width: 100%;
+      height: auto;
+      font-weight: bold;
+    }
+    .text {
+      font-family: Georgia, "Times New Roman", Times, serif;
+      font-size: 1.1rem;
+      width: 100%;
+      white-space: pre-wrap;
+      line-height: 150%;
+      padding-bottom: 1rem;
+    }
+    a {
+      display: block;
+      color: inherit;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      text-decoration: none;
     }
 
-}
-.image-modal-container{
-    @include button-click-effect();
-    background: $black;
-    width: 100vw;
-    height: 40vh; 
-}
-.image-page{
-    display: flex;
-    background: var(--white, $white);
-    flex-flow: column nowrap;
-    gap: 3rem;
-}
-.upload-image{
-    @include flex(row nowrap);
-    gap: 1rem;
-    background: transparent;
-    height: 40vh;
-    width: 100vw;
-    .back{
-        position: absolute;
-        top: 5%;
-        left: 5%;
+    button {
+      @include button-click-effect;
+      margin-right: 0.3rem;
+      padding: 0.5rem;
+      border-radius: 5px;
     }
-    input, .upload-btn {
-        background: var(--black, $white);
-        padding: 0.2rem;
-        font-size: 1.2rem;
-        border: none;
-        color: var(--white, $white);
-        border-radius: 0 5px 5px 0;
-        cursor: pointer;
+    button:hover {
+      transform: scale(1.05);
     }
-    input{
-        margin: 0 1rem;
-        border-radius: 5px 0 0 5px;
+    button:active {
+      transform: scale(0.8);
     }
+  }
 }
-.full-image{
-    @include flex(row nowrap);
+.image-modal-container {
+  @include button-click-effect();
+  background: $black;
+  width: 100vw;
+  height: 40vh;
+}
+.image-page {
+  display: flex;
+  background: var(--white, $white);
+  flex-flow: column nowrap;
+  gap: 3rem;
+}
+.upload-image {
+  @include flex(row nowrap);
+  gap: 1rem;
+  background: transparent;
+  height: 40vh;
+  width: 100vw;
+  .back {
     position: absolute;
-    z-index: 200;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.479);
-    img{
-        width: 50%;
-        height: 70%;
-        object-fit: contain;
+    top: 5%;
+    left: 5%;
+  }
+  input,
+  .upload-btn {
+    background: var(--black, $white);
+    padding: 0.2rem;
+    font-size: 1.2rem;
+    border: none;
+    color: var(--white, $white);
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+  }
+  input {
+    margin: 0 1rem;
+    border-radius: 5px 0 0 5px;
+  }
+}
+.full-image {
+  @include flex(row nowrap);
+  position: absolute;
+  z-index: 200;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.479);
+  img {
+    width: 50%;
+    height: 70%;
+    object-fit: contain;
+  }
+  button {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    background: $grey;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    .fa-solid {
+      color: var(--black, $black);
+      background: transparent;
+      font-size: 2rem;
     }
-    button{
-        width: 50px;
-        height: 50px;
-        position: absolute;
-        top: 5%;
-        left: 5%;
-        background: $grey;
-        border-radius: 50%;
-        border: none;
-        cursor: pointer;
-        .fa-solid {
-            color: var(--black, $black);
-            background: transparent;
-            font-size: 2rem;
-        }
-    }
-    
+  }
 }
 .image-modal-container:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 .image-modal-container:active {
-    transform: scale(0.5);
+  transform: scale(0.5);
 }
 .image-modal {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  border: none;
+  width: 100vw;
+  height: 40vh;
+  background: $transparentBlack;
+
+  .darker-modal {
     position: absolute;
-    cursor: pointer;
     top: 0;
     left: 0;
-    z-index: 0;
+    z-index: 80;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.879));
     border: none;
-    width: 100vw;
-    height: 40vh;
-    background: $transparentBlack;
-
-    .darker-modal{
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 80;
-        height: 100%;
-        width: 100%;
-        background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.879));
-        border: none;
-    }
-    img{
-        position: absolute;
-        left: 0;
-        z-index: -30;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        // object-position: 5% 15%; 
-    }
+  }
+  img {
+    position: absolute;
+    left: 0;
+    z-index: -30;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    // object-position: 5% 15%;
+  }
 }
-.remove-many{
-    display: flex;
-    flex-flow: row nowrap;
-    background: transparent;
-    justify-content: flex-end;
-    padding: 1rem;
+.remove-many {
+  display: flex;
+  flex-flow: row nowrap;
+  background: transparent;
+  justify-content: flex-end;
+  padding: 1rem;
+  color: inherit;
+  .remove-many-btn {
+    @include border();
+    background: $red;
     color: inherit;
-    .remove-many-btn{
-        @include border();
-        background: $red;
-        color: inherit;
-        transition: transform 1s;
-        cursor:pointer;
-        border: none;
-        border-radius: 5px;
-        font-size: 1.2rem;
-        padding: 1rem;
-        font-weight: bold;
-    }
-    .remove-many-btn:hover{
-        transform: scale(1.05);
-    }
-    .remove-many-btn:active {
-        transform: scale(0.5);
-    }
-
+    transition: transform 1s;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    padding: 1rem;
+    font-weight: bold;
+  }
+  .remove-many-btn:hover {
+    transform: scale(1.05);
+  }
+  .remove-many-btn:active {
+    transform: scale(0.5);
+  }
 }
-.NoPageLogo{
-        width: 100vw;
-        height: 15vh;
-        a{  
-            box-shadow: 0 0 8px var(--boxShadow, $boxShadow);
-            padding: 0 1rem 1rem;
-            display: flex;
-            height: 100%;
-            width: 100%;
-            transition: transform 1s;
-            img{
-                object-fit: contain;
-                height:100%;
-                width: 100%;
-            }
-        }
-        a:hover{
-            transform: scale(1.1);
-        }
-        a:active {
-            transform: scale(0.5);
-        }
+.NoPageLogo {
+  width: 100vw;
+  height: 15vh;
+  a {
+    box-shadow: 0 0 8px var(--boxShadow, $boxShadow);
+    padding: 0 1rem 1rem;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    transition: transform 1s;
+    img {
+      object-fit: contain;
+      height: 100%;
+      width: 100%;
+    }
+  }
+  a:hover {
+    transform: scale(1.1);
+  }
+  a:active {
+    transform: scale(0.5);
+  }
 }
-.Nopage{
-    height: 80vh;
-    width: 100vw;
+.Nopage {
+  height: 80vh;
+  width: 100vw;
+  @include flex(row nowrap);
+  div {
+    width: 80%;
+    max-width: 1200px;
+    font-size: 2rem;
     @include flex(row nowrap);
-    div{
-        width: 80%;
-        max-width: 1200px;
-        font-size: 2rem;
-        @include flex(row nowrap);
-        h1 {
-            border-right: 2px solid var(--black, $black);
-            width: 40%;
-        }
-        p{
-            width: 60%;
-            padding-left: 1rem;
-        }
+    h1 {
+      border-right: 2px solid var(--black, $black);
+      width: 40%;
     }
+    p {
+      width: 60%;
+      padding-left: 1rem;
+    }
+  }
 }
 .modal {
-    @include flex(row nowrap);
-    background-color: $transparentBlack;
-    position: absolute;
-    top: 0; //updates in react editTodo and modal component
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    .modal-container{
-        @include border;
-        @include flex(column nowrap);
-        border-radius: 10px;
-        height: 30vh;
-        width: 40vw;
-        min-width: 200px;
-        min-height: 100px;
-        position: absolute;
-        padding: 1rem;
-        z-index: 1000;
-        background: var(--white, $white);
-        .modal-text{
-            width: 100%;
-            height: 70%;
-            font-size: 1.2rem;
-            color: var(--black, $black);
-        }
-        .modal-btn{
-            width: 100%;
-            height: 30%;
-            display: flex;
-            flex-flow: row nowrap;
-            justify-content: space-between;
-            align-items: center;
-            button{
-                border: none;
-                width: 40%;
-                height: 50px;
-                border-radius: 5px;
-                color: var(--black, $black);
-                font-size: 1.5rem;
-                transition: transform 1s;
-                cursor: pointer;
-            }
-            button:hover{
-                transform: scale(1.1);
-            }
-            button:active {
-                transform: scale(0.5);
-            }
-            .yes{
-                background: $red;
-            }
-            .no{
-                background: $green;
-            }
-        }
-    }
-}
-
-
-.edit-area{
+  @include flex(row nowrap);
+  background-color: $transparentBlack;
+  position: absolute;
+  top: 0; //updates in react editTodo and modal component
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  .modal-container {
     @include border;
     @include flex(column nowrap);
     border-radius: 10px;
-    height: 100vh;
-    width: 100vw;
+    height: 30vh;
+    width: 40vw;
+    min-width: 200px;
+    min-height: 100px;
+    position: absolute;
+    padding: 1rem;
+    z-index: 1000;
     background: var(--white, $white);
-    label{
-        width: 100%;
-        height: 90%;
-        max-width: 1200px;
-        textarea{
-            resize: none;
-            padding: 0.5rem;
-            width: 100%;
-            height: 100%;
-            background: $notePadColor;
-            color: var(--black, $black);  
-            overflow-y: auto;
-            font-size: 1.2rem;
-        }
+    .modal-text {
+      width: 100%;
+      height: 70%;
+      font-size: 1.2rem;
+      color: var(--black, $black);
     }
-    div{
-        width: 100%;
-        height: 10%;
-        background: $blue;
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: center;
-        div{
-            width: 100%;
-            max-width: 1200px;
-            height: 100%;
-            display: flex;
-            flex-flow: row nowrap;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 1rem;
-            img{
-                width: 60%;
-                height: 70%;
-                object-fit: contain;
-            }
-            button{
-                @include button-click-effect;
-                border: none;
-                background: transparent;
-                transition: transform 1s;
-                .fa-solid{
-                    color: $white;
-                    font-weight: bold;
-                    font-size: 2rem;
-                }
-            }   
-            button:hover{
-                transform: scale(1.1);
-            }
-            button:active {
-                transform: scale(0.5);
-            }
-        }
-    }
-}
-
-.welcome{
-    display: flex;
-    flex-flow: column nowrap;
-    padding-left: 1rem;
-    width: 100%;
-    height: 30%;
-    background: var(--white, $white);
-    h2{
-        font-weight: bold;
-        color: var(--black, $black);
-        background: transparent;
-        font-size: 1.3rem;
-        font-style: italic;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-    }
-
-}
-.add-new-container{
-    position: fixed;
-    z-index: 100;
-    bottom: 7%;
-    right: 5%;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    border: 3px solid $blue;
-    background: var(--white, $white);
-    padding: 0.3rem;
-    animation-name: rotate;
-    animation-duration: 5s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-    a{
-        @include flex(row nowrap);   
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-        background: $green;
-        text-decoration: none;
+    .modal-btn {
+      width: 100%;
+      height: 30%;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      align-items: center;
+      button {
         border: none;
+        width: 40%;
+        height: 50px;
+        border-radius: 5px;
+        color: var(--black, $black);
+        font-size: 1.5rem;
         transition: transform 1s;
-        .fa-plus{
-            font-size: 2rem;
-            color: $white;
+        cursor: pointer;
+      }
+      button:hover {
+        transform: scale(1.1);
+      }
+      button:active {
+        transform: scale(0.5);
+      }
+      .yes {
+        background: $red;
+      }
+      .no {
+        background: $green;
+      }
+    }
+  }
+}
+
+.edit-area {
+  @include border;
+  @include flex(column nowrap);
+  border-radius: 10px;
+  height: 100vh;
+  width: 100vw;
+  background: var(--white, $white);
+  label {
+    width: 100%;
+    height: 90%;
+    max-width: 1200px;
+    textarea {
+      resize: none;
+      padding: 0.5rem;
+      width: 100%;
+      height: 100%;
+      background: $notePadColor;
+      color: var(--black, $black);
+      overflow-y: auto;
+      font-size: 1.2rem;
+    }
+  }
+  div {
+    width: 100%;
+    height: 10%;
+    background: $blue;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    div {
+      width: 100%;
+      max-width: 1200px;
+      height: 100%;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1rem;
+      img {
+        width: 60%;
+        height: 70%;
+        object-fit: contain;
+      }
+      button {
+        @include button-click-effect;
+        border: none;
+        background: transparent;
+        transition: transform 1s;
+        .fa-solid {
+          color: $white;
+          font-weight: bold;
+          font-size: 2rem;
         }
+      }
+      button:hover {
+        transform: scale(1.1);
+      }
+      button:active {
+        transform: scale(0.5);
+      }
     }
-    a:hover{
-        transform: scale(1.05);
+  }
+}
+
+.welcome {
+  display: flex;
+  flex-flow: column nowrap;
+  padding-left: 1rem;
+  width: 100%;
+  height: 30%;
+  background: var(--white, $white);
+  h2 {
+    font-weight: bold;
+    color: var(--black, $black);
+    background: transparent;
+    font-size: 1.3rem;
+    font-style: italic;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+}
+.add-new-container {
+  position: fixed;
+  z-index: 100;
+  bottom: 7%;
+  right: 5%;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 3px solid $blue;
+  background: var(--white, $white);
+  padding: 0.3rem;
+  animation-name: rotate;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  a {
+    @include flex(row nowrap);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: $green;
+    text-decoration: none;
+    border: none;
+    transition: transform 1s;
+    .fa-plus {
+      font-size: 2rem;
+      color: $white;
     }
-    a:active{
-        transform: scale(0.7);
-    }
+  }
+  a:hover {
+    transform: scale(1.05);
+  }
+  a:active {
+    transform: scale(0.7);
+  }
 }
 @keyframes rotate {
-    0% {transform: rotate(0deg)}
-    10% {transform: rotate(720deg)}
-    20% {transform: rotate(720deg)}
-    30% {transform: rotate(720deg)}
-    40% {transform: rotate(720deg)}
-    50% {transform: rotate(720deg)}
-    60% {transform: rotate(720deg)}
-    70% {transform: rotate(720deg)}
-    80% {transform: rotate(720deg)}
-    90% {transform: rotate(720deg)}
-    100% {transform: rotate(720deg)}
+  0% {
+    transform: rotate(0deg);
   }
-.create-todos{
-    @include flex(column nowrap);
-    width: 100vw;
-    height: 100vh; 
-    label{
-        width: 100%;
-        height: 90%;
-        max-width: 1200px;
-        textarea{
-            resize: none;
-            padding: 0.5rem;
-            width: 100%;
-            height: 100%;
-            background: $notePadColor;
-            color: var(--black, $black);  
-            overflow-y: auto;
-            font-size: 1.2rem;
-        }
+  10% {
+    transform: rotate(720deg);
+  }
+  20% {
+    transform: rotate(720deg);
+  }
+  30% {
+    transform: rotate(720deg);
+  }
+  40% {
+    transform: rotate(720deg);
+  }
+  50% {
+    transform: rotate(720deg);
+  }
+  60% {
+    transform: rotate(720deg);
+  }
+  70% {
+    transform: rotate(720deg);
+  }
+  80% {
+    transform: rotate(720deg);
+  }
+  90% {
+    transform: rotate(720deg);
+  }
+  100% {
+    transform: rotate(720deg);
+  }
+}
+.create-todos {
+  @include flex(column nowrap);
+  width: 100vw;
+  height: 100vh;
+  label {
+    width: 100%;
+    height: 90%;
+    max-width: 1200px;
+    textarea {
+      resize: none;
+      padding: 0.5rem;
+      width: 100%;
+      height: 100%;
+      background: $notePadColor;
+      color: var(--black, $black);
+      overflow-y: auto;
+      font-size: 1.2rem;
     }
-    div{
-        width: 100%;
-        height: 10%;
-        background: $blue;
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: center;
-        div{
-            width: 100%;
-            max-width: 1200px;
-            height: 100%;
-            display: flex;
-            flex-flow: row nowrap;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 1rem;
-            img{
-                width: 60%;
-                height: 70%;
-                object-fit: contain;
-            }
-            button{
-                @include button-click-effect;
-                border: none;
-                background: transparent;
-                transition: transform 1s;
-                .fa-solid{
-                    color: $white;
-                    font-weight: bold;
-                    font-size: 2rem;
-                }
-            }
-            button:hover {
-                transform: scale(1.1);
-            }
-            button:active {
-                transform: scale(0.5);
-            }
+  }
+  div {
+    width: 100%;
+    height: 10%;
+    background: $blue;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    div {
+      width: 100%;
+      max-width: 1200px;
+      height: 100%;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1rem;
+      img {
+        width: 60%;
+        height: 70%;
+        object-fit: contain;
+      }
+      button {
+        @include button-click-effect;
+        border: none;
+        background: transparent;
+        transition: transform 1s;
+        .fa-solid {
+          color: $white;
+          font-weight: bold;
+          font-size: 2rem;
         }
+      }
+      button:hover {
+        transform: scale(1.1);
+      }
+      button:active {
+        transform: scale(0.5);
+      }
     }
-
+  }
 }
 .search-area {
-    @include flex(row nowrap);
-    padding: 0.5rem 0;
-    input{
-        width: 0%;
-        font-size: 2rem;
-        border-radius: 10px;
-        border: 1px solid rgba(34, 165, 150, 0.6);
-        opacity: 0;
-        transition: opacity 2s, width 2s;
-    }
-    div {
-        padding: 0 0 0  calc((100% - 60px)/2); //center align
-        margin: auto;
-        transition: padding 1.9s; //To center align while transitioning
-    }
-    button{
-        background: $blue url("./images/search.png");
-        background-position: center;
-        background-size: 35px 35px;
-        background-repeat: no-repeat;
-        border: none;
-        padding: 0.5rem;
-        border-radius: 50%;
-        opacity: 1;
-        position: relative;
-        transition: opacity 1s;
-        width: 50px;
-        height: 50px;
-    }
-    button:hover{
-        background-color: rgb(1, 1, 191);
-        cursor: pointer;
-    }
-    button:active{
-        background-color: transparent;
-    }
+  @include flex(row nowrap);
+  padding: 0.5rem 0;
+  input {
+    width: 0%;
+    font-size: 2rem;
+    border-radius: 10px;
+    border: 1px solid rgba(34, 165, 150, 0.6);
+    opacity: 0;
+    transition: opacity 2s, width 2s;
+  }
+  div {
+    padding: 0 0 0 calc((100% - 60px) / 2); //center align
+    margin: auto;
+    transition: padding 1.9s; //To center align while transitioning
+  }
+  button {
+    background: $blue url("./images/search.png");
+    background-position: center;
+    background-size: 35px 35px;
+    background-repeat: no-repeat;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 50%;
+    opacity: 1;
+    position: relative;
+    transition: opacity 1s;
+    width: 50px;
+    height: 50px;
+  }
+  button:hover {
+    background-color: rgb(1, 1, 191);
+    cursor: pointer;
+  }
+  button:active {
+    background-color: transparent;
+  }
 }
 //Animate searchBar
 .search-area:hover {
-    div{
-        padding: 0 0 0 calc((50% - 60px)/2);; //center align while input transition to different width
-    }
-    input{
-        opacity: 1;
-        width: 80%;
-    }
-    button{
-        opacity: 0;
-    }
+  div {
+    padding: 0 0 0 calc((50% - 60px) / 2); //center align while input transition to different width
+  }
+  input {
+    opacity: 1;
+    width: 80%;
+  }
+  button {
+    opacity: 0;
+  }
 }
-

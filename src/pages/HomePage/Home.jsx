@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { todolistSlice } from "../store/todolistSlice";
+import { todolistSlice } from "../../store/todolistSlice";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import ReactSlick from "../components/react-slick";
-import JournalImage from "../images/Journal-text.png";
+import ReactSlick from "../../components/React-Slick/react-slick";
+import JournalImage from "../../images/Journal-text.png";
 
 const theme = document.documentElement;
 
