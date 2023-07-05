@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { removeTodo, todoDone } from "../store/actions";
-import { todolistSlice, updateAPIAsyncThunk } from "../store/todolistSlice";
+import { removeTodo, todoDone } from "../../store/actions";
+import { todolistSlice, updateAPIAsyncThunk } from "../../store/todolistSlice";
 // import EditTodo from "../pages/editTodo";
-import Modal from "./modal";
+import Modal from "../modal";
+import "./make-todo.scss";
 
 function MakeTodos() {
   const todoList = useSelector((state) => state.todos.searchState);

@@ -2,10 +2,10 @@ import { useEffect, useRef } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
-import animation from "../animations/popupbox";
-import LoadingScreen from "../components/loadingScreen";
-import { apiURL } from "../store/actions";
-import { todolistSlice } from "../store/todolistSlice";
+import animation from "../../animations/popupbox";
+import LoadingScreen from "../../components/Loading/loadingScreen";
+import { apiURL } from "../../store/actions";
+import { todolistSlice } from "../../store/todolistSlice";
 
 function UploadImage() {
   const currentUser = useSelector((state) => state.todos.AllUserInfo);

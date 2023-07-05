@@ -1,0 +1,106 @@
+.image-modal-container {
+  @include button-click-effect();
+  background: $black;
+  width: 100vw;
+  height: 40vh;
+}
+.image-page {
+  display: flex;
+  background: var(--white, $white);
+  flex-flow: column nowrap;
+  gap: 3rem;
+}
+.upload-image {
+  @include flex(row nowrap);
+  gap: 1rem;
+  background: transparent;
+  height: 40vh;
+  width: 100vw;
+  .back {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+  }
+  input,
+  .upload-btn {
+    background: var(--black, $white);
+    padding: 0.2rem;
+    font-size: 1.2rem;
+    border: none;
+    color: var(--white, $white);
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+  }
+  input {
+    margin: 0 1rem;
+    border-radius: 5px 0 0 5px;
+  }
+}
+.full-image {
+  @include flex(row nowrap);
+  position: absolute;
+  z-index: 200;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.479);
+  img {
+    width: 50%;
+    height: 70%;
+    object-fit: contain;
+  }
+  button {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    background: $grey;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    .fa-solid {
+      color: var(--black, $black);
+      background: transparent;
+      font-size: 2rem;
+    }
+  }
+}
+.image-modal-container:hover {
+  transform: scale(1.1);
+}
+.image-modal-container:active {
+  transform: scale(0.5);
+}
+.image-modal {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  border: none;
+  width: 100vw;
+  height: 40vh;
+  background: $transparentBlack;
+
+  .darker-modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 80;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.879));
+    border: none;
+  }
+  img {
+    position: absolute;
+    left: 0;
+    z-index: -30;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    // object-position: 5% 15%;
+  }
+}
