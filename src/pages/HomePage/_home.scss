@@ -1,13 +1,14 @@
 .home-container {
   background: var(--white, $white);
   color: var(--black, $black);
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: center;
   .home {
     max-width: 1200px;
-    width: 90%;
+    width: 95%;
     background: var(--white, $white);
+    position: relative;
     header {
       display: flex;
       flex-flow: row nowrap;
@@ -25,7 +26,7 @@
           object-fit: contain;
         }
       }
-      .socials {
+      .navSection {
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-between;
@@ -44,21 +45,21 @@
           color: $green;
         }
       }
-      a {
-        display: flex;
-        text-decoration: none;
-        transition: transform 1s;
-        i {
-          font-size: 2rem;
-          color: $blue;
-        }
-      }
-      a:hover {
-        transform: scale(1.1);
-      }
-      a:active {
-        transform: scale(0.7);
-      }
+      // a {
+      //   display: flex;
+      //   text-decoration: none;
+      //   transition: transform 1s;
+      //   i {
+      //     font-size: 2rem;
+      //     color: $blue;
+      //   }
+      // }
+      // a:hover {
+      //   transform: scale(1.1);
+      // }
+      // a:active {
+      //   transform: scale(0.7);
+      // }
     }
     .login-section {
       padding: 2rem 0;
