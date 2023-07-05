@@ -4,8 +4,10 @@ import { Link } from "react-router-dom";
 import { todolistSlice } from "../../store/todolistSlice";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import ReactSlick from "../../components/React-Slick/react-slick";
+// import ReactSlick from "../../components/React-Slick/react-slick";
 import JournalImage from "../../images/Journal-text.png";
+import NavBar from "./components/NavBar/NavBar";
+import NavBarBiggerScreen from "./components/NavBar/NavBarBiggerScreen";
 
 const theme = document.documentElement;
 
@@ -61,7 +63,7 @@ function Home() {
           <Link className="logo" to="/">
             <img src={JournalImage} alt="JourNal-logo"></img>
           </Link>
-          <div className="socials">
+          <div className="navSection">
             <button
               onClick={() => dispatch(todolistSlice.actions.lightDarkMode())}
               className="togglebtn"
@@ -72,7 +74,9 @@ function Home() {
                 <i className="fa-solid fa-moon night"></i>
               )}
             </button>
-            <a
+            <NavBar />
+            <NavBarBiggerScreen />
+            {/* <a
               target="_blank"
               rel="noreferrer"
               href="https://github.com/Nosa-Drexx"
@@ -92,10 +96,12 @@ function Home() {
               href="https://twitter.com/NosaDrexx"
             >
               <i className="fa-brands fa-twitter"></i>
-            </a>
+            </a> */}
           </div>
         </header>
-        <section className="login-section">
+
+        {/* Login */}
+        {/* <section className="login-section">
           <div className="home-info">
             <div className="home-login">
               <div className="journal-sketch"></div>
@@ -124,7 +130,7 @@ function Home() {
         </section>
         <section className="slick-container">
           <ReactSlick />
-        </section>
+        </section> */}
       </div>
     </div>
   );
