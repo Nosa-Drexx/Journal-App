@@ -1,0 +1,124 @@
+.login {
+  @include flex(column nowrap);
+  height: 100vh;
+  width: 100vw;
+  font-size: 1.1rem;
+  background: var(--white, $white);
+  color: var(--black, $black);
+  form {
+    @include flex(column nowrap);
+    @include border;
+    justify-content: space-between;
+    min-width: 300px;
+    height: 70%;
+    max-height: 600px;
+    width: 40%;
+    border-radius: 10px;
+    // label:first-child {
+    //     margin-top: 10%;
+    // }
+    @media (min-width: 800px) {
+      max-width: 300px;
+    }
+    .logo {
+      padding: 1rem;
+      // border: 1px solid white;
+      width: 90%;
+      height: 30%;
+      img {
+        width: 100%;
+        height: 100%;
+        // background: var(--white, $white) url("./images/Journal-logo.png");
+        // background-size: contain;
+        // background-repeat: no-repeat;
+        // background-position: center;
+        object-fit: contain;
+      }
+    }
+    .inputs {
+      width: 80%;
+      label {
+        width: 80%;
+        input {
+          width: 100%;
+          border: 1px solid black;
+          padding: 0.5rem;
+          font-size: 1.5rem;
+          border-radius: 5px;
+        }
+      }
+      .pass-div {
+        width: 100%;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+        #password {
+          width: 87%;
+        }
+        .view-pass {
+          @include flex(row nowrap);
+          background: transparent;
+          border: none;
+          height: 20px;
+          width: 10%;
+          cursor: pointer;
+        }
+      }
+    }
+    .button-container {
+      height: 15%;
+      width: 100%;
+      .log-sign-btn {
+        @include flex(row wrap);
+        justify-content: space-evenly;
+        height: 70%;
+        width: 100%;
+        .sign-btn,
+        input[type="submit"] {
+          height: 70%;
+          width: 40%;
+          border-radius: 5px;
+          border: none;
+          transition: transform 1s;
+          background: $blue;
+          color: var(--white, $white);
+          font-size: 1.1rem;
+          text-decoration: none;
+          cursor: pointer;
+          a {
+            text-decoration: none;
+            color: var(--white, $white);
+            padding: 5% 20%;
+          }
+        }
+        .sign-btn {
+          background-color: $green;
+        }
+        [type="submit"]:hover,
+        button:hover {
+          transform: scale(1.1);
+        }
+        [type="submit"]:active,
+        button:active {
+          transform: scale(0.5);
+        }
+      }
+      .forgotten-password {
+        cursor: pointer;
+        border: none;
+        background: transparent;
+        color: $blue;
+        font-size: 1rem;
+        border-radius: 1px 1px 1px 5px;
+        transition: transform 1s;
+        &:hover {
+          transform: scale(1.05);
+        }
+        &:active {
+          transform: scale(0.5);
+        }
+      }
+    }
+  }
+}

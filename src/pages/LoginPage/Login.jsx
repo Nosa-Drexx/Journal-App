@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
-import animation from "../animations/popupbox";
-import LoadingScreen from "../components/loadingScreen";
-import { apiURL } from "../store/actions";
-import { todolistSlice } from "../store/todolistSlice";
-import JournalImage from "../images/Journal-logo.png";
+import animation from "../../animations/popupbox";
+import LoadingScreen from "../../components/Loading/loadingScreen";
+import { apiURL } from "../../store/actions";
+import { todolistSlice } from "../../store/todolistSlice";
+import JournalImage from "../../images/Journal-logo.png";
 
 function Login() {
   const [username, setUsername] = useState("");
