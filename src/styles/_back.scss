@@ -1,0 +1,35 @@
+.back {
+  button {
+    @include flex(row nowrap);
+    width: 50px;
+    height: 50px;
+    border: none;
+    background: $button;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    a {
+      @include flex(row nowrap);
+      border: inherit;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: transparent;
+      font-size: 1.7rem;
+      color: var(--black, $black);
+      text-decoration: none;
+      .fa-solid {
+        background: transparent;
+      }
+    }
+  }
+  button {
+    transition: transform 1s;
+    cursor: pointer;
+  }
+  button:hover {
+    transform: scale(1.1);
+  }
+  button:active {
+    transform: scale(0.5);
+  }
+}

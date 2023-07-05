@@ -1,0 +1,48 @@
+.verify {
+  @include flex(column nowrap);
+  background: var(--white, $white);
+  width: 100vw;
+  height: 100vh;
+  .verify-text {
+    padding: 0 1rem;
+    text-align: center;
+    color: var(--black, $black);
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  form {
+    @include flex(column nowrap);
+    gap: 1rem;
+    width: 70%;
+    height: 30%;
+    border-radius: 5px;
+    padding: 0 0.7rem;
+    .verify-input {
+      font-size: 1.3rem;
+      padding: 0.8rem;
+      border-radius: 5px;
+      border: 2px solid $red;
+      &:focus,
+      &:active,
+      &:hover {
+        border: 2px solid $green;
+      }
+    }
+    .verify-btn {
+      color: var(--white, $white);
+      padding: 1rem;
+      font-size: 1.5rem;
+      border-radius: 5px;
+      background: $green;
+      border: none;
+      cursor: pointer;
+      transition: transform 1s;
+    }
+    .verify-btn:hover {
+      transform: scale(1.1);
+    }
+    .verify-btn:active {
+      transform: scale(0.5);
+    }
+  }
+}

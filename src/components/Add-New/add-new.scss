@@ -1,0 +1,75 @@
+@import "../../styles/colors";
+@import "../../styles/mixins";
+
+.add-new-container {
+  position: fixed;
+  z-index: 100;
+  bottom: 7%;
+  right: 5%;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 3px solid $blue;
+  background: var(--white, $white);
+  padding: 0.3rem;
+  animation-name: rotate;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  a {
+    @include flex(row nowrap);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: $green;
+    text-decoration: none;
+    border: none;
+    transition: transform 1s;
+    .fa-plus {
+      font-size: 2rem;
+      color: $white;
+    }
+  }
+  a:hover {
+    transform: scale(1.05);
+  }
+  a:active {
+    transform: scale(0.7);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(720deg);
+  }
+  20% {
+    transform: rotate(720deg);
+  }
+  30% {
+    transform: rotate(720deg);
+  }
+  40% {
+    transform: rotate(720deg);
+  }
+  50% {
+    transform: rotate(720deg);
+  }
+  60% {
+    transform: rotate(720deg);
+  }
+  70% {
+    transform: rotate(720deg);
+  }
+  80% {
+    transform: rotate(720deg);
+  }
+  90% {
+    transform: rotate(720deg);
+  }
+  100% {
+    transform: rotate(720deg);
+  }
+}
