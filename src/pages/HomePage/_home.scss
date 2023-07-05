@@ -1,0 +1,182 @@
+.home-container {
+  background: var(--white, $white);
+  color: var(--black, $black);
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  .home {
+    max-width: 1200px;
+    width: 90%;
+    background: var(--white, $white);
+    header {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-top: 1rem;
+      .logo {
+        text-decoration: none;
+        display: flex;
+        width: 35%;
+        height: 40px;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+      .socials {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        width: 60%;
+      }
+      .togglebtn {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        .fa-sun {
+          font-size: 2rem;
+          color: $yellow;
+        }
+        .fa-moon {
+          font-size: 2rem;
+          color: $green;
+        }
+      }
+      a {
+        display: flex;
+        text-decoration: none;
+        transition: transform 1s;
+        i {
+          font-size: 2rem;
+          color: $blue;
+        }
+      }
+      a:hover {
+        transform: scale(1.1);
+      }
+      a:active {
+        transform: scale(0.7);
+      }
+    }
+    .login-section {
+      padding: 2rem 0;
+      height: 70vh;
+      .home-info {
+        display: flex;
+        flex-flow: column nowrap;
+        height: 100%;
+        .home-login {
+          height: 60%;
+          order: 2;
+          display: flex;
+          flex-flow: column nowrap;
+          justify-content: space-between;
+          .journal-sketch {
+            height: 80%;
+            background: var(--white, $white) url("../images/journal-sketch.png");
+            background-position: center;
+            background-size: 200px 200px;
+            background-repeat: no-repeat;
+            order: 2;
+          }
+          .getin-journal {
+            display: flex;
+            flex-flow: row nowrap;
+            width: 100%;
+            padding: 1rem 1rem 1rem 0;
+            gap: 2rem;
+            order: 1;
+          }
+          a {
+            text-decoration: none;
+            width: 150px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            padding: 1rem;
+            font-size: 1.2rem;
+            transition: transform 1s;
+            color: $white;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+          }
+          a:hover {
+            transform: scale(1.1);
+          }
+          a:active {
+            transform: scale(0.5);
+          }
+          .login-btn {
+            border: 2px solid $green;
+            color: $hotPink;
+          }
+          .signup-btn {
+            border: 2px solid $red;
+            color: $hotPink;
+          }
+        }
+        .about-journal {
+          order: 1;
+          .text-container {
+            color: var(--black, $black);
+            overflow: auto;
+            width: 100%;
+            height: 100%;
+            font-size: 1.3rem;
+            .starting-text {
+              font-family: Verdana, Geneva, Tahoma, sans-serif;
+            }
+            .final-text {
+              font-style: italic;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (min-width: 700px) {
+  .home-container {
+    .home {
+      .login-section {
+        padding: 2rem 0;
+        height: 50vh;
+        .home-info {
+          display: flex;
+          flex-flow: row nowrap;
+          justify-content: space-between;
+          width: 100%;
+          height: 80%;
+
+          .home-login,
+          .about-journal {
+            display: flex;
+            width: 48%;
+            height: 100%;
+            color: var(--black, $black);
+          }
+          .home-login {
+            order: 1;
+            .journal-sketch {
+              order: 1;
+              width: 100%;
+              height: 80%;
+            }
+            .getin-journal {
+              order: 2;
+              display: flex;
+              flex-flow: row nowrap;
+              width: 100%;
+            }
+          }
+          .about-journal {
+            order: 2;
+            @include flex(row nowrap);
+          }
+        }
+      }
+    }
+  }
+}
