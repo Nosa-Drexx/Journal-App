@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
 import animation from "../../animations/popupbox";
 import LoadingScreen from "../../components/Loading/loadingScreen";
-import Modal from "../../components/modal";
+import Modal from "../../components/Modal/modal";
 import { apiURL } from "../../store/actions";
 import { todolistSlice } from "../../store/todolistSlice";
 

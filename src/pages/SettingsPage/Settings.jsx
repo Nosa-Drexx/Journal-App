@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import LightDarkMode from "../../components/lightDarkMode";
+import LightDarkMode from "../../components/LightDarkMode/lightDarkMode";
 
 function Settings() {
   const currentUser = useSelector((state) => state.todos.AllUserInfo);

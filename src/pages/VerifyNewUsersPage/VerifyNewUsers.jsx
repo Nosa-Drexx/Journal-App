@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import animation from "../../animations/popupbox";
-import LoadingScreen from "../../components/loadingScreen";
+import LoadingScreen from "../../components/Loading/loadingScreen";
 import { apiURL } from "../../store/actions";
 
 function VerifyNewUsers() {

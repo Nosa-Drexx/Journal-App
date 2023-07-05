@@ -1,7 +1,8 @@
 import { useRef } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { todolistSlice } from "../store/todolistSlice";
+import { todolistSlice } from "../../store/todolistSlice";
+import "./light-dark-mode.scss";
 
 const theme = document.documentElement;
 

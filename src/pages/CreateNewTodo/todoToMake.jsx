@@ -3,8 +3,8 @@ import { useRef } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
-import { addTodo } from "../store/actions";
-import JournalImage from "../images/Journal-text.png";
+import { addTodo } from "../../store/actions";
+import JournalImage from "../../images/Journal-text.png";
 
 function NewTodo() {
   const [state, setState] = useState("");
