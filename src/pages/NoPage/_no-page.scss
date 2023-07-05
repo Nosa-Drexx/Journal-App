@@ -1,0 +1,42 @@
+.NoPageLogo {
+  width: 100vw;
+  height: 15vh;
+  a {
+    box-shadow: 0 0 8px var(--boxShadow, $boxShadow);
+    padding: 0 1rem 1rem;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    transition: transform 1s;
+    img {
+      object-fit: contain;
+      height: 100%;
+      width: 100%;
+    }
+  }
+  a:hover {
+    transform: scale(1.1);
+  }
+  a:active {
+    transform: scale(0.5);
+  }
+}
+.Nopage {
+  height: 80vh;
+  width: 100vw;
+  @include flex(row nowrap);
+  div {
+    width: 80%;
+    max-width: 1200px;
+    font-size: 2rem;
+    @include flex(row nowrap);
+    h1 {
+      border-right: 2px solid var(--black, $black);
+      width: 40%;
+    }
+    p {
+      width: 60%;
+      padding-left: 1rem;
+    }
+  }
+}

@@ -30,6 +30,7 @@ body {
 @import "./pages/LoginPage/login";
 @import "./pages/SignUpPage/sign-up";
 @import "./pages/UploadImagePage/upload-image";
+@import "./pages/NoPage/no-page";
 
 //dark/light mode switch styles
 .main-container-relative {
@@ -1108,132 +1109,132 @@ body {
 //     // object-position: 5% 15%;
 //   }
 // }
-.remove-many {
-  display: flex;
-  flex-flow: row nowrap;
-  background: transparent;
-  justify-content: flex-end;
-  padding: 1rem;
-  color: inherit;
-  .remove-many-btn {
-    @include border();
-    background: $red;
-    color: inherit;
-    transition: transform 1s;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    padding: 1rem;
-    font-weight: bold;
-  }
-  .remove-many-btn:hover {
-    transform: scale(1.05);
-  }
-  .remove-many-btn:active {
-    transform: scale(0.5);
-  }
-}
-.NoPageLogo {
-  width: 100vw;
-  height: 15vh;
-  a {
-    box-shadow: 0 0 8px var(--boxShadow, $boxShadow);
-    padding: 0 1rem 1rem;
-    display: flex;
-    height: 100%;
-    width: 100%;
-    transition: transform 1s;
-    img {
-      object-fit: contain;
-      height: 100%;
-      width: 100%;
-    }
-  }
-  a:hover {
-    transform: scale(1.1);
-  }
-  a:active {
-    transform: scale(0.5);
-  }
-}
-.Nopage {
-  height: 80vh;
-  width: 100vw;
-  @include flex(row nowrap);
-  div {
-    width: 80%;
-    max-width: 1200px;
-    font-size: 2rem;
-    @include flex(row nowrap);
-    h1 {
-      border-right: 2px solid var(--black, $black);
-      width: 40%;
-    }
-    p {
-      width: 60%;
-      padding-left: 1rem;
-    }
-  }
-}
-.modal {
-  @include flex(row nowrap);
-  background-color: $transparentBlack;
-  position: absolute;
-  top: 0; //updates in react editTodo and modal component
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  .modal-container {
-    @include border;
-    @include flex(column nowrap);
-    border-radius: 10px;
-    height: 30vh;
-    width: 40vw;
-    min-width: 200px;
-    min-height: 100px;
-    position: absolute;
-    padding: 1rem;
-    z-index: 1000;
-    background: var(--white, $white);
-    .modal-text {
-      width: 100%;
-      height: 70%;
-      font-size: 1.2rem;
-      color: var(--black, $black);
-    }
-    .modal-btn {
-      width: 100%;
-      height: 30%;
-      display: flex;
-      flex-flow: row nowrap;
-      justify-content: space-between;
-      align-items: center;
-      button {
-        border: none;
-        width: 40%;
-        height: 50px;
-        border-radius: 5px;
-        color: var(--black, $black);
-        font-size: 1.5rem;
-        transition: transform 1s;
-        cursor: pointer;
-      }
-      button:hover {
-        transform: scale(1.1);
-      }
-      button:active {
-        transform: scale(0.5);
-      }
-      .yes {
-        background: $red;
-      }
-      .no {
-        background: $green;
-      }
-    }
-  }
-}
+// .remove-many {
+//   display: flex;
+//   flex-flow: row nowrap;
+//   background: transparent;
+//   justify-content: flex-end;
+//   padding: 1rem;
+//   color: inherit;
+//   .remove-many-btn {
+//     @include border();
+//     background: $red;
+//     color: inherit;
+//     transition: transform 1s;
+//     cursor: pointer;
+//     border: none;
+//     border-radius: 5px;
+//     font-size: 1.2rem;
+//     padding: 1rem;
+//     font-weight: bold;
+//   }
+//   .remove-many-btn:hover {
+//     transform: scale(1.05);
+//   }
+//   .remove-many-btn:active {
+//     transform: scale(0.5);
+//   }
+// }
+// .NoPageLogo {
+//   width: 100vw;
+//   height: 15vh;
+//   a {
+//     box-shadow: 0 0 8px var(--boxShadow, $boxShadow);
+//     padding: 0 1rem 1rem;
+//     display: flex;
+//     height: 100%;
+//     width: 100%;
+//     transition: transform 1s;
+//     img {
+//       object-fit: contain;
+//       height: 100%;
+//       width: 100%;
+//     }
+//   }
+//   a:hover {
+//     transform: scale(1.1);
+//   }
+//   a:active {
+//     transform: scale(0.5);
+//   }
+// }
+// .Nopage {
+//   height: 80vh;
+//   width: 100vw;
+//   @include flex(row nowrap);
+//   div {
+//     width: 80%;
+//     max-width: 1200px;
+//     font-size: 2rem;
+//     @include flex(row nowrap);
+//     h1 {
+//       border-right: 2px solid var(--black, $black);
+//       width: 40%;
+//     }
+//     p {
+//       width: 60%;
+//       padding-left: 1rem;
+//     }
+//   }
+// }
+// .modal {
+//   @include flex(row nowrap);
+//   background-color: $transparentBlack;
+//   position: absolute;
+//   top: 0; //updates in react editTodo and modal component
+//   left: 0;
+//   width: 100vw;
+//   height: 100vh;
+//   .modal-container {
+//     @include border;
+//     @include flex(column nowrap);
+//     border-radius: 10px;
+//     height: 30vh;
+//     width: 40vw;
+//     min-width: 200px;
+//     min-height: 100px;
+//     position: absolute;
+//     padding: 1rem;
+//     z-index: 1000;
+//     background: var(--white, $white);
+//     .modal-text {
+//       width: 100%;
+//       height: 70%;
+//       font-size: 1.2rem;
+//       color: var(--black, $black);
+//     }
+//     .modal-btn {
+//       width: 100%;
+//       height: 30%;
+//       display: flex;
+//       flex-flow: row nowrap;
+//       justify-content: space-between;
+//       align-items: center;
+//       button {
+//         border: none;
+//         width: 40%;
+//         height: 50px;
+//         border-radius: 5px;
+//         color: var(--black, $black);
+//         font-size: 1.5rem;
+//         transition: transform 1s;
+//         cursor: pointer;
+//       }
+//       button:hover {
+//         transform: scale(1.1);
+//       }
+//       button:active {
+//         transform: scale(0.5);
+//       }
+//       .yes {
+//         background: $red;
+//       }
+//       .no {
+//         background: $green;
+//       }
+//     }
+//   }
+// }
 
 .edit-area {
   @include border;

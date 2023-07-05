@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { todolistSlice, updateAPIAsyncThunk } from "../store/todolistSlice";
-import Modal from "./modal";
+import { todolistSlice, updateAPIAsyncThunk } from "../../store/todolistSlice";
+import Modal from "../Modal/modal";
+import "./remove-task.scss";
 
 function RemoveAllCompleted() {
   const dispatch = useDispatch();

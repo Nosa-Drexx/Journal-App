@@ -1,0 +1,29 @@
+@import "../../colors.scss";
+@import "../../mixins.scss";
+
+.remove-many {
+  display: flex;
+  flex-flow: row nowrap;
+  background: transparent;
+  justify-content: flex-end;
+  padding: 1rem;
+  color: inherit;
+  .remove-many-btn {
+    @include border();
+    background: $red;
+    color: inherit;
+    transition: transform 1s;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    padding: 1rem;
+    font-weight: bold;
+  }
+  .remove-many-btn:hover {
+    transform: scale(1.05);
+  }
+  .remove-many-btn:active {
+    transform: scale(0.5);
+  }
+}
