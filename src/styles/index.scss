@@ -15,9 +15,11 @@ body {
   background: var(--white, $white);
 }
 
-//animated toasifypop
+//site style assets
 @import "./toasifypop";
 @import "./back";
+@import "./font-awesome";
+@import "./images";
 
 //Pages styles
 @import "./pages/HomePage/home";
@@ -310,62 +312,62 @@ body {
 //   }
 // }
 
-.site-images {
-  background: var(--white, $white);
-  width: 100%;
-  height: 200px;
-  @media (min-width: 700px) {
-    height: 300px;
-  }
-  button {
-    @include border();
-    width: 70%;
-    height: 50%;
-    margin-left: calc((100% - 70%) / 2);
-    margin-top: calc((100% - 70%) / 2);
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: transform 1s;
-    background: transparent;
-    background-position: center;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-  }
-  button:hover {
-    transform: scale(1.1);
-  }
-  button:active {
-    transform: scale(0.5);
-  }
-  .overview {
-    background-image: url("./images/overview.png");
-  }
-  .image-light {
-    background-image: url("./images/imageL.png");
-  }
-  .setting-light {
-    background-image: url("./images/settingL.png");
-  }
-  .setting-dark {
-    background-image: url("./images/settingD.png");
-  }
-  .account {
-    background-image: url("./images/account.png");
-  }
-  .edit {
-    background-image: url("./images/edit.png");
-  }
-  .image {
-    background-image: url("./images/image.png");
-  }
-  .full-photo {
-    background-image: url("./images/Fphoto.png");
-  }
-  .delete {
-    background-image: url("./images/remove.png");
-  }
-}
+// .site-images {
+//   background: var(--white, $white);
+//   width: 100%;
+//   height: 200px;
+//   @media (min-width: 700px) {
+//     height: 300px;
+//   }
+//   button {
+//     @include border();
+//     width: 70%;
+//     height: 50%;
+//     margin-left: calc((100% - 70%) / 2);
+//     margin-top: calc((100% - 70%) / 2);
+//     border: none;
+//     border-radius: 10px;
+//     cursor: pointer;
+//     transition: transform 1s;
+//     background: transparent;
+//     background-position: center;
+//     background-size: 100% 100%;
+//     background-repeat: no-repeat;
+//   }
+//   button:hover {
+//     transform: scale(1.1);
+//   }
+//   button:active {
+//     transform: scale(0.5);
+//   }
+//   .overview {
+//     background-image: url("./images/overview.png");
+//   }
+//   .image-light {
+//     background-image: url("./images/imageL.png");
+//   }
+//   .setting-light {
+//     background-image: url("./images/settingL.png");
+//   }
+//   .setting-dark {
+//     background-image: url("./images/settingD.png");
+//   }
+//   .account {
+//     background-image: url("./images/account.png");
+//   }
+//   .edit {
+//     background-image: url("./images/edit.png");
+//   }
+//   .image {
+//     background-image: url("./images/image.png");
+//   }
+//   .full-photo {
+//     background-image: url("./images/Fphoto.png");
+//   }
+//   .delete {
+//     background-image: url("./images/remove.png");
+//   }
+// }
 
 // //animated toast pop out style
 // .pop-out {
@@ -673,20 +675,20 @@ body {
 // }
 
 // .loading {
-@include flex(row nowrap);
-border: 10px solid #f3f3f3;
-border-radius: 50%;
-border-top-color: $red;
-border-left-color: $green;
-border-right-color: $blue;
-border-bottom-color: $blueViolet;
-width: 70px;
-height: 70px;
-position: absolute;
-top: calc((100vh - 70px) / 2); // centralize
-left: calc((100vw - 70px) / 2); //centralize
--moz-animation: spin 2s linear infinite;
-animation: spin 2s linear infinite;
+// @include flex(row nowrap);
+// border: 10px solid #f3f3f3;
+// border-radius: 50%;
+// border-top-color: $red;
+// border-left-color: $green;
+// border-right-color: $blue;
+// border-bottom-color: $blueViolet;
+// width: 70px;
+// height: 70px;
+// position: absolute;
+// top: calc((100vh - 70px) / 2); // centralize
+// left: calc((100vw - 70px) / 2); //centralize
+// -moz-animation: spin 2s linear infinite;
+// animation: spin 2s linear infinite;
 // }
 // @-webkit-keyframes spin {
 //   0% {
@@ -705,46 +707,46 @@ animation: spin 2s linear infinite;
 //   }
 // }
 //Font awesome (fa-...) logos style
-.fa-eye {
-  color: $grey;
-  font-size: 1.1rem;
-}
-.fa-eye-slash {
-  @extend .fa-eye;
-}
-.fa-circle-check {
-  color: $green;
-  font-size: 1.3rem;
-}
-.fa-circle-xmark {
-  color: $red;
-  font-size: 1.3rem;
-}
-.fa-spinner {
-  // border: 3px solid grey;
-  color: $green;
-  font-size: 2.3rem;
-  -moz-animation: spin2 1s ease-in infinite;
-  animation: spin2 1s ease-in infinite;
-  animation-fill-mode: forwards;
-  animation-direction: alternate;
-}
-@-webkit-keyframes spin2 {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-@keyframes spin2 {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(300deg);
-  }
-}
+// .fa-eye {
+//   color: $grey;
+//   font-size: 1.1rem;
+// }
+// .fa-eye-slash {
+//   @extend .fa-eye;
+// }
+// .fa-circle-check {
+//   color: $green;
+//   font-size: 1.3rem;
+// }
+// .fa-circle-xmark {
+//   color: $red;
+//   font-size: 1.3rem;
+// }
+// .fa-spinner {
+//   // border: 3px solid grey;
+//   color: $green;
+//   font-size: 2.3rem;
+//   -moz-animation: spin2 1s ease-in infinite;
+//   animation: spin2 1s ease-in infinite;
+//   animation-fill-mode: forwards;
+//   animation-direction: alternate;
+// }
+// @-webkit-keyframes spin2 {
+//   0% {
+//     transform: rotate(0deg);
+//   }
+//   100% {
+//     transform: rotate(360deg);
+//   }
+// }
+// @keyframes spin2 {
+//   0% {
+//     transform: rotate(0deg);
+//   }
+//   100% {
+//     transform: rotate(300deg);
+//   }
+// }
 .login {
   @include flex(column nowrap);
   height: 100vh;

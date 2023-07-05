@@ -1,0 +1,40 @@
+.fa-eye {
+  color: $grey;
+  font-size: 1.1rem;
+}
+.fa-eye-slash {
+  @extend .fa-eye;
+}
+.fa-circle-check {
+  color: $green;
+  font-size: 1.3rem;
+}
+.fa-circle-xmark {
+  color: $red;
+  font-size: 1.3rem;
+}
+.fa-spinner {
+  // border: 3px solid grey;
+  color: $green;
+  font-size: 2.3rem;
+  -moz-animation: spin2 1s ease-in infinite;
+  animation: spin2 1s ease-in infinite;
+  animation-fill-mode: forwards;
+  animation-direction: alternate;
+}
+@-webkit-keyframes spin2 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spin2 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(300deg);
+  }
+}
