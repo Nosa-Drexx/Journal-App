@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useLocation } from "react-router-dom";
-import { todoEdited } from "../store/actions";
-import JournalImage from "../images/Journal-text.png";
+import { todoEdited } from "../../store/actions";
+import JournalImage from "../../images/Journal-text.png";
 
 function EditTodo() {
   const location = useLocation(null);
