@@ -1,3 +1,5 @@
+import "./loading.scss";
+
 const LoadingScreen = () => {
   return (
     <div className="loading">

@@ -671,38 +671,39 @@ body {
 //     color: $red;
 //   }
 // }
-.loading {
-  @include flex(row nowrap);
-  border: 10px solid #f3f3f3;
-  border-radius: 50%;
-  border-top-color: $red;
-  border-left-color: $green;
-  border-right-color: $blue;
-  border-bottom-color: $blueViolet;
-  width: 70px;
-  height: 70px;
-  position: absolute;
-  top: calc((100vh - 70px) / 2); // centralize
-  left: calc((100vw - 70px) / 2); //centralize
-  -moz-animation: spin 2s linear infinite;
-  animation: spin 2s linear infinite;
-}
-@-webkit-keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
+
+// .loading {
+@include flex(row nowrap);
+border: 10px solid #f3f3f3;
+border-radius: 50%;
+border-top-color: $red;
+border-left-color: $green;
+border-right-color: $blue;
+border-bottom-color: $blueViolet;
+width: 70px;
+height: 70px;
+position: absolute;
+top: calc((100vh - 70px) / 2); // centralize
+left: calc((100vw - 70px) / 2); //centralize
+-moz-animation: spin 2s linear infinite;
+animation: spin 2s linear infinite;
+// }
+// @-webkit-keyframes spin {
+//   0% {
+//     transform: rotate(0deg);
+//   }
+//   100% {
+//     transform: rotate(360deg);
+//   }
+// }
+// @keyframes spin {
+//   0% {
+//     transform: rotate(0deg);
+//   }
+//   100% {
+//     transform: rotate(360deg);
+//   }
+// }
 //Font awesome (fa-...) logos style
 .fa-eye {
   color: $grey;
