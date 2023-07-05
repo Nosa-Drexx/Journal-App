@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { searchFor } from "../store/actions";
+import { searchFor } from "../../store/actions";
+import "./search-todo.scss";
 
 function SearchBar() {
   const [state, setState] = useState("");

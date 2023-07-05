@@ -1,14 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
-import MakeTodos from "../components/makeTodos";
-import SearchBar from "../components/searchTodo";
+import MakeTodos from "../../components/Make-Todo/makeTodos";
+import SearchBar from "../../components/Search-Todo/searchTodo";
 // import NewTodo from "./todoToMake";
 import { useState, useRef, useEffect } from "react";
-import animation from "../animations/popupbox";
-import UserAccount from "../components/User-Account/userAccount";
-import { todolistSlice } from "../store/todolistSlice";
-import RemoveAllCompleted from "../components/removeAllCompleted";
-import UserWelcome from "../components/userWelcome";
-import AddNew from "../components/addNew";
+import animation from "../../animations/popupbox";
+import UserAccount from "../../components/User-Account/userAccount";
+import { todolistSlice } from "../../store/todolistSlice";
+import RemoveAllCompleted from "../../components/Remove-Task/removeAllCompleted";
+import UserWelcome from "../../components/User-Welcome/userWelcome";
+import AddNew from "../../components/Add-New/addNew";
 
 function DashBoard() {
   const error = useSelector((state) => state.todos.error);

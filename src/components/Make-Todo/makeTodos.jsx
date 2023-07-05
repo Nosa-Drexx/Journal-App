@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { removeTodo, todoDone } from "../../store/actions";
 import { todolistSlice, updateAPIAsyncThunk } from "../../store/todolistSlice";
 // import EditTodo from "../pages/editTodo";
-import Modal from "../modal";
+import Modal from "../Modal/modal";
 import "./make-todo.scss";
 
 function MakeTodos() {
