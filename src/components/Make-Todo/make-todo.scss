@@ -1,0 +1,51 @@
+.todo-center {
+  max-width: 1200px;
+  padding: 1rem;
+  margin: 1rem auto;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1rem;
+  .text-container {
+    @include border;
+    padding: 1rem;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 5px;
+    color: var(--black, $black);
+    width: 100%;
+    .date {
+      color: var(--black, $black);
+      width: 100%;
+      height: auto;
+      font-weight: bold;
+    }
+    .text {
+      font-family: Georgia, "Times New Roman", Times, serif;
+      font-size: 1.1rem;
+      width: 100%;
+      white-space: pre-wrap;
+      line-height: 150%;
+      padding-bottom: 1rem;
+    }
+    a {
+      display: block;
+      color: inherit;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      text-decoration: none;
+    }
+
+    button {
+      @include button-click-effect;
+      margin-right: 0.3rem;
+      padding: 0.5rem;
+      border-radius: 5px;
+    }
+    button:hover {
+      transform: scale(1.05);
+    }
+    button:active {
+      transform: scale(0.8);
+    }
+  }
+}
