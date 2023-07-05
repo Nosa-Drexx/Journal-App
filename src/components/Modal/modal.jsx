@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { useEffect } from "react";
+import "./modal.scss";
 
 function Modal({ text, completeAction, terminateAction }) {
   const modal = useRef(null);

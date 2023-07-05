@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import JournalImage from "../images/Journal-text.png";
+import JournalImage from "../../images/Journal-text.png";
 
 function NoPage() {
   return (
