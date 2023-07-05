@@ -1,5 +1,5 @@
-@import "../../colors.scss";
-@import "../../mixins.scss";
+@import "../../styles/colors";
+@import "../../styles/mixins";
 
 .modal {
   @include flex(row nowrap);

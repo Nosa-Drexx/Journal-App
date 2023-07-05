@@ -22,17 +22,17 @@ body {
 @import "./images";
 
 //Pages styles
-@import "./pages/HomePage/home";
-@import "./pages/ForgottenPasswordPage/verify";
-@import "./pages/UpdatePages/update";
-@import "./pages/SettingsPage/settings";
-@import "./pages/MyAccountPage/my-account";
-@import "./pages/LoginPage/login";
-@import "./pages/SignUpPage/sign-up";
-@import "./pages/UploadImagePage/upload-image";
-@import "./pages/NoPage/no-page";
-@import "./pages/EditTodoPage/edit-todo";
-@import "./pages/CreateNewTodo/create-new-todo";
+@import "../pages/HomePage/home";
+@import "../pages/FogottenPasswordPage/verify";
+@import "../pages/UpdatePages/update";
+@import "../pages/SettingsPage/settings";
+@import "../pages/MyAccountPage/my-account";
+@import "../pages/LoginPage/login";
+@import "../pages/SignUpPage/sign-up";
+@import "../pages/UploadImagePage/upload-image";
+@import "../pages/NoPage/no-page";
+@import "../pages/EditTodoPage/edit-todo";
+@import "../pages/CreateNewTodo/create-new-todo";
 
 //dark/light mode switch styles
 // .main-container-relative {

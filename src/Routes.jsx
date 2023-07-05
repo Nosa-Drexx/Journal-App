@@ -1,20 +1,20 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import DashBoard from "./pages/DashBoard";
+import DashBoard from "./pages/Dashboard/DashBoard";
 import ForgottenPassword from "./pages/FogottenPasswordPage/ForgottenPassword";
 import Home from "./pages/HomePage/Home";
-import Login from "./pages/Login";
+import Login from "./pages/LoginPage/Login";
 import MyAccount from "./pages/MyAccountPage/MyAccount";
-import NoPage from "./pages/NoPage";
+import NoPage from "./pages/NoPage/NoPage";
 import ProtectRoutes from "./ProtectRoutes";
 import Settings from "./pages/SettingsPage/Settings";
-import SignUp from "./pages/SignUp";
+import SignUp from "./pages/SignUpPage/SignUp";
 import UpdateEmail from "./pages/UpdatePages/UpdateEmail";
 import UpdatePassword from "./pages/UpdatePages/UpdatePassword";
 import UpdateUsername from "./pages/UpdatePages/UpdateUsername";
-import UploadImage from "./pages/UploadImage";
+import UploadImage from "./pages/UploadImagePage/UploadImage";
 import VerifyNewUsers from "./pages/VerifyNewUsersPage/VerifyNewUsers";
-import NewTodo from "./pages/todoToMake";
-import EditTodo from "./pages/editTodo";
+import NewTodo from "./pages/CreateNewTodo/todoToMake";
+import EditTodo from "./pages/EditTodoPage/editTodo";
 
 function AllRoutes() {
   return (
