@@ -3,15 +3,15 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./react-slick.scss";
 import { useEffect, useRef, useState } from "react";
-import overview from "../../images/overview.png";
-import imageL from "../../images/imageL.png";
-import settingL from "../../images/settingL.png";
-import settingD from "../../images/settingD.png";
-import account from "../../images/account.png";
-import edit from "../../images/edit.png";
-import image from "../../images/image.png";
-import remove from "../../images/remove.png";
-import Fphoto from "../../images/Fphoto.png";
+import overview from "./images/overview.png";
+import imageL from "./images/imageL.png";
+import settingL from "./images/settingL.png";
+import settingD from "./images/settingD.png";
+import account from "./images/account.png";
+import edit from "./images/edit.png";
+import image from "./images/image.png";
+import remove from "./images/remove.png";
+import Fphoto from "./images/Fphoto.png";
 
 function ReactSlick() {
   const [elem, setElem] = useState(null);
