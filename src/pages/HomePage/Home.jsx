@@ -8,6 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 import JournalImage from "../../images/Journal-text.png";
 import NavBar from "./components/NavBar/NavBar";
 import NavBarBiggerScreen from "./components/NavBar/NavBarBiggerScreen";
+import GetStarted from "./components/GetStarted/GetStarted";
 
 const theme = document.documentElement;
 
@@ -76,30 +77,11 @@ function Home() {
             </button>
             <NavBar />
             <NavBarBiggerScreen />
-            {/* <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://github.com/Nosa-Drexx"
-            >
-              <i className="fa-brands fa-github"></i>
-            </a>
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://www.linkedin.com/in/nosa-egharevba-984792243"
-            >
-              <i className="fa-brands fa-linkedin"></i>
-            </a>
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://twitter.com/NosaDrexx"
-            >
-              <i className="fa-brands fa-twitter"></i>
-            </a> */}
           </div>
         </header>
 
+        {/* Get Started */}
+        <GetStarted />
         {/* Login */}
         {/* <section className="login-section">
           <div className="home-info">
