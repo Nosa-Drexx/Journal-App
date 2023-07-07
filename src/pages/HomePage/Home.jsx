@@ -10,6 +10,7 @@ import NavBar from "./components/NavBar/NavBar";
 import NavBarBiggerScreen from "./components/NavBar/NavBarBiggerScreen";
 import GetStarted from "./components/GetStarted/GetStarted";
 import Advantages from "./components/About/Advantages";
+import WhyUs from "./components/WhyUs/WhyUs";
 
 const theme = document.documentElement;
 
@@ -108,6 +109,9 @@ function Home() {
 
         {/* About Section */}
         <Advantages />
+
+        {/* Why Us section */}
+        <WhyUs />
 
         {/* <section className="slick-container">
           <ReactSlick />
