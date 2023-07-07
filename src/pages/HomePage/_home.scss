@@ -5,8 +5,18 @@
   display: flex;
   justify-content: center;
   scroll-behavior: smooth;
+  .nav-correction {
+    display: flex;
+    position: fixed;
+    top: 0%;
+    width: 100%;
+    height: 70px;
+    backdrop-filter: blur(8px);
+    top: 0%;
+    z-index: 555;
+  }
   .home {
-    max-width: 1200px;
+    max-width: 1300px;
     width: 95%;
     background: var(--white, $white);
     position: relative;
@@ -16,6 +26,11 @@
       justify-content: space-between;
       align-items: flex-end;
       padding-top: 1rem;
+      position: sticky;
+      top: 0%;
+      z-index: 999;
+      background: transparent;
+      // backdrop-filter: blur(5px);
       .logo {
         text-decoration: none;
         display: flex;
