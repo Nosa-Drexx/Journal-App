@@ -15,6 +15,7 @@
     background: transparent;
     .fa-solid {
       font-size: 2rem;
+      color: var(--black, $black);
     }
     .fa-solid:hover {
       cursor: pointer;
@@ -24,11 +25,11 @@
     z-index: 100;
     height: 0px;
     position: absolute;
-    top: 9dvh;
+    top: 8.4dvh;
     max-width: 1200px;
     width: 100%;
     right: 0%;
-    background: $white;
+    background: var(--white, $white);
     list-style-type: none;
     display: flex;
     flex-flow: column nowrap;
@@ -43,11 +44,12 @@
         text-decoration: none;
         width: 100%;
         padding: 0.5rem 0.5rem;
-        color: $textBlue;
+        color: var(--black, $black);
         font-family: $fontPrimary;
       }
       a:hover {
         background: $lightBlue;
+        color: $blueViolet;
       }
     }
   }
@@ -102,9 +104,14 @@
           transition: transform 0.2s;
           font-family: $fontPrimary;
         }
-        a:hover {
+        a:hover,
+        a:focus {
           color: $blueViolet;
           transform: scale(1.1);
+        }
+        a:hover,
+        a:focus + .liner {
+          width: 50%;
         }
       }
       li:hover {

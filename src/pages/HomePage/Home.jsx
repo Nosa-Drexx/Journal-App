@@ -9,6 +9,7 @@ import JournalImage from "../../images/Journal-text.png";
 import NavBar from "./components/NavBar/NavBar";
 import NavBarBiggerScreen from "./components/NavBar/NavBarBiggerScreen";
 import GetStarted from "./components/GetStarted/GetStarted";
+import Advantages from "./components/About/Advantages";
 
 const theme = document.documentElement;
 
@@ -34,11 +35,23 @@ function Home() {
         white: "black",
         boxShadow: "rgba(255, 255, 255, 0.6)",
         lightWhite: "rgba(255, 255, 255, 0.792)",
+        // moreTransparentWhite: "rgba(0, 0, 0, 0.12)",
+        moreTransparentBlack: "rgba(255, 255, 255, 0.12)",
+        textGray: "white",
       };
+      theme?.style.setProperty(
+        "--moreTransparentBlack",
+        "rgba(255, 255, 255, 0.12)"
+      );
       theme?.style.setProperty("--black", "white");
       theme?.style.setProperty("--white", "black");
       theme?.style.setProperty("--boxShadow", "rgba(255, 255, 255, 0.6)");
       theme?.style.setProperty("--lightWhite", "rgba(255, 255, 255, 0.792)");
+      theme?.style.setProperty("--textGray", "white");
+      // theme?.style.setProperty(
+      //   "--moreTransparentWhite",
+      //   "rgba(255, 255, 255, 0.12)"
+      // );
       localStorage.setItem("color", JSON.stringify(data));
     }
     // Light Mode
@@ -48,18 +61,28 @@ function Home() {
         black: "black",
         boxShadow: "rgba(0, 0, 0, 0.6)",
         lightWhite: "rgba(28, 27, 27, 0.817)",
+        moreTransparentBlack: "rgba(0, 0, 0, 0.12)",
+        // moreTransparentWhite: "rgba(255, 255, 255, 0.12)",
       };
+      theme?.style.setProperty("--moreTransparentBlack", "rgba(0, 0, 0, 0.12)");
       theme?.style.setProperty("--white", "white");
       theme?.style.setProperty("--black", "black");
       theme?.style.setProperty("--boxShadow", "rgba(0, 0, 0, 0.6)");
       theme?.style.setProperty("--lightWhite", "rgba(28, 27, 27, 0.817)");
+      theme?.style.setProperty("--textGray", "rgb(68, 63, 63)");
+      // theme?.style.setProperty(
+      //   "--moreTransparentWhite",
+      //   "rgba(255, 255, 255, 0.12)"
+      // );
       localStorage.setItem("color", JSON.stringify(data));
     }
   }
 
   return (
     <div className="home-container">
+      <div className="nav-correction"></div>
       <div className="home">
+        {/* Header and Nav section  */}
         <header>
           <Link className="logo" to="/">
             <img src={JournalImage} alt="JourNal-logo"></img>
@@ -80,39 +103,15 @@ function Home() {
           </div>
         </header>
 
-        {/* Get Started */}
+        {/* Hero Section */}
         <GetStarted />
-        {/* Login */}
-        {/* <section className="login-section">
-          <div className="home-info">
-            <div className="home-login">
-              <div className="journal-sketch"></div>
-              <div className="getin-journal">
-                <Link to="/login" className="login-btn">
-                  Login
-                </Link>
-                <Link to="/signUp" className="signup-btn">
-                  SignUp
-                </Link>
-              </div>
-            </div>
-            <div className="about-journal">
-              <div className="text-container">
-                <h3 className="starting-text"> Hi there! Welcome to JourNal</h3>
-                <p className="middle-text">
-                  We are a secure website that helps you store and secure your
-                  daily activities, and secrets on the web,
-                </p>
-                <p className="final-text">
-                  !Dump the books, they get old someday, Let us be your Pen 🖋
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section className="slick-container">
+
+        {/* About Section */}
+        <Advantages />
+
+        {/* <section className="slick-container">
           <ReactSlick />
-        </section> */}
+        </section>  */}
       </div>
     </div>
   );

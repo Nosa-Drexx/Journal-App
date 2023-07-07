@@ -32,6 +32,7 @@ function LightDarkMode() {
         boxShadow: "rgba(255, 255, 255, 0.6)",
         lightWhite: "rgba(255, 255, 255, 0.792)",
       };
+      // theme?.style.setProperty("--test", "rgba(255, 255, 255, 0.12)");
       theme?.style.setProperty("--black", "white");
       theme?.style.setProperty("--white", "black");
       theme?.style.setProperty("--boxShadow", "rgba(255, 255, 255, 0.6)");
@@ -46,6 +47,7 @@ function LightDarkMode() {
         boxShadow: "rgba(0, 0, 0, 0.6)",
         lightWhite: "rgba(28, 27, 27, 0.817)",
       };
+      // theme?.style.setProperty("--test", "rgba(255, 255, 255, 0.12)");
       theme?.style.setProperty("--white", "white");
       theme?.style.setProperty("--black", "black");
       theme?.style.setProperty("--boxShadow", "rgba(0, 0, 0, 0.6)");

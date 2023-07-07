@@ -1,5 +1,5 @@
 import "./get-started.scss";
-import RobotImage from "../../images/robot-with-clipboard.jpg";
+import RobotImage from "../../images/robot-with-clipboard.png";
 import { Link } from "react-router-dom";
 
 const GetStarted = () => {
@@ -9,7 +9,7 @@ const GetStarted = () => {
         <div className="contain-text">
           <span className="transparent-combinator">&</span>
           <h1>
-            Paperless <br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Easy
+            Paperless <br /> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;Easy
           </h1>
         </div>
         <p className="sub-text">
