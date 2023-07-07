@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 import { todolistSlice } from "../../store/todolistSlice";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-// import ReactSlick from "../../components/React-Slick/react-slick";
 import JournalImage from "../../images/Journal-text.png";
 import NavBar from "./components/NavBar/NavBar";
 import NavBarBiggerScreen from "./components/NavBar/NavBarBiggerScreen";
 import GetStarted from "./components/GetStarted/GetStarted";
 import Advantages from "./components/About/Advantages";
 import WhyUs from "./components/WhyUs/WhyUs";
+import Footer from "./components/Footer/Footer";
 
 const theme = document.documentElement;
 
@@ -112,11 +112,9 @@ function Home() {
 
         {/* Why Us section */}
         <WhyUs />
-
-        {/* <section className="slick-container">
-          <ReactSlick />
-        </section>  */}
       </div>
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }
