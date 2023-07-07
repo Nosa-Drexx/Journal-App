@@ -3,7 +3,7 @@ import "./advantages.scss";
 
 const Advantages = () => {
   return (
-    <section className="advantages">
+    <section id="about" className="advantages">
       <div className="cards-container">
         {/* card components */}
         <Card
