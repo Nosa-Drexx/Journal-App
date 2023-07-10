@@ -12,6 +12,7 @@
     "lint": "eslint \"src/**/*.{js, jsx}\" --quiet"
   },
   "dependencies": {
+    "@lottiefiles/lottie-player": "^2.0.2",
     "@reduxjs/toolkit": "^1.8.5",
     "gsap": "^3.11.3",
     "node-sass": "^8.0.0",

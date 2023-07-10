@@ -1,11 +1,46 @@
 .signup {
   @include flex(column nowrap);
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   color: var(--black, $black);
   background: var(--white, $white);
+  .sign-up-form-container {
+    width: 100%;
+    height: 100%;
+    @include flex(column nowrap);
+  }
+  .home {
+    position: fixed;
+    display: flex;
+    z-index: 100;
+    top: 0%;
+    left: 0%;
+    padding: 0.5rem;
+    width: 35%;
+    height: 10%;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+  .sign-up-write-up {
+    font-family: $fontPrimary;
+    @include flex(column nowrap);
+    gap: 1rem;
+    padding: 2rem 0rem 1rem 0rem;
+    h2,
+    p {
+      margin: 0px;
+      padding: 0px;
+    }
+    P {
+      color: var(--textGray, $textGray);
+    }
+  }
   form {
-    @include border();
+    // @include border();
+    // border: 1px solid red;
     display: flex;
     background: var(--white, $white);
     flex-flow: column nowrap;
@@ -15,17 +50,25 @@
     width: 80%;
     height: 80%;
     max-height: 600px;
-    border-radius: 5px;
+    // border-radius: 5px;
     label {
       height: 7%;
       width: 100%;
       font-size: 1.1rem;
+      font-family: $fontPrimary;
+      .required-field {
+        color: red;
+        font-size: 0.9rem;
+      }
       input {
         width: 100%;
         height: 100%;
-        border: 1px solid red;
-        border-radius: 5px;
-        font-size: 1.4rem;
+        border: 1px solid rgb(211, 202, 202);
+        background: var(--white, $white);
+        color: var(--black, $black);
+        border-radius: 30px;
+        font-size: 1.1rem;
+        padding: 10px;
       }
     }
     .pass-label {
@@ -60,18 +103,99 @@
       font-size: 1.2rem;
       border: none;
       height: 7%;
-      border-radius: 5px;
-      width: 70%;
-      color: var(--white, $white);
+      border-radius: 30px;
+      width: 100%;
+      color: $white;
       transition: transform 1s;
-      background: $green;
+      background: $blueViolet;
+      font-weight: 900;
       cursor: pointer;
     }
     input[type="submit"]:hover {
-      transform: scale(1.1);
+      transform: scale(1.02);
     }
     input[type="submit"]:active {
-      transform: scale(0.5);
+      transform: scale(0.9);
+    }
+    input[type="submit"]:disabled {
+      background: $blueViolet;
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .login-text-signup {
+      color: var(--textGray, $textGray);
+      font-family: $fontPrimary;
+      margin: 0px;
+      .signup-login {
+        color: $blueViolet;
+        text-decoration: none;
+        padding: 0px;
+        margin: 0px;
+      }
+    }
+  }
+  .sign-up-animation {
+    display: none;
+  }
+}
+
+@media (min-width: 800px) {
+  .signup {
+    @include flex(row nowrap);
+    .sign-up-form-container {
+      width: 50%;
+    }
+    .home {
+      width: 17%;
+      height: 8%;
+    }
+    .sign-up-animation {
+      display: flex;
+      // border: 1px solid black;
+      width: 50%;
+      height: 90%;
+      background: rgb(223, 219, 219);
+      border-radius: 50px 0px 0px 50px;
+      position: relative;
+      .absolute {
+        display: flex;
+        position: absolute;
+        z-index: 99;
+        height: 100px;
+        width: 100px;
+        top: 0%;
+        background: var(--white, $white);
+      }
+      .first-circle {
+        position: absolute;
+        top: calc(0% + 65px);
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        z-index: 100;
+        background: inherit;
+      }
+      .second-circle {
+        position: absolute;
+        top: calc(0% + 65px);
+        left: calc(0% + 80px);
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        z-index: 100;
+        background: var(--white, $white);
+      }
+      .third-circle {
+        position: absolute;
+        top: 0%;
+        left: calc(0% + 90px);
+        width: 80px;
+        height: 80px;
+        border-radius: 10% 0px 0px 30%;
+        z-index: 100;
+        background: inherit;
+      }
     }
   }
 }
