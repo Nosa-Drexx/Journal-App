@@ -7,7 +7,7 @@ const LottieAnimation = () => {
         autoplay
         loop
         mode="normal"
-        src="./src/LottieAnimation/work-animation.json"
+        src="src/LottieAnimation/work-animation.json"
       ></lottie-player>
     </div>
   );
