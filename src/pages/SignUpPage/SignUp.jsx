@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import animation from "../../animations/popupbox";
 import LoadingScreen from "../../components/Loading/loadingScreen";
 import { apiURL } from "../../store/actions";
+import journalLogo from "../../images/Journal-text.png";
+import LottieAnimation from "./LottieAnimation/LottieAnimation";
 
 function SignUp() {
   const [username, setUsername] = useState("");
@@ -19,6 +21,20 @@ function SignUp() {
   const [passwordRVisibility, setPasswordRVisibility] = useState(false);
   const animatebox = useRef(null);
   const bad = useRef(null);
+  const [completelyFilled, setCompletelyFilled] = useState(true);
+
+  useEffect(() => {
+    if (
+      username.length > 0 &&
+      password.length > 0 &&
+      firstName.length > 0 &&
+      email.length > 0 &&
+      lastName.length > 0 &&
+      passwordR.length > 0 &&
+      password === passwordR
+    )
+      setCompletelyFilled(false);
+  }, [username, password, passwordR, email, lastName, firstName]);
 
   useEffect(() => {
     if (animatebox.current) {
@@ -80,6 +96,10 @@ function SignUp() {
         <LoadingScreen />
       ) : (
         <div className="signup">
+          {/* Home logo */}
+          <Link className="home" to="/">
+            <img src={journalLogo} alt="site logo" />
+          </Link>
           {userExist.error && (
             <div ref={animatebox} className="pop-out">
               {userExist.error}
@@ -104,135 +124,168 @@ function SignUp() {
               </div>
             </div>
           )}
-          <form onSubmit={(e) => submitForm(e)}>
-            <label htmlFor="firstName">
-              FirstName: <br />
-              <input
-                type="text"
-                id="firstName"
-                onChange={(e) => setFirstName(e.target.value)}
-                onBlur={(e) => setFirstName(e.target.value)}
-                value={firstName}
-                autoComplete="off"
-                required
-              />
-            </label>
-            <br />
-            <label htmlFor="lastName">
-              LastName: <br />
-              <input
-                type="text"
-                id="lastName"
-                onChange={(e) => setLastName(e.target.value)}
-                onBlur={(e) => setLastName(e.target.value)}
-                value={lastName}
-                autoComplete="off"
-                required
-              />
-            </label>
-            <br />
-            <label htmlFor="username">
-              Username: <br />
-              <input
-                type="text"
-                id="username"
-                onChange={(e) => setUsername(e.target.value)}
-                onBlur={(e) => setUsername(e.target.value)}
-                value={username}
-                autoComplete="off"
-                required
-              />
-            </label>
-            <br />
-            <label htmlFor="email">
-              E-mail: <br />
-              <input
-                type="email"
-                id="email"
-                onChange={(e) => setEmail(e.target.value)}
-                onBlur={(e) => setEmail(e.target.value)}
-                value={email}
-                autoComplete="off"
-                required
-              />
-            </label>
-            <br />
-            <label className="pass-label" htmlFor="password">
-              Password: <br />
-              <div>
+          {/* SIGN UP WRITE UP */}
+          <div className="sign-up-form-container">
+            <div className="sign-up-write-up">
+              <h2>Create your account</h2>
+              <p>{`Let's`} get started with your free account</p>
+            </div>
+            <form onSubmit={(e) => submitForm(e)}>
+              <label htmlFor="firstName">
+                FirstName <span className="required-field">*</span> <br />
                 <input
-                  type={passwordVisibility ? "text" : "password"}
-                  className="sign-pass"
-                  id="password"
-                  onChange={(e) => setPassword(e.target.value)}
-                  onBlur={(e) => setPassword(e.target.value)}
-                  value={password}
-                  minLength={8}
+                  type="text"
+                  id="firstName"
+                  onChange={(e) => setFirstName(e.target.value)}
+                  onBlur={(e) => setFirstName(e.target.value)}
+                  value={firstName}
                   autoComplete="off"
+                  placeholder="Enter your first name"
                   required
-                />{" "}
-                <button
-                  type="button"
-                  onClick={() => setPasswordVisibility((prev) => !prev)}
-                  className="pass-visibility"
-                >
-                  {!passwordVisibility ? (
-                    <span className="fa-solid fa-eye"></span>
-                  ) : (
-                    <span className="fa-solid fa-eye-slash"></span>
-                  )}
-                </button>
-                {password.length >= 8 ? (
-                  <span className="icon">
-                    <span className="fa-solid fa-circle-check"></span>
-                  </span>
-                ) : (
-                  <span className="icon">
-                    <span className="fa-solid fa-circle-xmark"></span>
-                  </span>
-                )}
-              </div>
-            </label>
-            <br />
-            <label className="pass-label" htmlFor="re-password">
-              Re-Type Password: <br />
-              <div>
+                />
+              </label>
+              <br />
+              <label htmlFor="lastName">
+                LastName <span className="required-field">*</span> <br />
                 <input
-                  type={passwordRVisibility ? "text" : "password"}
-                  className="sign-pass"
-                  id="re-password"
-                  onChange={(e) => setPasswordR(e.target.value)}
-                  onBlur={(e) => setPasswordR(e.target.value)}
-                  value={passwordR}
-                  minLength={8}
+                  type="text"
+                  id="lastName"
+                  onChange={(e) => setLastName(e.target.value)}
+                  onBlur={(e) => setLastName(e.target.value)}
+                  value={lastName}
                   autoComplete="off"
+                  placeholder="Enter your last name"
                   required
-                />{" "}
-                <button
-                  type="button"
-                  onClick={() => setPasswordRVisibility((prev) => !prev)}
-                  className="pass-visibility"
-                >
-                  {!passwordRVisibility ? (
-                    <span className="fa-solid fa-eye"></span>
+                />
+              </label>
+              <br />
+              <label htmlFor="username">
+                Username <span className="required-field">*</span> <br />
+                <input
+                  type="text"
+                  id="username"
+                  onChange={(e) => setUsername(e.target.value)}
+                  onBlur={(e) => setUsername(e.target.value)}
+                  value={username}
+                  autoComplete="off"
+                  placeholder="Enter your username"
+                  required
+                />
+              </label>
+              <br />
+              <label htmlFor="email">
+                E-mail <span className="required-field">*</span> <br />
+                <input
+                  type="email"
+                  id="email"
+                  onChange={(e) => setEmail(e.target.value)}
+                  onBlur={(e) => setEmail(e.target.value)}
+                  value={email}
+                  autoComplete="off"
+                  placeholder="example@gmail.com"
+                  required
+                />
+              </label>
+              <br />
+              <label className="pass-label" htmlFor="password">
+                Password <span className="required-field">*</span> <br />
+                <div>
+                  <input
+                    type={passwordVisibility ? "text" : "password"}
+                    className="sign-pass"
+                    id="password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    onBlur={(e) => setPassword(e.target.value)}
+                    value={password}
+                    minLength={8}
+                    autoComplete="off"
+                    placeholder="12345678"
+                    required
+                  />{" "}
+                  <button
+                    type="button"
+                    onClick={() => setPasswordVisibility((prev) => !prev)}
+                    className="pass-visibility"
+                  >
+                    {!passwordVisibility ? (
+                      <span className="fa-solid fa-eye"></span>
+                    ) : (
+                      <span className="fa-solid fa-eye-slash"></span>
+                    )}
+                  </button>
+                  {password.length >= 8 ? (
+                    <span className="icon">
+                      <span className="fa-solid fa-circle-check"></span>
+                    </span>
                   ) : (
-                    <span className="fa-solid fa-eye-slash"></span>
+                    <span className="icon">
+                      <span className="fa-solid fa-circle-xmark"></span>
+                    </span>
                   )}
-                </button>
-                {password === passwordR ? (
-                  <span className="icon">
-                    <span className="fa-solid fa-circle-check"></span>
-                  </span>
-                ) : (
-                  <span className="icon">
-                    <span className="fa-solid fa-circle-xmark"></span>
-                  </span>
-                )}
-              </div>
-            </label>
-            <br />
-            <input type="submit" value="Submit" />
-          </form>
+                </div>
+              </label>
+              <br />
+              <label className="pass-label" htmlFor="re-password">
+                Re-Type Password <span className="required-field">*</span>{" "}
+                <br />
+                <div>
+                  <input
+                    type={passwordRVisibility ? "text" : "password"}
+                    className="sign-pass"
+                    id="re-password"
+                    onChange={(e) => setPasswordR(e.target.value)}
+                    onBlur={(e) => setPasswordR(e.target.value)}
+                    value={passwordR}
+                    minLength={8}
+                    autoComplete="off"
+                    placeholder="12345678"
+                    required
+                  />{" "}
+                  <button
+                    type="button"
+                    onClick={() => setPasswordRVisibility((prev) => !prev)}
+                    className="pass-visibility"
+                  >
+                    {!passwordRVisibility ? (
+                      <span className="fa-solid fa-eye"></span>
+                    ) : (
+                      <span className="fa-solid fa-eye-slash"></span>
+                    )}
+                  </button>
+                  {password === passwordR ? (
+                    <span className="icon">
+                      <span className="fa-solid fa-circle-check"></span>
+                    </span>
+                  ) : (
+                    <span className="icon">
+                      <span className="fa-solid fa-circle-xmark"></span>
+                    </span>
+                  )}
+                </div>
+              </label>
+              <br />
+              <input
+                type="submit"
+                value="Sign Up"
+                disabled={completelyFilled}
+              />
+              <p className="login-text-signup">
+                Already have an account?{" "}
+                <Link className="signup-login" to="/login">
+                  Log in
+                </Link>
+              </p>
+            </form>
+          </div>
+
+          {/* Animation only on bigger screens */}
+          <div className="sign-up-animation">
+            <div className="absolute"></div>
+            <div className="first-circle"></div>
+            <div className="second-circle"></div>
+            <div className="third-circle"></div>
+            <LottieAnimation />
+          </div>
         </div>
       )}
     </>
