@@ -5,7 +5,10 @@ import animation from "../../animations/popupbox";
 import LoadingScreen from "../../components/Loading/loadingScreen";
 import { apiURL } from "../../store/actions";
 import { todolistSlice } from "../../store/todolistSlice";
-import JournalImage from "../../images/Journal-logo.png";
+// import JournalImage from "../../images/Journal-logo.png";
+import JournalLogo from "../../images/Journal-text.png";
+import LottieAnimationContainer from "../../components/LottieAnimationContainer/LottieAnimationContainer";
+import LottieAnimation from "./LottieAnimation/LottieAnimation";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -19,9 +22,14 @@ function Login() {
   const [makePassVisible, setMakePassVisible] = useState(false);
   const [emailError, setEmailError] = useState(false);
   const [navigate, setNavigate] = useState(false);
+  const [completelyFilled, setCompletelyFilled] = useState(false);
   const animatebox = useRef(null);
   const bad = useRef(null);
   const good = useRef(null);
+
+  useEffect(() => {
+    if (username.length > 0 && password.length > 0) setCompletelyFilled(true);
+  }, [username, password]);
 
   useEffect(() => {
     if (localStorage.getItem("token")) localStorage.removeItem("token");
@@ -86,6 +94,9 @@ function Login() {
         <LoadingScreen />
       ) : (
         <section className="login">
+          <Link to="/" className="home">
+            <img src={JournalLogo} alt="site logo" />
+          </Link>
           {errorState && (
             <div ref={animatebox} className="pop-out">
               {error.error}{" "}
@@ -110,86 +121,97 @@ function Login() {
               </div>
             </div>
           )}
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              loginAction();
-            }}
-          >
-            <div className="logo">
-              <img src={JournalImage} alt="Journal-logo"></img>
+
+          <div className="form-container">
+            <div className="login-text-intro">
+              <h2>Hi there!</h2>
+              <p>Welcome to JourNal.</p>
             </div>
-            <div className="inputs">
-              <label htmlFor="username">
-                Username or Email Address: <br />
-                <input
-                  type="text"
-                  id="username"
-                  placeholder="email or username"
-                  onChange={(e) => setUsername(e.target.value)}
-                  onBlur={(e) => setUsername(e.target.value)}
-                  value={username}
-                  autoComplete="off"
-                  required
-                />
-              </label>
-              <br />
-              <label htmlFor="password">
-                Password: <br />
-                <div className="pass-div">
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                loginAction();
+              }}
+            >
+              {/* <div className="logo">
+              <img src={JournalImage} alt="Journal-logo"></img>
+            </div> */}
+              <div className="inputs">
+                <label htmlFor="username">
+                  Username or Email Address <br />
                   <input
-                    type={makePassVisible ? "text" : "password"}
-                    id="password"
-                    placeholder="password"
-                    onChange={(e) => setPassword(e.target.value)}
-                    onBlur={(e) => setPassword(e.target.value)}
-                    value={password}
+                    type="text"
+                    id="username"
+                    placeholder="email or username"
+                    onChange={(e) => setUsername(e.target.value)}
+                    onBlur={(e) => setUsername(e.target.value)}
+                    value={username}
                     autoComplete="off"
                     required
                   />
+                </label>
+                <label htmlFor="password">
+                  Password <br />
+                  <div className="pass-div">
+                    <input
+                      type={makePassVisible ? "text" : "password"}
+                      id="password"
+                      placeholder="password"
+                      onChange={(e) => setPassword(e.target.value)}
+                      onBlur={(e) => setPassword(e.target.value)}
+                      value={password}
+                      autoComplete="off"
+                      required
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setMakePassVisible((prev) => !prev)}
+                      className="view-pass"
+                    >
+                      {!makePassVisible ? (
+                        <span className="fa-solid fa-eye"></span>
+                      ) : (
+                        <span className="fa-solid fa-eye-slash"></span>
+                      )}
+                    </button>
+                  </div>
+                </label>
+                <div className="forgotten-password-container">
                   <button
                     type="button"
-                    onClick={() => setMakePassVisible((prev) => !prev)}
-                    className="view-pass"
+                    className="forgotten-password"
+                    onClick={() => {
+                      requestForNewPassword(username);
+                    }}
                   >
-                    {!makePassVisible ? (
-                      <span className="fa-solid fa-eye"></span>
-                    ) : (
-                      <span className="fa-solid fa-eye-slash"></span>
-                    )}
+                    <Link
+                      to={navigate ? "/forgottenPassword" : ""}
+                      state={{ username }}
+                    >
+                      Forgotten Password?
+                    </Link>
                   </button>
                 </div>
-              </label>
-            </div>
-            <div className="button-container">
-              <div className="log-sign-btn">
-                <input type="submit" value="Login" />
-                <button
-                  type="button"
-                  className="sign-btn"
-                  onClick={() => dispatch(todolistSlice.actions.error(false))}
-                >
-                  <Link to="/signUp">Sign Up</Link>
-                </button>
               </div>
-              <div>
-                <button
-                  type="button"
-                  className="forgotten-password"
-                  onClick={() => {
-                    requestForNewPassword(username);
-                  }}
-                >
-                  <Link
-                    to={navigate ? "/forgottenPassword" : ""}
-                    state={{ username }}
-                  >
-                    Forgotten Password
-                  </Link>
-                </button>
+              <div className="button-container">
+                <div className="log-sign-btn">
+                  <input
+                    type="submit"
+                    value="Log in"
+                    disabled={!completelyFilled}
+                  />
+                </div>
+                <p className="sign-up-link">
+                  {`Don't have an account?`} <Link to="/signUp">Sign up</Link>
+                </p>
               </div>
-            </div>
-          </form>
+            </form>
+          </div>
+          <div className="lottie-container-login">
+            <LottieAnimationContainer>
+              <LottieAnimation />
+            </LottieAnimationContainer>
+          </div>
         </section>
       )}
     </>
