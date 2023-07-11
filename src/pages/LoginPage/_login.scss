@@ -1,6 +1,6 @@
 .login {
   @include flex(column nowrap);
-  height: 100vh;
+  height: 100dvh;
   width: 100vw;
   font-size: 1.1rem;
   background: var(--white, $white);
@@ -159,161 +159,13 @@
 @media (min-width: 800px) {
   .login {
     @include flex(row nowrap);
-    // height: 100vh;
-    // width: 100vw;
-    // font-size: 1.1rem;
-    // background: var(--white, $white);
-    // color: var(--black, $black);
-    // font-family: $fontPrimary;
-    // .home {
-    //   height: 40px;
-    //   width: 30%;
-    //   position: fixed;
-    //   z-index: 99;
-    //   top: 0%;
-    //   left: 0%;
-    //   margin: 0.3rem;
-    //   img {
-    //     width: 100%;
-    //     height: 100%;
-    //     object-fit: contain;
-    //   }
-    // }
-    // .login-text-intro {
-    //   @include flex(column nowrap);
-    //   gap: 0.3rem;
-    //   width: 80%;
-    //   h2,
-    //   p {
-    //     margin: 0px;
-    //     padding: 0px;
-    //   }
-    //   h2 {
-    //     font-size: 4rem;
-    //   }
-    //   p {
-    //     color: var(--textGray, $textGray);
-    //   }
-    // }
     .lottie-container-login {
       display: flex;
       width: 50%;
       height: 90%;
     }
     .form-container {
-      // @include flex(row nowrap);
-      // min-width: 300px;
-      // height: 100%;
-      // max-height: 600px;
       width: 50%;
     }
-    // form {
-    //   @include flex(column nowrap);
-    //   gap: 1rem;
-    //   font-family: $fontPrimary;
-    //   width: 80%;
-    //   height: 100%;
-    //   @media (min-width: 800px) {
-    //     max-width: 300px;
-    //   }
-    //   .forgotten-password-container {
-    //     align-self: flex-end;
-    //   }
-    //   .forgotten-password {
-    //     cursor: pointer;
-    //     border: none;
-    //     background: transparent;
-    //     color: $blueViolet;
-    //     font-size: 1rem;
-
-    //     a {
-    //       text-decoration: none;
-    //       color: $blueViolet;
-    //     }
-    //   }
-    //   .inputs {
-    //     @include flex(column nowrap);
-    //     gap: 0.5rem;
-    //     width: 100%;
-    //     label {
-    //       width: 100%;
-    //       input {
-    //         width: 100%;
-    //         border: 1px solid var(--textGray, $textGray);
-    //         padding: 0.5rem;
-    //         font-size: 1.1rem;
-    //         border-radius: 30px;
-    //         background: var(--white, $white);
-    //         color: var(--textGray, $textGray);
-    //       }
-    //     }
-    //     .pass-div {
-    //       width: 100%;
-    //       display: flex;
-    //       flex-flow: row nowrap;
-    //       justify-content: space-between;
-    //       align-items: center;
-    //       #password {
-    //         width: 87%;
-    //       }
-    //       .view-pass {
-    //         @include flex(row nowrap);
-    //         background: transparent;
-    //         border: none;
-    //         height: 20px;
-    //         width: 10%;
-    //         cursor: pointer;
-    //       }
-    //     }
-    //   }
-    //   .button-container {
-    //     height: 15%;
-    //     width: 100%;
-    //     .sign-up-link {
-    //       text-align: center;
-    //       a {
-    //         text-decoration: none;
-    //         color: $blueViolet;
-    //       }
-    //     }
-    //     .log-sign-btn {
-    //       @include flex(row wrap);
-    //       justify-content: space-evenly;
-    //       height: 70%;
-    //       width: 100%;
-    //       .sign-btn,
-    //       input[type="submit"] {
-    //         height: 70%;
-    //         width: 100%;
-    //         border-radius: 30px;
-    //         border: none;
-    //         transition: transform 1s;
-    //         background: $blueViolet;
-    //         color: $white;
-    //         font-size: 1.1rem;
-    //         text-decoration: none;
-    //         cursor: pointer;
-    //         a {
-    //           text-decoration: none;
-    //           color: var(--white, $white);
-    //           padding: 5% 20%;
-    //         }
-    //       }
-    //       input[type="submit"]:disabled {
-    //         background: $blueViolet;
-    //         opacity: 0.5;
-    //         cursor: not-allowed;
-    //       }
-    //       [type="submit"]:hover,
-    //       button:hover {
-    //         transform: scale(1.03);
-    //       }
-    //       [type="submit"]:active,
-    //       button:active {
-    //         transform: scale(0.9);
-    //       }
-    //     }
-    //   }
-    // }
   }
 }
