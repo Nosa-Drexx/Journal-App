@@ -18,10 +18,11 @@
     border-radius: 5px;
     padding: 0 0.7rem;
     .verify-input {
-      font-size: 1.3rem;
+      font-size: 1.1rem;
       padding: 0.8rem;
-      border-radius: 5px;
+      border-radius: 30px;
       border: 2px solid $red;
+      width: 100%;
       &:focus,
       &:active,
       &:hover {
@@ -32,17 +33,23 @@
       color: var(--white, $white);
       padding: 1rem;
       font-size: 1.5rem;
-      border-radius: 5px;
-      background: $green;
+      border-radius: 30px;
+      background: $blueViolet;
       border: none;
       cursor: pointer;
       transition: transform 1s;
+      width: 100%;
+    }
+    .verify-btn:disabled {
+      background: $blueViolet;
+      opacity: 0.5;
+      cursor: not-allowed;
     }
     .verify-btn:hover {
-      transform: scale(1.1);
+      transform: scale(1.03);
     }
     .verify-btn:active {
-      transform: scale(0.5);
+      transform: scale(0.9);
     }
   }
 }

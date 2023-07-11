@@ -1,0 +1,9 @@
+@import "../../styles/colors";
+@import "../../styles/mixins";
+@import "../../styles/font";
+
+.loading-screen {
+  @include flex(row nowrap);
+  width: 100vw;
+  height: 100dvh;
+}
