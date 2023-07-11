@@ -5,6 +5,7 @@ import LoadingScreen from "../../components/Loading/loadingScreen";
 import { apiURL } from "../../store/actions";
 import journalLogo from "../../images/Journal-text.png";
 import LottieAnimation from "./LottieAnimation/LottieAnimation";
+import LottieAnimationContainer from "../../components/LottieAnimationContainer/LottieAnimationContainer";
 
 function SignUp() {
   const [username, setUsername] = useState("");
@@ -280,11 +281,9 @@ function SignUp() {
 
           {/* Animation only on bigger screens */}
           <div className="sign-up-animation">
-            <div className="absolute"></div>
-            <div className="first-circle"></div>
-            <div className="second-circle"></div>
-            <div className="third-circle"></div>
-            <LottieAnimation />
+            <LottieAnimationContainer>
+              <LottieAnimation />
+            </LottieAnimationContainer>
           </div>
         </div>
       )}
