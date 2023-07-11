@@ -8,7 +8,7 @@
   top: 0; //updates in react editTodo and modal component
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   .modal-container {
     @include border;
     @include flex(column nowrap);

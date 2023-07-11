@@ -1,7 +1,7 @@
 .create-todos {
   @include flex(column nowrap);
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   label {
     width: 100%;
     height: 90%;
@@ -20,7 +20,7 @@
   div {
     width: 100%;
     height: 10%;
-    background: $blue;
+    background: $blueVioletTransparent;
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
