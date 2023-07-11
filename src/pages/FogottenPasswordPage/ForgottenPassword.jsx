@@ -3,8 +3,9 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import animation from "../../animations/popupbox";
-import LoadingScreen from "../../components/Loading/loadingScreen";
+import LoadingScreen from "../../components/Loading/loadingScreenOld";
 import { apiURL } from "../../store/actions";
+import useComplete from "../../hooks/useComplete";
 
 function ForgottenPassword() {
   const [email, setEmail] = useState("");
@@ -15,6 +16,7 @@ function ForgottenPassword() {
   const bad = useRef(null);
   const good = useRef(null);
   const location = useLocation(false);
+  const completelyFilled = useComplete(email);
 
   useEffect(() => {
     if (good.current) {
@@ -98,11 +100,16 @@ function ForgottenPassword() {
               <input
                 className="verify-input"
                 type="email"
-                placeholder="Email Address"
+                placeholder="example@gmail.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               ></input>
-              <input className="verify-btn" type="submit" value="Request" />
+              <input
+                className="verify-btn"
+                type="submit"
+                value="Request"
+                disabled={!completelyFilled}
+              />
             </form>
           </div>
         </>
