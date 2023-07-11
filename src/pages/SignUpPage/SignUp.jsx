@@ -6,6 +6,7 @@ import { apiURL } from "../../store/actions";
 import journalLogo from "../../images/Journal-text.png";
 import LottieAnimation from "./LottieAnimation/LottieAnimation";
 import LottieAnimationContainer from "../../components/LottieAnimationContainer/LottieAnimationContainer";
+import useComplete from "../../hooks/useComplete";
 
 function SignUp() {
   const [username, setUsername] = useState("");
@@ -22,20 +23,15 @@ function SignUp() {
   const [passwordRVisibility, setPasswordRVisibility] = useState(false);
   const animatebox = useRef(null);
   const bad = useRef(null);
-  const [completelyFilled, setCompletelyFilled] = useState(true);
-
-  useEffect(() => {
-    if (
-      username.length > 0 &&
-      password.length > 0 &&
-      firstName.length > 0 &&
-      email.length > 0 &&
-      lastName.length > 0 &&
-      passwordR.length > 0 &&
-      password === passwordR
-    )
-      setCompletelyFilled(false);
-  }, [username, password, passwordR, email, lastName, firstName]);
+  const completelyFilled = useComplete(
+    username,
+    password,
+    firstName,
+    email,
+    lastName,
+    passwordR,
+    password
+  );
 
   useEffect(() => {
     if (animatebox.current) {
@@ -268,7 +264,7 @@ function SignUp() {
               <input
                 type="submit"
                 value="Sign Up"
-                disabled={completelyFilled}
+                disabled={!completelyFilled}
               />
               <p className="login-text-signup">
                 Already have an account?{" "}

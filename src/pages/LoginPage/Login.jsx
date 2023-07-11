@@ -5,10 +5,10 @@ import animation from "../../animations/popupbox";
 import LoadingScreen from "../../components/Loading/loadingScreen";
 import { apiURL } from "../../store/actions";
 import { todolistSlice } from "../../store/todolistSlice";
-// import JournalImage from "../../images/Journal-logo.png";
 import JournalLogo from "../../images/Journal-text.png";
 import LottieAnimationContainer from "../../components/LottieAnimationContainer/LottieAnimationContainer";
 import LottieAnimation from "./LottieAnimation/LottieAnimation";
+import useComplete from "../../hooks/useComplete";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -22,14 +22,10 @@ function Login() {
   const [makePassVisible, setMakePassVisible] = useState(false);
   const [emailError, setEmailError] = useState(false);
   const [navigate, setNavigate] = useState(false);
-  const [completelyFilled, setCompletelyFilled] = useState(false);
+  const completelyFilled = useComplete(username, password);
   const animatebox = useRef(null);
   const bad = useRef(null);
   const good = useRef(null);
-
-  useEffect(() => {
-    if (username.length > 0 && password.length > 0) setCompletelyFilled(true);
-  }, [username, password]);
 
   useEffect(() => {
     if (localStorage.getItem("token")) localStorage.removeItem("token");
