@@ -31,12 +31,23 @@ function LightDarkMode() {
         white: "black",
         boxShadow: "rgba(255, 255, 255, 0.6)",
         lightWhite: "rgba(255, 255, 255, 0.792)",
+        // moreTransparentWhite: "rgba(0, 0, 0, 0.12)",
+        moreTransparentBlack: "rgba(255, 255, 255, 0.12)",
+        textGray: "white",
       };
-      // theme?.style.setProperty("--test", "rgba(255, 255, 255, 0.12)");
+      theme?.style.setProperty(
+        "--moreTransparentBlack",
+        "rgba(255, 255, 255, 0.12)"
+      );
       theme?.style.setProperty("--black", "white");
       theme?.style.setProperty("--white", "black");
       theme?.style.setProperty("--boxShadow", "rgba(255, 255, 255, 0.6)");
       theme?.style.setProperty("--lightWhite", "rgba(255, 255, 255, 0.792)");
+      theme?.style.setProperty("--textGray", "white");
+      // theme?.style.setProperty(
+      //   "--moreTransparentWhite",
+      //   "rgba(255, 255, 255, 0.12)"
+      // );
       localStorage.setItem("color", JSON.stringify(data));
     }
     // Light Mode
@@ -46,12 +57,19 @@ function LightDarkMode() {
         black: "black",
         boxShadow: "rgba(0, 0, 0, 0.6)",
         lightWhite: "rgba(28, 27, 27, 0.817)",
+        moreTransparentBlack: "rgba(0, 0, 0, 0.12)",
+        // moreTransparentWhite: "rgba(255, 255, 255, 0.12)",
       };
-      // theme?.style.setProperty("--test", "rgba(255, 255, 255, 0.12)");
+      theme?.style.setProperty("--moreTransparentBlack", "rgba(0, 0, 0, 0.12)");
       theme?.style.setProperty("--white", "white");
       theme?.style.setProperty("--black", "black");
       theme?.style.setProperty("--boxShadow", "rgba(0, 0, 0, 0.6)");
       theme?.style.setProperty("--lightWhite", "rgba(28, 27, 27, 0.817)");
+      theme?.style.setProperty("--textGray", "rgb(68, 63, 63)");
+      // theme?.style.setProperty(
+      //   "--moreTransparentWhite",
+      //   "rgba(255, 255, 255, 0.12)"
+      // );
       localStorage.setItem("color", JSON.stringify(data));
     }
   }
