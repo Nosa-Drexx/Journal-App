@@ -8,7 +8,7 @@
     width: 0%;
     font-size: 2rem;
     border-radius: 10px;
-    border: 1px solid rgba(34, 165, 150, 0.6);
+    border: 1px solid $blueViolet;
     opacity: 0;
     transition: opacity 2s, width 2s;
   }
@@ -18,7 +18,7 @@
     transition: padding 1.9s; //To center align while transitioning
   }
   button {
-    background: $blue url("./images/search.png");
+    background: $blueViolet url("./images/search.png");
     background-position: center;
     background-size: 35px 35px;
     background-repeat: no-repeat;
@@ -32,7 +32,7 @@
     height: 50px;
   }
   button:hover {
-    background-color: rgb(1, 1, 191);
+    background-color: $blueViolet;
     cursor: pointer;
   }
   button:active {
