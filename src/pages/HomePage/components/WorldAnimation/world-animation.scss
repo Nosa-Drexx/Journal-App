@@ -1,0 +1,32 @@
+@import "../../../../styles/colors";
+@import "../../../../styles/mixins";
+@import "../../../../styles/font";
+
+.world-animation-section {
+  @include flex(row nowrap);
+  width: 100%;
+  height: 450px;
+  padding: 2rem;
+  background: $blueVioletDark;
+  .lottie-container {
+    @include flex(row nowrap);
+    width: 95%;
+    height: 100%;
+    .lottie-interactive-container {
+      width: 430px;
+      height: 430px;
+    }
+  }
+}
+
+@media (min-width: 700px) {
+  .world-animation-section {
+    height: 500px;
+    .lottie-container {
+      .lottie-interactive-container {
+        width: 600px;
+        height: 600px;
+      }
+    }
+  }
+}

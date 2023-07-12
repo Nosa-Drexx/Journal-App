@@ -11,6 +11,7 @@ import GetStarted from "./components/GetStarted/GetStarted";
 import Advantages from "./components/About/Advantages";
 import WhyUs from "./components/WhyUs/WhyUs";
 import Footer from "./components/Footer/Footer";
+import WorldLottieAnimation from "./components/WorldAnimation/WorldAnimationSection";
 
 const theme = document.documentElement;
 
@@ -113,6 +114,8 @@ function Home() {
         {/* Why Us section */}
         <WhyUs />
       </div>
+      {/* World animation */}
+      <WorldLottieAnimation />
       {/* Footer */}
       <Footer />
     </div>
