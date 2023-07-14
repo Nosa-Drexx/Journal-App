@@ -12,6 +12,7 @@ import Advantages from "./components/About/Advantages";
 import WhyUs from "./components/WhyUs/WhyUs";
 import Footer from "./components/Footer/Footer";
 import WorldLottieAnimation from "./components/WorldAnimation/WorldAnimationSection";
+import { Fade } from "react-reveal";
 
 const theme = document.documentElement;
 
@@ -106,7 +107,9 @@ function Home() {
         </header>
 
         {/* Hero Section */}
+        {/* <Fade top> */}
         <GetStarted />
+        {/* </Fade> */}
 
         {/* About Section */}
         <Advantages />
