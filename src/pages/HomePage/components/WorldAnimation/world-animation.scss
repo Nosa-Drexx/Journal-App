@@ -12,10 +12,10 @@
     @include flex(row nowrap);
     width: 95%;
     height: 100%;
-    .lottie-interactive-container {
-      width: 430px;
-      height: 430px;
-    }
+    // .lottie-interactive-container {
+    //   width: 430px;
+    //   height: 430px;
+    // }
   }
 }
 
@@ -23,10 +23,10 @@
   .world-animation-section {
     height: 500px;
     .lottie-container {
-      .lottie-interactive-container {
-        width: 600px;
-        height: 600px;
-      }
+      // .lottie-interactive-container {
+      //   width: 600px;
+      //   height: 600px;
+      // }
     }
   }
 }
