@@ -1,16 +1,30 @@
+import CardElement from "./CardElements";
 import "./card.scss";
+import { Slide } from "react-awesome-reveal";
 
-const Card = ({ children, header, text, bg }) => {
+const Card = ({ children, header, text, bg, animationDirection }) => {
   return (
-    <div className="card" id={bg === "primary" ? "card-purple-bg" : ""}>
-      <div className="card-icon">
-        <div className="icon-circle">{children}</div>
-      </div>
-      <div className="card-text">
-        <h3>{header}</h3>
-        <p>{text}</p>
-      </div>
-    </div>
+    <>
+      {/* Add slide component if animationDirection props exits */}
+      {animationDirection ? (
+        <Slide
+          direction={animationDirection}
+          className="card card-animation-container"
+        >
+          <div className="card" id={bg === "primary" ? "card-purple-bg" : ""}>
+            <CardElement header={header} text={text}>
+              {children}
+            </CardElement>
+          </div>
+        </Slide>
+      ) : (
+        <div className="card" id={bg === "primary" ? "card-purple-bg" : ""}>
+          <CardElement header={header} text={text}>
+            {children}
+          </CardElement>
+        </div>
+      )}
+    </>
   );
 };
 
