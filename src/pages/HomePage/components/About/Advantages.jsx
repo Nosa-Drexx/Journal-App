@@ -1,4 +1,4 @@
-import { Fade } from "react-reveal";
+// import { Slide } from "react-awesome-reveal";
 import Card from "../../../../components/Card/Card";
 import "./advantages.scss";
 
@@ -8,42 +8,39 @@ const Advantages = () => {
       <div className="cards-container">
         {/* card components */}
 
-        {/* Fade in cards from top */}
-        <Fade bottom>
-          <Card
-            header={"Work from Anywhere"}
-            text={
-              "Keep important info handy-your notes sync automatically across all devices."
-            }
-          >
-            <i className="fa-solid fa-briefcase"></i>
-          </Card>
-        </Fade>
+        {/* Slide in cards from top */}
+        <Card
+          header={"Work from Anywhere"}
+          text={
+            "Keep important info handy-your notes sync automatically across all devices."
+          }
+          animationDirection="up"
+        >
+          <i className="fa-solid fa-briefcase"></i>
+        </Card>
 
-        <Fade bottom>
-          <div className="card-push-up">
-            <Card
-              header={"Remember Everything"}
-              text={
-                "Make more useful by bookmarking text, quick and easy access to texts"
-              }
-              bg="primary"
-            >
-              <i className="fa-solid fa-lightbulb"></i>
-            </Card>
-          </div>
-        </Fade>
-
-        <Fade bottom>
+        <div className="card-push-up">
           <Card
-            header={"Find it Faster"}
+            header={"Remember Everything"}
             text={
-              "Get what you need when you need it with powerful and flexible search capabilities"
+              "Make more useful by bookmarking text, quick and easy access to texts"
             }
+            bg="primary"
+            animationDirection="up"
           >
-            <i className="fa-solid fa-magnifying-glass"></i>
+            <i className="fa-solid fa-lightbulb"></i>
           </Card>
-        </Fade>
+        </div>
+
+        <Card
+          header={"Find it Faster"}
+          text={
+            "Get what you need when you need it with powerful and flexible search capabilities"
+          }
+          animationDirection="up"
+        >
+          <i className="fa-solid fa-magnifying-glass"></i>
+        </Card>
       </div>
     </section>
   );
