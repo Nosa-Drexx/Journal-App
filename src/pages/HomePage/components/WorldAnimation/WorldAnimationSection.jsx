@@ -6,22 +6,20 @@ import { Slide } from "react-awesome-reveal";
 
 const WorldLottieAnimation = () => {
   const player = useRef(null);
-  // useEffect(() => {
-  //   import("lottie-interactive/dist/lottie-interactive.js");
-  // });
 
   useEffect(() => {
-    create({
-      player: "#worldMap",
-      mode: "cursor",
-      actions: [
-        {
-          position: { x: [0, 1], y: [-1, 2] },
-          type: "seek",
-          transition: "click",
-          frames: [0, 840],
-        },
-      ],
+    player.current.addEventListener("load", () => {
+      create({
+        player: "#worldMap",
+        mode: "cursor",
+        actions: [
+          {
+            position: { x: [0, 1], y: [-1, 2] },
+            type: "seek",
+            frames: [0, 840],
+          },
+        ],
+      });
     });
   }, [player]);
 
