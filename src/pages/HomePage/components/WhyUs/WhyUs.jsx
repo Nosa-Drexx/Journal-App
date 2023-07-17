@@ -28,7 +28,11 @@ const WhyUs = () => {
 
         <div className="why-us-image">
           <Slide direction="right" style={{ width: "100%", height: "100%" }}>
-            <img src={womanLaptop} alt="woman with laptop" />
+            <img
+              src={womanLaptop}
+              className="right-img"
+              alt="woman with laptop"
+            />
           </Slide>
         </div>
       </div>
@@ -52,7 +56,7 @@ const WhyUs = () => {
 
         <div className="why-us-image left-image">
           <Slide direction="left" style={{ width: "100%", height: "100%" }}>
-            <img src={womanIpad} alt="woman with laptop" />
+            <img src={womanIpad} className="left-img" alt="woman with laptop" />
           </Slide>
         </div>
       </div>
@@ -77,7 +81,11 @@ const WhyUs = () => {
 
         <div className="why-us-image">
           <Slide direction="right" style={{ width: "100%", height: "100%" }}>
-            <img src={womanPhone} alt="woman with laptop" />
+            <img
+              src={womanPhone}
+              className="right-img"
+              alt="woman with laptop"
+            />
           </Slide>
         </div>
       </div>

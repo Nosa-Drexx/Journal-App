@@ -1,6 +1,18 @@
-.signup {
+.sign-up-section {
   @include flex(column nowrap);
   width: 100vw;
+  height: 100dvh;
+  .sign-up-details-container {
+    @include flex(row nowrap);
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.signup {
+  @include flex(column nowrap);
+  width: 100%;
+  max-width: 1300px;
   height: 100dvh;
   color: var(--black, $black);
   background: var(--white, $white);
@@ -10,11 +22,8 @@
     @include flex(column nowrap);
   }
   .home {
-    position: fixed;
     display: flex;
-    z-index: 100;
-    top: 0%;
-    left: 0%;
+    align-self: flex-start;
     padding: 0.5rem;
     width: 35%;
     height: 10%;
@@ -22,6 +31,7 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
+      object-position: left;
     }
   }
   .sign-up-write-up {
@@ -142,7 +152,7 @@
 
 @media (min-width: 800px) {
   .signup {
-    @include flex(row nowrap);
+    @include flex(column nowrap);
     .sign-up-form-container {
       width: 50%;
     }
