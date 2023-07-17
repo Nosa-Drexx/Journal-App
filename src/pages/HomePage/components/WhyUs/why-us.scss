@@ -83,6 +83,12 @@
       .why-us-image {
         width: 60%;
         height: 500px;
+        .right-img {
+          object-position: right;
+        }
+        .left-img {
+          object-position: left;
+        }
       }
     }
   }

@@ -82,7 +82,7 @@ function Login() {
     }
   };
   return (
-    <>
+    <section className="login-section">
       {currentUser.logIn ? (
         <Navigate to={`/dashBoard/${currentUser.username}`} />
       ) : gottenDataFromAPI === "requestSent" ||
@@ -118,99 +118,102 @@ function Login() {
             </div>
           )}
 
-          <div className="form-container">
-            <div className="login-text-intro">
-              <h2>Hi there!</h2>
-              <p>Welcome to JourNal.</p>
-            </div>
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                loginAction();
-              }}
-            >
-              {/* <div className="logo">
+          <div className="login-details-container">
+            {/* Form container */}
+            <div className="form-container">
+              <div className="login-text-intro">
+                <h2>Hi there!</h2>
+                <p>Welcome to JourNal.</p>
+              </div>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  loginAction();
+                }}
+              >
+                {/* <div className="logo">
               <img src={JournalImage} alt="Journal-logo"></img>
             </div> */}
-              <div className="inputs">
-                <label htmlFor="username">
-                  Username or Email Address <br />
-                  <input
-                    type="text"
-                    id="username"
-                    placeholder="email or username"
-                    onChange={(e) => setUsername(e.target.value)}
-                    onBlur={(e) => setUsername(e.target.value)}
-                    value={username}
-                    autoComplete="off"
-                    required
-                  />
-                </label>
-                <label htmlFor="password">
-                  Password <br />
-                  <div className="pass-div">
+                <div className="inputs">
+                  <label htmlFor="username">
+                    Username or Email Address <br />
                     <input
-                      type={makePassVisible ? "text" : "password"}
-                      id="password"
-                      placeholder="password"
-                      onChange={(e) => setPassword(e.target.value)}
-                      onBlur={(e) => setPassword(e.target.value)}
-                      value={password}
+                      type="text"
+                      id="username"
+                      placeholder="email or username"
+                      onChange={(e) => setUsername(e.target.value)}
+                      onBlur={(e) => setUsername(e.target.value)}
+                      value={username}
                       autoComplete="off"
                       required
                     />
+                  </label>
+                  <label htmlFor="password">
+                    Password <br />
+                    <div className="pass-div">
+                      <input
+                        type={makePassVisible ? "text" : "password"}
+                        id="password"
+                        placeholder="password"
+                        onChange={(e) => setPassword(e.target.value)}
+                        onBlur={(e) => setPassword(e.target.value)}
+                        value={password}
+                        autoComplete="off"
+                        required
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setMakePassVisible((prev) => !prev)}
+                        className="view-pass"
+                      >
+                        {!makePassVisible ? (
+                          <span className="fa-solid fa-eye"></span>
+                        ) : (
+                          <span className="fa-solid fa-eye-slash"></span>
+                        )}
+                      </button>
+                    </div>
+                  </label>
+                  <div className="forgotten-password-container">
                     <button
                       type="button"
-                      onClick={() => setMakePassVisible((prev) => !prev)}
-                      className="view-pass"
+                      className="forgotten-password"
+                      onClick={() => {
+                        requestForNewPassword(username);
+                      }}
                     >
-                      {!makePassVisible ? (
-                        <span className="fa-solid fa-eye"></span>
-                      ) : (
-                        <span className="fa-solid fa-eye-slash"></span>
-                      )}
+                      <Link
+                        to={navigate ? "/forgottenPassword" : ""}
+                        state={{ username }}
+                      >
+                        Forgotten Password?
+                      </Link>
                     </button>
                   </div>
-                </label>
-                <div className="forgotten-password-container">
-                  <button
-                    type="button"
-                    className="forgotten-password"
-                    onClick={() => {
-                      requestForNewPassword(username);
-                    }}
-                  >
-                    <Link
-                      to={navigate ? "/forgottenPassword" : ""}
-                      state={{ username }}
-                    >
-                      Forgotten Password?
-                    </Link>
-                  </button>
                 </div>
-              </div>
-              <div className="button-container">
-                <div className="log-sign-btn">
-                  <input
-                    type="submit"
-                    value="Log in"
-                    disabled={!completelyFilled}
-                  />
+                <div className="button-container">
+                  <div className="log-sign-btn">
+                    <input
+                      type="submit"
+                      value="Log in"
+                      disabled={!completelyFilled}
+                    />
+                  </div>
+                  <p className="sign-up-link">
+                    {`Don't have an account?`} <Link to="/signUp">Sign up</Link>
+                  </p>
                 </div>
-                <p className="sign-up-link">
-                  {`Don't have an account?`} <Link to="/signUp">Sign up</Link>
-                </p>
-              </div>
-            </form>
-          </div>
-          <div className="lottie-container-login">
-            <LottieAnimationContainer>
-              <LottieAnimation />
-            </LottieAnimationContainer>
+              </form>
+            </div>
+            <div className="lottie-container-login">
+              <LottieAnimationContainer>
+                <LottieAnimation />
+              </LottieAnimationContainer>
+            </div>
           </div>
         </section>
       )}
-    </>
+    </section>
   );
 }
 export default Login;
