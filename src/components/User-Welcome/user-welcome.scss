@@ -1,0 +1,19 @@
+@import "../../styles/colors";
+@import "../../styles/mixins";
+
+.welcome {
+  display: flex;
+  flex-flow: column nowrap;
+  padding-left: 1rem;
+  width: 100%;
+  height: 30%;
+  background: var(--white, $white);
+  h2 {
+    font-weight: bold;
+    color: var(--black, $black);
+    background: transparent;
+    font-size: 1.3rem;
+    font-style: italic;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+}

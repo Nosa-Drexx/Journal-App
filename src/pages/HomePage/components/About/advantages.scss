@@ -1,0 +1,28 @@
+@import "../../../../styles/colors";
+@import "../../../../styles/mixins";
+@import "../../../../styles/font";
+
+.advantages {
+  width: 100%;
+  .cards-container {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 750px) {
+  .advantages {
+    .cards-container {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      .card-push-up {
+        translate: 0px -20px;
+        width: 100%;
+        min-width: 200px;
+        max-width: 350px;
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+@mixin border {
+  box-shadow: 1px 1px 8px var(--boxShadow, $boxShadow);
+}
+@mixin flex($type) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: $type;
+}
+@mixin button-click-effect {
+  border: none;
+  transition: transform 0.4s;
+  cursor: pointer;
+}
