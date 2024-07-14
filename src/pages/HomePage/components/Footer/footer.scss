@@ -1,0 +1,129 @@
+@import "../../../../styles/colors";
+@import "../../../../styles/mixins";
+@import "../../../../styles/font";
+
+.footer {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  background: $blueVioletTransparent;
+  .navigations {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 95%;
+    max-width: 1300px;
+    padding: 1.3rem 0rem;
+    ul {
+      list-style-type: none;
+      margin: 0px;
+      padding: 0px;
+      display: flex;
+      flex-flow: column nowrap;
+      li {
+        display: flex;
+        flex-flow: column nowrap;
+        width: 100%;
+        margin: 0px;
+        padding: 0px;
+        .liner {
+          width: 0%;
+          display: flex;
+          transition: width 0.3s;
+          height: 5px;
+          background: $blueViolet;
+          border-radius: 5px;
+        }
+      }
+      a {
+        padding: 0.5rem 0rem;
+        text-decoration: none;
+        width: 100%;
+        color: var(--textGray, $textGray);
+        font-family: $fontPrimary;
+        transition: transform 0.3s;
+      }
+      a:hover,
+      a:focus + .liner {
+        width: 10%;
+      }
+      a:hover,
+      a:focus {
+        color: $blueViolet;
+        width: 100%;
+        transform: scale(1.03);
+      }
+    }
+    li:hover .liner {
+      width: 10%;
+    }
+    .socials {
+      display: flex;
+      flex-flow: row nowrap;
+      gap: 1.5rem;
+      padding-top: 1.5rem;
+      a {
+        transition: transform 0.3s;
+      }
+      a:hover,
+      a:focus {
+        transform: scale(1.1);
+      }
+      .socials-icon {
+        font-size: 2.5rem;
+        color: $blueViolet;
+      }
+    }
+  }
+  .copy-right {
+    width: 80%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid var(--textGray, $textGray);
+    padding-top: 1rem;
+    img {
+      width: 40%;
+      height: 30px;
+      object-fit: contain;
+    }
+    p {
+      color: var(--textGray, $textGray);
+      font-family: $fontPrimary;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+@media (min-width: 700px) {
+  .footer {
+    .navigations {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      padding: 4rem;
+      ul {
+        display: flex;
+        flex-flow: row nowrap;
+        li {
+          width: 120px;
+        }
+        a:hover,
+        a:focus + .liner {
+          width: 50%;
+        }
+      }
+      li:hover .liner {
+        width: 50%;
+      }
+      .socials {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        padding-top: 0rem;
+      }
+    }
+  }
+}
